@@ -56,14 +56,7 @@
       <recent name="java.main" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainApp (1)">
-    <configuration name="MainApp (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="MainApp" />
-      <module name="Quizzy" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.main.java.Quizzy.MainApp">
     <configuration name="MainApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="java.main.MainApp" />
       <module name="Quizzy" />
@@ -77,9 +70,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="main.java.Quizzy.MainApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.java.Quizzy.MainApp" />
+      <module name="Quizzy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MainApp (1)" />
+        <item itemvalue="Application.main.java.Quizzy.MainApp" />
         <item itemvalue="Application.MainApp" />
       </list>
     </recent_temporary>

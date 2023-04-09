@@ -1,6 +1,6 @@
-package View;
+package main.java.Quizzy.View;
 
-import Controller.QuizzyController;
+import main.java.Quizzy.Controller.QuizzyController;
 
 public class CommandLineInterface {
 
