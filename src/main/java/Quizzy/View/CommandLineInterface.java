@@ -1,17 +1,32 @@
 package main.java.Quizzy.View;
 
 import main.java.Quizzy.Controller.QuizzyController;
+import main.java.Quizzy.Model.AccountType;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class CommandLineInterface {
+public class CommandLineInterface implements Serializable {
 
     QuizzyController quizzyController = new QuizzyController();
-
+    ArrayList<String> coursesEnrolled = new ArrayList<>();
     private Scanner scanner;
 
     public void run() {
+        load();
         start();
+    }
+
+    private void load() {
+        System.out.println("Loading Data...");
+        try {
+            quizzyController.loadData();
+            System.out.println("Data Loaded Successfully!");
+            System.out.println("***************************************");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private void logo() {
@@ -54,8 +69,7 @@ public class CommandLineInterface {
                             register();
                         }
                         case '3' -> {
-
-                            // TODO : saveData();
+                            saveData();
                         }
                         case '4' -> {
                             System.out.println("Thank you for using Quizzy!");
@@ -77,10 +91,66 @@ public class CommandLineInterface {
 
     }
 
+    private void saveData() {
+        System.out.println("Saving Data...");
+        try {
+            quizzyController.saveData();
+            System.out.println("Data Saved Successfully!");
+            start();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     private void register() {
-        //TODO: quizzyController.register();
-        System.out.println("*** Register ***");
-        System.out.println("Please enter your username: ");
+        String sha256 = "";
+        AccountType accountType = AccountType.TEACHER;
+        try {
+            System.out.println("***************************************");
+            System.out.println("*** Registration Page ***");
+            System.out.println("***************************************");
+            System.out.println("Please enter your Full Name: ");
+            String fullName = scanner.nextLine().trim();
+            System.out.println("Please enter your Email - ID");
+            String email = scanner.nextLine().trim();
+            quizzyController.validateEmail(email);
+            System.out.println("Please enter your Username: ");
+            String username = scanner.nextLine().trim();
+            quizzyController.validateUsername(username);
+            System.out.println("Please enter your Password: ");
+            String password = scanner.nextLine().trim();
+            sha256 = quizzyController.hashPassword(password);
+            System.out.println("1.Are you a Student?");
+            System.out.println("2.Are you a Teacher?");
+            System.out.println("Please select an option: ");
+            String choice = scanner.nextLine().trim();
+            if (choice.length() == 1) {
+                switch (choice.charAt(0)) {
+                    case '1' -> {
+                        accountType = AccountType.STUDENT;
+                    }
+                    case '2' -> {
+                        accountType = AccountType.TEACHER;
+                    }
+                    default -> System.out.println("Please select a valid option: ");
+                }
+            } else {
+                System.out.println("Please select a valid option: ");
+                register();
+            }
+            System.out.println("Enter the Courses you are enrolled in: (If Multiple, separate by comma)");
+            String courses = scanner.nextLine();
+            for (String course : courses.split(",")) {
+                coursesEnrolled.add(course.toLowerCase().trim());
+            }
+            quizzyController.register(fullName, email, username, sha256, accountType, coursesEnrolled);
+            System.out.println("Registration Successful!");
+            System.out.println("Please Login to continue...");
+            start();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            register();
+        }
     }
 
 
