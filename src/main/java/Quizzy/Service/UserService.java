@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class UserService implements Serializable {
 
-    private Map<String, User> users = new HashMap<String, User>();
+    private Map<String, User> users = new HashMap<>();
 
 
     /**
@@ -23,6 +23,10 @@ public class UserService implements Serializable {
      * @return hashed password
      */
     public String hashPassword(String password) {
+        //Check for empty string
+        if (password.isEmpty()) {
+            throw new IllegalArgumentException("Password cannot be empty");
+        }
         String hashedPassword = "";
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
@@ -73,8 +77,8 @@ public class UserService implements Serializable {
             throw new IllegalArgumentException("Full name cannot be empty");
         }
         // Create a new user
-        User user = new User(fullName, email, username, sha256, accountType, coursesEnrolled);
-        users.put(username, user);
+        User user = new User(fullName.toLowerCase(), email.toLowerCase(), username.toLowerCase(), sha256, accountType, coursesEnrolled);
+        users.put(username.toLowerCase(), user);
     }
 
     /**
@@ -96,5 +100,25 @@ public class UserService implements Serializable {
         users = (Map<String, User>) oi.readObject();
         oi.close();
         fi.close();
+    }
+
+    public Map<String, User> validateLogin(String userName, String password) {
+        if (users.isEmpty()) {
+            throw new IllegalArgumentException("No users found");
+        }
+        Map<String, User> userInfo = new HashMap<>();
+        // CHECK IF the USER-NAME OR PASSWORD IS EMPTY
+        if (userName.isEmpty() || password.isEmpty()) {
+            throw new IllegalArgumentException("Username or password cannot be empty");
+        }
+        //Check if userName and password match
+        if (users.containsKey(userName.toLowerCase())) {
+            if (users.get(userName.toLowerCase()).getPassword().equals(password)) {
+                userInfo.put(userName.toLowerCase(), users.get(userName.toLowerCase()));
+            }
+        } else {
+            throw new IllegalArgumentException("Username or password is incorrect");
+        }
+        return userInfo;
     }
 }

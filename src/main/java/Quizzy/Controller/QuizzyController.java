@@ -1,10 +1,12 @@
 package main.java.Quizzy.Controller;
 
 import main.java.Quizzy.Model.AccountType;
+import main.java.Quizzy.Model.User;
 import main.java.Quizzy.Service.UserService;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class QuizzyController {
 
@@ -32,5 +34,9 @@ public class QuizzyController {
 
     public void loadData() throws IOException, ClassNotFoundException {
         userService.loadData();
+    }
+
+    public Map<String, User> validateLogin(String userName, String password) {
+        return userService.validateLogin(userName, password);
     }
 }

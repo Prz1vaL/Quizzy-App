@@ -2,9 +2,12 @@ package main.java.Quizzy.View;
 
 import main.java.Quizzy.Controller.QuizzyController;
 import main.java.Quizzy.Model.AccountType;
+import main.java.Quizzy.Model.User;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class CommandLineInterface implements Serializable {
@@ -12,6 +15,8 @@ public class CommandLineInterface implements Serializable {
     QuizzyController quizzyController = new QuizzyController();
     ArrayList<String> coursesEnrolled = new ArrayList<>();
     private Scanner scanner;
+
+    private Map<String, User> userInfo = new HashMap<>();
 
     public void run() {
         load();
@@ -63,7 +68,7 @@ public class CommandLineInterface implements Serializable {
                 if (line.length() == 1) {
                     switch (line.charAt(0)) {
                         case '1' -> {
-                            //TODO : Login();
+                            login();
                         }
                         case '2' -> {
                             register();
@@ -89,6 +94,37 @@ public class CommandLineInterface implements Serializable {
             start();
         }
 
+    }
+
+    private void login() {
+        //TODO: Implement Login
+        System.out.println("***************************************");
+        System.out.println("*** Login Page ***");
+        System.out.println("***************************************");
+        System.out.println("Please enter your Username: ");
+        String userName = scanner.nextLine().trim();
+        System.out.println("Please enter your Password: ");
+        String password = scanner.nextLine().trim();
+        try {
+            String hashedPassword = quizzyController.hashPassword(password);
+            userInfo = quizzyController.validateLogin(userName, hashedPassword);
+            if (userInfo.isEmpty()) {
+                throw new IllegalArgumentException("Invalid Username or Password!");
+            }
+            System.out.println("Login Successful!");
+            System.out.println("***************************************");
+            System.out.println("Welcome " + userName + "!");
+            if (userInfo.get(userName).getAccountType() == AccountType.TEACHER) {
+                System.out.println("You are a Teacher!");
+                // TODO: teacherMenu();
+            } else {
+                System.out.println("You are a Student!");
+                // TODO : studentMenu();
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            login();
+        }
     }
 
     private void saveData() {
