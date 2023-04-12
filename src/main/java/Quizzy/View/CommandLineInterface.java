@@ -140,7 +140,7 @@ public class CommandLineInterface implements Serializable {
 
     private void register() {
         String sha256 = "";
-        AccountType accountType = AccountType.TEACHER;
+        AccountType accountType = null;
         try {
             System.out.println("***************************************");
             System.out.println("*** Registration Page ***");
