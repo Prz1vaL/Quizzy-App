@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff18775a-ac22-43fb-9b14-cf18bf872cd5" name="Changes" comment="refactored some lines of code.">
+    <list default="true" id="ff18775a-ac22-43fb-9b14-cf18bf872cd5" name="Changes" comment="TeacherMenu created...">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/Controller/QuizzyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Controller/QuizzyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/Service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -142,7 +144,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681339187732</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="TeacherMenu created...">
+      <created>1681380849719</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1681380849719</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -155,14 +164,15 @@
     <MESSAGE value="Quizzy Logo." />
     <MESSAGE value="Now able to login with credentials ." />
     <MESSAGE value="refactored some lines of code." />
-    <option name="LAST_COMMIT_MESSAGE" value="refactored some lines of code." />
+    <MESSAGE value="TeacherMenu created..." />
+    <option name="LAST_COMMIT_MESSAGE" value="TeacherMenu created..." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>80</line>
+          <line>82</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
@@ -173,15 +183,6 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/Quizzy/Service/UserService.java</url>
-          <line>24</line>
-          <properties class="main.java.Quizzy.Service.UserService" method="hashPassword">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

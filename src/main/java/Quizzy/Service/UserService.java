@@ -121,4 +121,12 @@ public class UserService implements Serializable {
         }
         return userInfo;
     }
+
+    public void deleteAccount(String userName) {
+        if (users.containsKey(userName.toLowerCase())) {
+            users.remove(userName.toLowerCase());
+        } else {
+            throw new IllegalArgumentException("Username does not exist");
+        }
+    }
 }

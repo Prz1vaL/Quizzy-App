@@ -16,6 +16,8 @@ public class CommandLineInterface implements Serializable {
     ArrayList<String> coursesEnrolled = new ArrayList<>();
     private Scanner scanner;
 
+    private boolean loginStatus = false;
+
     private Map<String, User> userInfo = new HashMap<>();
 
     public void run() {
@@ -111,7 +113,6 @@ public class CommandLineInterface implements Serializable {
     }
 
     private void login() {
-        //TODO: Implement Login
         System.out.println("***************************************");
         System.out.println("*** Login Page ***");
         System.out.println("***************************************");
@@ -126,6 +127,7 @@ public class CommandLineInterface implements Serializable {
                 throw new IllegalArgumentException("Invalid Username or Password!");
             }
             System.out.println("Login Successful!");
+            loginStatus = true;
             System.out.println("***************************************");
             System.out.println("Welcome " + userName + "!");
             if (userInfo.get(userName).getAccountType() == AccountType.TEACHER) {
@@ -143,6 +145,75 @@ public class CommandLineInterface implements Serializable {
 
     private void teacherMenu() {
         teacherMenuMessage();
+        String line = scanner.nextLine();
+        if (line.length() == 1) {
+            switch (line.charAt(0)) {
+                case '1' -> {
+                    //TODO: createQuiz();
+                }
+                case '2' -> {
+                    //TODO: viewQuizzes();
+                }
+                case '3' -> {
+                    //TODO: viewStudents();
+                }
+                case '4' -> {
+                    //TODO: viewCourses();
+                }
+                case '5' -> {
+                    //TODO: viewMyDetails();
+                }
+                case '6' -> {
+                    deleteMyAccount();
+                }
+                case '7' -> {
+                    //TODO : changePassword();
+                }
+                case '8' -> {
+                    System.out.println("Logging out...");
+                    loginStatus = false;
+                    start();
+                }
+                default -> {
+                    System.out.println("Please select a valid option: ");
+                    teacherMenu();
+                }
+            }
+        } else {
+            System.out.println("Please select a valid option: ");
+            teacherMenu();
+        }
+
+    }
+
+    private void deleteMyAccount() {
+        String userName = "";
+        for (Map.Entry<String, User> entry : userInfo.entrySet()) {
+            userName = entry.getKey();
+        }
+        System.out.println("Deleting Account...");
+        System.out.println("Are you sure you want to delete your account? (Y/N)");
+        String line = scanner.nextLine();
+        if (line.length() == 1) {
+            switch (line.charAt(0)) {
+                case 'Y' | 'n' -> {
+                    quizzyController.deleteAccount(userName);
+                    System.out.println("Account Deleted Successfully!");
+                    loginStatus = false;
+                    start();
+                }
+                case 'N' | 'n' -> {
+                    teacherMenu();
+                }
+                default -> {
+                    System.out.println("Please select a valid option: ");
+                    deleteMyAccount();
+                }
+            }
+        } else {
+            System.out.println("Please select a valid option: ");
+            deleteMyAccount();
+        }
     }
 
     private void saveData() {
@@ -193,10 +264,25 @@ public class CommandLineInterface implements Serializable {
                 register();
             }
             System.out.println("Enter the Courses you are enrolled in: (If Multiple, separate by comma)");
-            String courses = scanner.nextLine();
-            for (String course : courses.split(",")) {
-                coursesEnrolled.add(course.toLowerCase().trim());
+            String courses = scanner.nextLine().trim();
+            if(courses.isEmpty() || courses.isBlank()){
+                throw new IllegalArgumentException("Courses cannot be empty!");
             }
+          // Add courses to a list
+            for (String course : courses.split(",")) {
+                coursesEnrolled.add(course);
+            }
+
+            // Courses should not be repeated in the arrayList
+            for (int i = 0; i < coursesEnrolled.size(); i++) {
+                for (int j = i + 1; j < coursesEnrolled.size(); j++) {
+                    if (coursesEnrolled.get(i).equals(coursesEnrolled.get(j))) {
+                        coursesEnrolled.remove(j);
+                    }
+                }
+            }
+
+
             quizzyController.register(fullName, email, username, sha256, accountType, coursesEnrolled);
             System.out.println("Registration Successful!");
             System.out.println("Please Login to continue...");

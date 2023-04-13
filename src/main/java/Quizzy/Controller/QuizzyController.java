@@ -39,4 +39,8 @@ public class QuizzyController {
     public Map<String, User> validateLogin(String userName, String password) {
         return userService.validateLogin(userName, password);
     }
+
+    public void deleteAccount(String userName) {
+        userService.deleteAccount(userName);
+    }
 }
