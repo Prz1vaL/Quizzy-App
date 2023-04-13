@@ -161,7 +161,7 @@ public class CommandLineInterface implements Serializable {
                     //TODO: viewCourses();
                 }
                 case '5' -> {
-                    //TODO: viewMyDetails();
+                    viewMyDetails();
                 }
                 case '6' -> {
                     deleteMyAccount();
@@ -184,6 +184,28 @@ public class CommandLineInterface implements Serializable {
             teacherMenu();
         }
 
+    }
+
+    private void viewMyDetails() {
+        System.out.println("***************************************");
+        System.out.println("*** My Details ***");
+        System.out.println("***************************************");
+        String userName = "";
+        String fullName = "";
+        String email = "";
+        String accountType = "";
+        for (Map.Entry<String, User> entry : userInfo.entrySet()) {
+            userName = entry.getKey();
+            fullName = entry.getValue().getFullName();
+            email = entry.getValue().getEmail();
+            accountType = entry.getValue().getAccountType().toString();
+        }
+        System.out.println("Username: " + userName);
+        System.out.println("Full Name: " + fullName);
+        System.out.println("Email: " + email);
+        System.out.println("Account Type: " + accountType);
+        System.out.println("***************************************");
+        teacherMenu();
     }
 
     private void deleteMyAccount() {
