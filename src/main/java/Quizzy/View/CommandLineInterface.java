@@ -161,7 +161,7 @@ public class CommandLineInterface implements Serializable {
                     //TODO: viewQuizzes();
                 }
                 case '3' -> {
-                    //TODO: viewStudents();
+                    viewStudents();
                 }
                 case '4' -> {
                     viewTeacherCourses();
@@ -192,11 +192,15 @@ public class CommandLineInterface implements Serializable {
 
     }
 
+    private void viewStudents() {
+
+    }
+
     private void viewTeacherCourses() {
         System.out.println("***************************************");
         System.out.println("*** Your Courses ***");
         System.out.println("***************************************");
-        ArrayList<String> yourCourses = new ArrayList();
+        ArrayList<String> yourCourses = new ArrayList<>();
         for (Map.Entry<String, User> entry : teacherInfo.entrySet()) {
             yourCourses = entry.getValue().getCoursesEnrolled();
         }
@@ -343,9 +347,7 @@ public class CommandLineInterface implements Serializable {
                 throw new IllegalArgumentException("Courses cannot be empty!");
             }
             // Add courses to a list
-            for (String course : courses.split(",")) {
-                coursesEnrolled.add(course);
-            }
+            Collections.addAll(coursesEnrolled, courses.split(","));
 
             // Courses should not be repeated in the arrayList
             for (int i = 0; i < coursesEnrolled.size(); i++) {

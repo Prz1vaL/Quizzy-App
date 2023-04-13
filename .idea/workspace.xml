@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff18775a-ac22-43fb-9b14-cf18bf872cd5" name="Changes" comment="Teacher are now able to change their password (validation checks are placed to ensure tight password policies).">
+    <list default="true" id="ff18775a-ac22-43fb-9b14-cf18bf872cd5" name="Changes" comment="Teachers can view the courses that they are teaching.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +28,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2OBvrOSLyn5vUCtXtLK7PfRKigT" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -96,7 +97,8 @@
       <workItem from="1681113229676" duration="1141000" />
       <workItem from="1681139830650" duration="1000" />
       <workItem from="1681213635617" duration="519000" />
-      <workItem from="1681414096743" duration="2367000" />
+      <workItem from="1681414096743" duration="2825000" />
+      <workItem from="1681417455805" duration="384000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit 2">
       <created>1681047051802</created>
@@ -182,7 +184,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681416095436</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Teachers can view the courses that they are teaching.">
+      <created>1681416733331</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1681416733331</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,7 +210,8 @@
     <MESSAGE value="Teachers can now view their Account Details." />
     <MESSAGE value="Rewrote the view code to hold two types (student,teacher) of user data (cache) and methods were changed accordingly. While it may be easier to just hold onto one data for both parties, problems may occur during concurrent or simultaneous log-in." />
     <MESSAGE value="Teacher are now able to change their password (validation checks are placed to ensure tight password policies)." />
-    <option name="LAST_COMMIT_MESSAGE" value="Teacher are now able to change their password (validation checks are placed to ensure tight password policies)." />
+    <MESSAGE value="Teachers can view the courses that they are teaching." />
+    <option name="LAST_COMMIT_MESSAGE" value="Teachers can view the courses that they are teaching." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -210,15 +220,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/Service/UserService.java</url>
           <line>144</line>
           <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>194</line>
-          <properties class="main.java.Quizzy.View.CommandLineInterface" method="viewTeacherCourses">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
