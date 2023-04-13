@@ -153,4 +153,45 @@ public class UserService implements Serializable {
             users.get(userName.toLowerCase()).setPassword(hashedPassword);
         }
     }
+
+    public ArrayList<String> getStudentsByCourse(String courseName) {
+        ArrayList<String> students = new ArrayList<>();
+        for (Map.Entry<String, User> user : users.entrySet()) {
+            if (user.getValue().getAccountType().equals(AccountType.STUDENT)) {
+                if (user.getValue().getCoursesEnrolled().contains(courseName)) {
+                    students.add(user.getValue().getFullName());
+                }
+            }
+        }
+        return students;
+    }
+
+    public void validateIfTeacherCourse(String courseName, String userName) {
+        if (courseName.isEmpty() || userName.isEmpty()) {
+            throw new IllegalArgumentException("Empty fields are not allowed");
+        }
+        if (!users.get(userName.toLowerCase()).getCoursesEnrolled().contains(courseName.toLowerCase())) {
+            throw new IllegalArgumentException("You are not enrolled in this course or this course does not exist.");
+        }
+    }
+
+    public void addCourse(String courseName, String userName) {
+        if (courseName.isEmpty()) {
+            throw new IllegalArgumentException("Course name cannot be empty");
+        }
+        if (users.get(userName.toLowerCase()).getCoursesEnrolled().contains(courseName.toLowerCase())) {
+            throw new IllegalArgumentException("You are already enrolled in this course");
+        }
+        users.get(userName.toLowerCase()).getCoursesEnrolled().add(courseName.toLowerCase());
+    }
+
+    public void removeCourse(String courseName, String userName) {
+        if (courseName.isEmpty()) {
+            throw new IllegalArgumentException("Course name cannot be empty");
+        }
+        if (!users.get(userName.toLowerCase()).getCoursesEnrolled().contains(courseName.toLowerCase())) {
+            throw new IllegalArgumentException("You are not enrolled in this course");
+        }
+        users.get(userName.toLowerCase()).getCoursesEnrolled().remove(courseName.toLowerCase());
+    }
 }

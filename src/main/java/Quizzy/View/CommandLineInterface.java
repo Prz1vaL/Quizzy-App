@@ -28,8 +28,13 @@ public class CommandLineInterface implements Serializable {
         System.out.println("5. View My Details");
         System.out.println("6. Delete my Account");
         System.out.println("7. Change Password");
-        System.out.println("8. Logout");
+        System.out.println("8. Change Course Details");
+        System.out.println("9. Logout");
         System.out.println("Please select an option: ");
+        System.out.println("***************************************");
+    }
+
+    private static void astriek() {
         System.out.println("***************************************");
     }
 
@@ -176,6 +181,9 @@ public class CommandLineInterface implements Serializable {
                     changeTeacherPassword();
                 }
                 case '8' -> {
+                    changeCourseDetails();
+                }
+                case '9' -> {
                     System.out.println("Logging out...");
                     loginStatus = false;
                     start();
@@ -192,7 +200,106 @@ public class CommandLineInterface implements Serializable {
 
     }
 
+    private void changeCourseDetails() {
+        System.out.println("***************************************");
+        System.out.println("*** Change Course Details ***");
+        System.out.println("***************************************");
+        System.out.println("1. Do you want to add a Course ! ");
+        System.out.println("2. Do you want to remove a Course ! ");
+        System.out.println("Please select an option: ");
+        String line = scanner.nextLine().trim();
+        if (line.length() == 1) {
+            switch (line.charAt(0)) {
+                case '1' -> {
+                    addCourse();
+                }
+                case '2' -> {
+                    removeCourse();
+                }
+                default -> {
+                    System.out.println("Please select a valid option: ");
+                    changeCourseDetails();
+                }
+            }
+        } else {
+            System.out.println("Please select a valid option: ");
+            teacherMenu();
+        }
+    }
+
+    private void removeCourse() {
+        System.out.println("***************************************");
+        System.out.println("*** Remove Course ***");
+        System.out.println("***************************************");
+        System.out.println("Please enter the course name: ");
+        String courseName = scanner.nextLine().trim().toLowerCase();
+        String userName = "";
+        for (Map.Entry<String, User> entry : teacherInfo.entrySet()) {
+            userName = entry.getKey();
+        }
+        try {
+            quizzyController.removeCourse(courseName, userName);
+            System.out.println("Course removed successfully!");
+            saveData();
+            teacherMenu();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Please try again!");
+            teacherMenu();
+        }
+    }
+
+    private void addCourse() {
+        astriek();
+        System.out.println("*** Add Course ***");
+        System.out.println("***************************************");
+        System.out.println("Please enter the course name: ");
+        String courseName = scanner.nextLine().trim().toLowerCase();
+        String userName = "";
+        for (Map.Entry<String, User> entry : teacherInfo.entrySet()) {
+            userName = entry.getKey();
+        }
+        try {
+            quizzyController.addCourse(courseName, userName);
+            System.out.println("Course added successfully!");
+            saveData();
+            teacherMenu();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Please try again!");
+            teacherMenu();
+        }
+
+    }
+
     private void viewStudents() {
+        System.out.println("***************************************");
+        System.out.println("*** View Students By Course ***");
+        System.out.println("***************************************");
+        System.out.println("Please enter the course name: ");
+        String courseName = scanner.nextLine().trim();
+        String userName = "";
+        for (Map.Entry<String, User> entry : teacherInfo.entrySet()) {
+            userName = entry.getKey();
+        }
+        try {
+            quizzyController.validateIfTeacherCourse(courseName, userName);
+            ArrayList<String> students = quizzyController.getStudentsByCourse(courseName);
+            System.out.println("The students enrolled in " + courseName + " are: ");
+            int i = 0;
+            for (String student : students) {
+                System.out.println(i + 1 + ". " + student);
+                ++i;
+            }
+            if (students.isEmpty()) {
+                System.out.println("No students currently are enrolled in this course!");
+            }
+            System.out.println("***************************************");
+            teacherMenu();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            teacherMenu();
+        }
 
     }
 
@@ -299,7 +406,10 @@ public class CommandLineInterface implements Serializable {
         try {
             quizzyController.saveData();
             System.out.println("Data Saved Successfully!");
-            start();
+            if (!loginStatus) {
+                start();
+            }
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -342,7 +452,7 @@ public class CommandLineInterface implements Serializable {
                 register();
             }
             System.out.println("Enter the Courses you are enrolled in: (If Multiple, separate by comma)");
-            String courses = scanner.nextLine().trim();
+            String courses = scanner.nextLine().trim().toLowerCase();
             if (courses.isEmpty() || courses.isBlank()) {
                 throw new IllegalArgumentException("Courses cannot be empty!");
             }
@@ -361,6 +471,7 @@ public class CommandLineInterface implements Serializable {
             quizzyController.register(fullName, email, username, sha256, accountType, coursesEnrolled, dateCreated);
             System.out.println("Registration Successful!");
             System.out.println("Please Login to continue...");
+            saveData();
             start();
         } catch (Exception e) {
             System.out.println(e.getMessage());

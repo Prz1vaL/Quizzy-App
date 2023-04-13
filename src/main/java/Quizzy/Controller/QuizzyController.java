@@ -52,4 +52,20 @@ public class QuizzyController {
     public void changePassword(String userName, String newPassword) {
         userService.changePassword(userName, newPassword);
     }
+
+    public ArrayList<String> getStudentsByCourse(String courseName) {
+        return userService.getStudentsByCourse(courseName);
+    }
+
+    public void validateIfTeacherCourse(String courseName, String userName) {
+        userService.validateIfTeacherCourse(courseName, userName);
+    }
+
+    public void addCourse(String courseName, String userName) {
+        userService.addCourse(courseName, userName);
+    }
+
+    public void removeCourse(String courseName, String userName) {
+        userService.removeCourse(courseName, userName);
+    }
 }
