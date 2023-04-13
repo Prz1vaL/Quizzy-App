@@ -136,7 +136,8 @@ public class CommandLineInterface implements Serializable {
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            login();
+            System.out.println("Please try again!");
+            start();
         }
     }
 
