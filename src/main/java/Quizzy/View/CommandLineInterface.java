@@ -104,9 +104,9 @@ public class CommandLineInterface implements Serializable {
         System.out.println("2. View Quizzes");
         System.out.println("3. View Students");
         System.out.println("4. View Courses");
-        System.out.println("5.View My Details");
+        System.out.println("5. View My Details");
         System.out.println("6. Delete my Account");
-        System.out.println("7.Change Password");
+        System.out.println("7. Change Password");
         System.out.println("8. Logout");
         System.out.println("Please select an option: ");
         System.out.println("***************************************");
@@ -193,16 +193,16 @@ public class CommandLineInterface implements Serializable {
         }
         System.out.println("Deleting Account...");
         System.out.println("Are you sure you want to delete your account? (Y/N)");
-        String line = scanner.nextLine();
+        String line = scanner.nextLine().trim().toLowerCase();
         if (line.length() == 1) {
             switch (line.charAt(0)) {
-                case 'Y' | 'n' -> {
+                case 'y' -> {
                     quizzyController.deleteAccount(userName);
                     System.out.println("Account Deleted Successfully!");
                     loginStatus = false;
                     start();
                 }
-                case 'N' | 'n' -> {
+                case 'n' -> {
                     teacherMenu();
                 }
                 default -> {
