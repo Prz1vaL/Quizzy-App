@@ -164,7 +164,7 @@ public class CommandLineInterface implements Serializable {
                     //TODO: viewStudents();
                 }
                 case '4' -> {
-                    //TODO: viewCourses();
+                    viewTeacherCourses();
                 }
                 case '5' -> {
                     viewTeacherDetails();
@@ -190,6 +190,24 @@ public class CommandLineInterface implements Serializable {
             teacherMenu();
         }
 
+    }
+
+    private void viewTeacherCourses() {
+        System.out.println("***************************************");
+        System.out.println("*** Your Courses ***");
+        System.out.println("***************************************");
+        ArrayList<String> yourCourses = new ArrayList();
+        for (Map.Entry<String, User> entry : teacherInfo.entrySet()) {
+            yourCourses = entry.getValue().getCoursesEnrolled();
+        }
+        int i = 0;
+        System.out.println("The courses you are teaching are:");
+        for (String course : yourCourses) {
+            System.out.println(i + 1 + ". " + course.toUpperCase());
+            ++i;
+
+        }
+        teacherMenu();
     }
 
     private void changeTeacherPassword() {
