@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff18775a-ac22-43fb-9b14-cf18bf872cd5" name="Changes" comment="Teachers can now view their Account Details.">
+    <list default="true" id="ff18775a-ac22-43fb-9b14-cf18bf872cd5" name="Changes" comment="Rewrote the view code to hold two types (student,teacher) of user data (cache) and methods were changed accordingly. While it may be easier to just hold onto one data for both parties, problems may occur during concurrent or simultaneous log-in.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/Controller/QuizzyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Controller/QuizzyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/Service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/userData.ser" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/userData.ser" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +99,7 @@
       <workItem from="1681113229676" duration="1141000" />
       <workItem from="1681139830650" duration="1000" />
       <workItem from="1681213635617" duration="519000" />
-      <workItem from="1681414096743" duration="1041000" />
+      <workItem from="1681414096743" duration="1888000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit 2">
       <created>1681047051802</created>
@@ -170,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681398179976</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Rewrote the view code to hold two types (student,teacher) of user data (cache) and methods were changed accordingly. While it may be easier to just hold onto one data for both parties, problems may occur during concurrent or simultaneous log-in.">
+      <created>1681415260452</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1681415260452</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,25 +195,26 @@
     <MESSAGE value="Add some more validation checks for register Process." />
     <MESSAGE value="Teachers can now be able to delete their account." />
     <MESSAGE value="Teachers can now view their Account Details." />
-    <option name="LAST_COMMIT_MESSAGE" value="Teachers can now view their Account Details." />
+    <MESSAGE value="Rewrote the view code to hold two types (student,teacher) of user data (cache) and methods were changed accordingly. While it may be easier to just hold onto one data for both parties, problems may occur during concurrent or simultaneous log-in." />
+    <option name="LAST_COMMIT_MESSAGE" value="Rewrote the view code to hold two types (student,teacher) of user data (cache) and methods were changed accordingly. While it may be easier to just hold onto one data for both parties, problems may occur during concurrent or simultaneous log-in." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>95</line>
-          <option name="timeStamp" value="1" />
+          <line>175</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>126</line>
-          <option name="timeStamp" value="2" />
+          <line>205</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>128</line>
-          <option name="timeStamp" value="3" />
+          <line>208</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

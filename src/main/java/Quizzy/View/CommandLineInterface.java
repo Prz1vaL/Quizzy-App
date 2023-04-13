@@ -122,14 +122,14 @@ public class CommandLineInterface implements Serializable {
         try {
             String hashedPassword = quizzyController.hashPassword(password);
             Map<String, User> localData = quizzyController.validateLogin(userName, hashedPassword);
+            if (localData.isEmpty()) {
+                throw new IllegalArgumentException("Invalid Username or Password!");
+            }
             AccountType accountType = localData.get(userName).getAccountType();
             if (accountType == AccountType.TEACHER) {
                 teacherInfo = localData;
             } else {
                 studentInfo = localData;
-            }
-            if (teacherInfo.isEmpty() && studentInfo.isEmpty()) {
-                throw new IllegalArgumentException("Invalid Username or Password!");
             }
             System.out.println("Login Successful!");
             loginStatus = true;
@@ -198,10 +198,21 @@ public class CommandLineInterface implements Serializable {
         System.out.println("***************************************");
         System.out.println("Please enter your current password: ");
         String currentPassword = scanner.nextLine().trim();
+        String userName = "";
+        for (Map.Entry<String, User> entry : teacherInfo.entrySet()) {
+            userName = entry.getKey();
+        }
         try {
-
+            quizzyController.validatePassword(userName, currentPassword);
+            System.out.println("Please enter your new password: ");
+            String newPassword = scanner.nextLine().trim();
+            quizzyController.changePassword(userName, newPassword);
+            System.out.println("Password changed successfully!");
+            teacherMenu();
+            saveData();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
+            teacherMenu();
         }
     }
 
@@ -244,6 +255,7 @@ public class CommandLineInterface implements Serializable {
                     quizzyController.deleteAccount(userName);
                     System.out.println("Account Deleted Successfully!");
                     loginStatus = false;
+                    saveData();
                     start();
                 }
                 case 'n' -> {

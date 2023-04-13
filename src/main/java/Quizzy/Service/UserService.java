@@ -130,4 +130,27 @@ public class UserService implements Serializable {
             throw new IllegalArgumentException("Username does not exist");
         }
     }
+
+    public void validatePassword(String userName, String currentPassword) {
+        if (currentPassword.isEmpty()) {
+            throw new IllegalArgumentException("Password cannot be empty");
+        }
+        String hashedPassword = hashPassword(currentPassword);
+        if (!users.get(userName.toLowerCase()).getPassword().equals(hashedPassword)) {
+            throw new IllegalArgumentException("Password is incorrect");
+        }
+    }
+
+    public void changePassword(String userName, String newPassword) {
+        String hashedPassword = hashPassword(newPassword);
+        if (newPassword.isEmpty()) {
+            throw new IllegalArgumentException("Password cannot be empty");
+        }
+        // Check if old password and new password are the same
+        if (users.get(userName.toLowerCase()).getPassword().equals(hashedPassword)) {
+            throw new IllegalArgumentException("New password cannot be the same as the old password");
+        } else {
+            users.get(userName.toLowerCase()).setPassword(hashedPassword);
+        }
+    }
 }

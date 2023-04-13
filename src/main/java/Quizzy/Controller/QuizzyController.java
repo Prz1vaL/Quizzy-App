@@ -44,4 +44,12 @@ public class QuizzyController {
     public void deleteAccount(String userName) {
         userService.deleteAccount(userName);
     }
+
+    public void validatePassword(String userName, String currentPassword) {
+        userService.validatePassword(userName, currentPassword);
+    }
+
+    public void changePassword(String userName, String newPassword) {
+        userService.changePassword(userName, newPassword);
+    }
 }
