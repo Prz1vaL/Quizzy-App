@@ -5,10 +5,7 @@ import main.java.Quizzy.Model.AccountType;
 import main.java.Quizzy.Model.User;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class CommandLineInterface implements Serializable {
 
@@ -193,17 +190,20 @@ public class CommandLineInterface implements Serializable {
         String userName = "";
         String fullName = "";
         String email = "";
+        Date dateCreated = null;
         String accountType = "";
         for (Map.Entry<String, User> entry : userInfo.entrySet()) {
             userName = entry.getKey();
             fullName = entry.getValue().getFullName();
             email = entry.getValue().getEmail();
             accountType = entry.getValue().getAccountType().toString();
+            dateCreated = entry.getValue().getDateCreated();
         }
         System.out.println("Username: " + userName);
         System.out.println("Full Name: " + fullName);
         System.out.println("Email: " + email);
         System.out.println("Account Type: " + accountType);
+        System.out.println("Date Created:" + dateCreated);
         System.out.println("***************************************");
         teacherMenu();
     }
@@ -303,9 +303,8 @@ public class CommandLineInterface implements Serializable {
                     }
                 }
             }
-
-
-            quizzyController.register(fullName, email, username, sha256, accountType, coursesEnrolled);
+            Date dateCreated = new Date();
+            quizzyController.register(fullName, email, username, sha256, accountType, coursesEnrolled, dateCreated);
             System.out.println("Registration Successful!");
             System.out.println("Please Login to continue...");
             start();

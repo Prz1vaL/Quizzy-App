@@ -8,6 +8,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -71,13 +72,13 @@ public class UserService implements Serializable {
         }
     }
 
-    public void register(String fullName, String email, String username, String sha256, AccountType accountType, ArrayList<String> coursesEnrolled) {
+    public void register(String fullName, String email, String username, String sha256, AccountType accountType, ArrayList<String> coursesEnrolled, Date dateCreated) {
         // Check for empty string in fullName
         if (fullName.isEmpty()) {
             throw new IllegalArgumentException("Full name cannot be empty");
         }
         // Create a new user
-        User user = new User(fullName.toLowerCase(), email.toLowerCase(), username.toLowerCase(), sha256, accountType, coursesEnrolled);
+        User user = new User(fullName.toLowerCase(), email.toLowerCase(), username.toLowerCase(), sha256, accountType, coursesEnrolled, dateCreated);
         users.put(username.toLowerCase(), user);
     }
 

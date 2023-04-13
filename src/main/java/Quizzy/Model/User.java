@@ -2,6 +2,7 @@ package main.java.Quizzy.Model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * User class - Stores the user's information
@@ -19,13 +20,16 @@ public class User implements Serializable {
 
     private ArrayList<String> coursesEnrolled;
 
-    public User(String fullName, String email, String username, String password, AccountType accountType, ArrayList<String> coursesEnrolled) {
+    private Date dateCreated;
+
+    public User(String fullName, String email, String username, String password, AccountType accountType, ArrayList<String> coursesEnrolled, Date dateCreated) {
         this.fullName = fullName;
         this.email = email;
         this.password = password;
         this.username = username;
         this.accountType = accountType;
         this.coursesEnrolled = coursesEnrolled;
+        this.dateCreated = dateCreated;
     }
 
     public String getFullName() {
@@ -74,5 +78,13 @@ public class User implements Serializable {
 
     public void setCoursesEnrolled(ArrayList<String> coursesEnrolled) {
         this.coursesEnrolled = coursesEnrolled;
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
     }
 }
