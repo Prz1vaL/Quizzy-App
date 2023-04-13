@@ -96,6 +96,20 @@ public class CommandLineInterface implements Serializable {
 
     }
 
+    private static void teacherMenuMessage() {
+        System.out.println("***************************************");
+        System.out.println("1. Create a Quiz");
+        System.out.println("2. View Quizzes");
+        System.out.println("3. View Students");
+        System.out.println("4. View Courses");
+        System.out.println("5.View My Details");
+        System.out.println("6. Delete my Account");
+        System.out.println("7.Change Password");
+        System.out.println("8. Logout");
+        System.out.println("Please select an option: ");
+        System.out.println("***************************************");
+    }
+
     private void login() {
         //TODO: Implement Login
         System.out.println("***************************************");
@@ -116,7 +130,7 @@ public class CommandLineInterface implements Serializable {
             System.out.println("Welcome " + userName + "!");
             if (userInfo.get(userName).getAccountType() == AccountType.TEACHER) {
                 System.out.println("You are a Teacher!");
-                // TODO: teacherMenu();
+                teacherMenu();
             } else {
                 System.out.println("You are a Student!");
                 // TODO : studentMenu();
@@ -125,6 +139,10 @@ public class CommandLineInterface implements Serializable {
             System.out.println(e.getMessage());
             login();
         }
+    }
+
+    private void teacherMenu() {
+        teacherMenuMessage();
     }
 
     private void saveData() {
@@ -139,7 +157,7 @@ public class CommandLineInterface implements Serializable {
     }
 
     private void register() {
-        String sha256 = "";
+        String sha256;
         AccountType accountType = null;
         try {
             System.out.println("***************************************");
