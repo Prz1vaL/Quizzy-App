@@ -2,6 +2,7 @@ package main.java.Quizzy.Controller;
 
 import main.java.Quizzy.Model.AccountType;
 import main.java.Quizzy.Model.User;
+import main.java.Quizzy.Service.QuizBoardService;
 import main.java.Quizzy.Service.UserService;
 
 import java.io.IOException;
@@ -12,6 +13,8 @@ import java.util.Map;
 public class QuizzyController {
 
     UserService userService = new UserService();
+
+    QuizBoardService quizBoardService = new QuizBoardService();
 
     public String hashPassword(String password) {
         return userService.hashPassword(password);
@@ -67,5 +70,9 @@ public class QuizzyController {
 
     public void removeCourse(String courseName, String userName) {
         userService.removeCourse(courseName, userName);
+    }
+
+    public int createQuizBoard(String quizBoardName, String courseName, Date dateCreated, String createdBy) {
+        return quizBoardService.createQuizBoard(quizBoardName, courseName, dateCreated, createdBy);
     }
 }

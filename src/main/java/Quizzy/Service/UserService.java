@@ -194,4 +194,6 @@ public class UserService implements Serializable {
         }
         users.get(userName.toLowerCase()).getCoursesEnrolled().remove(courseName.toLowerCase());
     }
+
+
 }

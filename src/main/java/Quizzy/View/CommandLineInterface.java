@@ -184,7 +184,7 @@ public class CommandLineInterface implements Serializable {
 
     private static void teacherMenuMessage() {
         System.out.println("***************************************");
-        System.out.println("1. Quiz Menu");
+        System.out.println("1. QuizBoard Menu");
         System.out.println("2. View Students");
         System.out.println("3. View Courses");
         System.out.println("4. View My Details");
@@ -198,11 +198,55 @@ public class CommandLineInterface implements Serializable {
 
     private void quizMenu() {
         System.out.println("***************************************");
-        System.out.println("Quiz - Menu");
+        System.out.println("QuizBoard Menu");
         System.out.println("***************************************");
-        System.out.println("1. Create a new Quiz");
-        System.out.println("2. Delete a new Quiz");
-        System.out.println("3. View Quiz Results");
+        System.out.println("1. QuizBoard");
+        System.out.println("2. View Quiz Results");
+        System.out.println("3. Return to Teacher Menu");
+        System.out.println("4. Logout");
+        System.out.println("5. Exit the Application");
+        System.out.println("***************************************");
+        System.out.println("Please enter your choice :");
+        String line = scanner.nextLine().trim();
+        if (line.length() == 1) {
+            switch (line.charAt(0)) {
+                case '1' -> {
+                    createAQuiz();
+                }
+                case '2' -> {
+                    //TODO : viewQuizResults();
+                }
+                case '3' -> {
+                    System.out.println("Returning to Main Menu...");
+                    System.out.println("***************************************");
+                    teacherMenu();
+                }
+                case '4' -> {
+                    System.out.println("Logging out of the Account...");
+                    loginStatus = false;
+                    saveData();
+                }
+                case '5' -> {
+                    System.out.println("Exiting the application...");
+                    saveData();
+                    loginStatus = false;
+                    System.exit(0);
+                }
+            }
+        } else {
+            System.out.println("Please enter a valid option !");
+            quizMenu();
+        }
+    }
+
+
+    private void createAQuiz() {
+        System.out.println("***************************************");
+        System.out.println("QuizBoard");
+        System.out.println("***************************************");
+        System.out.println("1. Create a QuizBoard Board");
+        System.out.println("2. Delete a QuizBoard Board");
+        System.out.println("3. View QuizBoard Boards");
         System.out.println("4. Back to Main Menu");
         System.out.println("5. Log out");
         System.out.println("6. Exit the Application");
@@ -212,13 +256,13 @@ public class CommandLineInterface implements Serializable {
         if (line.length() == 1) {
             switch (line.charAt(0)) {
                 case '1' -> {
-                    //TODO: createAQuiz();
+                    createQuizBoard();
                 }
                 case '2' -> {
-                    //TODO: deleteAQuiz();
+                    //TODO: deleteQuizBoard();
                 }
                 case '3' -> {
-                    //TODO : viewQuizResults();
+                    //TODO : viewQuizBoards();
                 }
                 case '4' -> {
                     System.out.println("Returning to Main Menu...");
@@ -241,6 +285,33 @@ public class CommandLineInterface implements Serializable {
             System.out.println("Please enter a valid option !");
             quizMenu();
         }
+
+    }
+
+    private void createQuizBoard() {
+        System.out.println("***************************************");
+        System.out.println("QuizBoard - Create a QuizBoard");
+        System.out.println("***************************************");
+        System.out.println("Please enter the QuizBoard name :");
+        String quizBoardName = scanner.nextLine().trim();
+        System.out.println("Please enter the Course which the QuizBoard is allocated to:");
+        String courseName = scanner.nextLine().trim();
+        String createdBy = "";
+        for (Map.Entry<String, User> Entry : teacherInfo.entrySet()) {
+            createdBy = Entry.getKey();
+        }
+        Date dateCreated = new Date();
+        try {
+            quizzyController.validateIfTeacherCourse(courseName, createdBy);
+            //int allocatedQuizBoardID = quizzyController.createQuizBoard(quizBoardName, courseName, dateCreated, createdBy);
+            // System.out.println("QuizBoard created successfully with ID: " + allocatedQuizBoardID);
+            System.out.println("***************************************");
+            quizMenu();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            createQuizBoard();
+        }
+
     }
 
 
