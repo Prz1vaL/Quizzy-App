@@ -21,15 +21,14 @@ public class CommandLineInterface implements Serializable {
 
     private static void teacherMenuMessage() {
         System.out.println("***************************************");
-        System.out.println("1. Create a Quiz");
-        System.out.println("2. View Quizzes");
-        System.out.println("3. View Students");
-        System.out.println("4. View Courses");
-        System.out.println("5. View My Details");
-        System.out.println("6. Delete my Account");
-        System.out.println("7. Change Password");
-        System.out.println("8. Change Course Details");
-        System.out.println("9. Logout");
+        System.out.println("1. Quiz Menu");
+        System.out.println("2. View Students");
+        System.out.println("3. View Courses");
+        System.out.println("4. View My Details");
+        System.out.println("5. Delete my Account");
+        System.out.println("6. Change Password");
+        System.out.println("7. Change Course Details");
+        System.out.println("8. Logout");
         System.out.println("Please select an option: ");
         System.out.println("***************************************");
     }
@@ -160,30 +159,27 @@ public class CommandLineInterface implements Serializable {
         if (line.length() == 1) {
             switch (line.charAt(0)) {
                 case '1' -> {
-                    //TODO: createQuiz();
+                    quizMenu();
                 }
                 case '2' -> {
-                    //TODO: viewQuizzes();
-                }
-                case '3' -> {
                     viewStudents();
                 }
-                case '4' -> {
+                case '3' -> {
                     viewTeacherCourses();
                 }
-                case '5' -> {
+                case '4' -> {
                     viewTeacherDetails();
                 }
-                case '6' -> {
+                case '5' -> {
                     deleteTeacherAccount();
                 }
-                case '7' -> {
+                case '6' -> {
                     changeTeacherPassword();
                 }
-                case '8' -> {
+                case '7' -> {
                     changeCourseDetails();
                 }
-                case '9' -> {
+                case '8' -> {
                     System.out.println("Logging out...");
                     loginStatus = false;
                     start();
@@ -199,6 +195,10 @@ public class CommandLineInterface implements Serializable {
         }
 
     }
+
+    private void quizMenu() {
+    }
+
 
     private void changeCourseDetails() {
         System.out.println("***************************************");
