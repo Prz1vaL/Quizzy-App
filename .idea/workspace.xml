@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff18775a-ac22-43fb-9b14-cf18bf872cd5" name="Changes" comment="rewrote the menu to compress and optimise the input when going down the chain.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="ff18775a-ac22-43fb-9b14-cf18bf872cd5" name="Changes" comment="Quiz-Menu for the teachers is up and running , basic functions (going back options are up and running but core implementations such as create/delete/view (Quiz) is TODO.">
       <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -99,7 +98,7 @@
       <workItem from="1681213635617" duration="519000" />
       <workItem from="1681414096743" duration="2825000" />
       <workItem from="1681417455805" duration="2149000" />
-      <workItem from="1681463990524" duration="902000" />
+      <workItem from="1681463990524" duration="1249000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit 2">
       <created>1681047051802</created>
@@ -213,7 +212,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681464340550</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Quiz-Menu for the teachers is up and running , basic functions (going back options are up and running but core implementations such as create/delete/view (Quiz) is TODO.">
+      <created>1681465175716</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1681465175716</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,7 +242,8 @@
     <MESSAGE value="optimised and reformatted code." />
     <MESSAGE value="change in LICENSE." />
     <MESSAGE value="rewrote the menu to compress and optimise the input when going down the chain." />
-    <option name="LAST_COMMIT_MESSAGE" value="rewrote the menu to compress and optimise the input when going down the chain." />
+    <MESSAGE value="Quiz-Menu for the teachers is up and running , basic functions (going back options are up and running but core implementations such as create/delete/view (Quiz) is TODO." />
+    <option name="LAST_COMMIT_MESSAGE" value="Quiz-Menu for the teachers is up and running , basic functions (going back options are up and running but core implementations such as create/delete/view (Quiz) is TODO." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
