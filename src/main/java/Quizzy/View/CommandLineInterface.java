@@ -33,9 +33,7 @@ public class CommandLineInterface implements Serializable {
         System.out.println("***************************************");
     }
 
-    private static void astriek() {
-        System.out.println("***************************************");
-    }
+
 
     public void run() {
         load();
@@ -197,6 +195,50 @@ public class CommandLineInterface implements Serializable {
     }
 
     private void quizMenu() {
+        System.out.println("***************************************");
+        System.out.println("Quiz - Menu");
+        System.out.println("***************************************");
+        System.out.println("1. Create a new Quiz");
+        System.out.println("2. Delete a new Quiz");
+        System.out.println("3. View Quiz Results");
+        System.out.println("4. Back to Main Menu");
+        System.out.println("5. Log out");
+        System.out.println("6. Exit the Application");
+        System.out.println("***************************************");
+        System.out.println("Please enter your choice :");
+        String line = scanner.nextLine().trim();
+        if (line.length() == 1) {
+            switch (line.charAt(0)) {
+                case '1' -> {
+                    //TODO: createAQuiz();
+                }
+                case '2' -> {
+                    //TODO: deleteAQuiz();
+                }
+                case '3' -> {
+                    //TODO : viewQuizResults();
+                }
+                case '4' -> {
+                    System.out.println("Returning to Main Menu...");
+                    System.out.println("***************************************");
+                    teacherMenu();
+                }
+                case '5' -> {
+                    System.out.println("Logging out of the Account...");
+                    loginStatus = false;
+                    saveData();
+                }
+                case '6' -> {
+                    System.out.println("Exiting the application...");
+                    saveData();
+                    loginStatus = false;
+                    System.exit(0);
+                }
+            }
+        } else {
+            System.out.println("Please enter a valid option !");
+            quizMenu();
+        }
     }
 
 
@@ -250,7 +292,7 @@ public class CommandLineInterface implements Serializable {
     }
 
     private void addCourse() {
-        astriek();
+        System.out.println("***************************************");
         System.out.println("*** Add Course ***");
         System.out.println("***************************************");
         System.out.println("Please enter the course name: ");
