@@ -19,19 +19,7 @@ public class CommandLineInterface implements Serializable {
 
     private Map<String, User> studentInfo = new HashMap<>();
 
-    private static void teacherMenuMessage() {
-        System.out.println("***************************************");
-        System.out.println("1. Quiz Menu");
-        System.out.println("2. View Students");
-        System.out.println("3. View Courses");
-        System.out.println("4. View My Details");
-        System.out.println("5. Delete my Account");
-        System.out.println("6. Change Password");
-        System.out.println("7. Change Course Details");
-        System.out.println("8. Logout");
-        System.out.println("Please select an option: ");
-        System.out.println("***************************************");
-    }
+
 
 
 
@@ -192,6 +180,20 @@ public class CommandLineInterface implements Serializable {
             teacherMenu();
         }
 
+    }
+
+    private static void teacherMenuMessage() {
+        System.out.println("***************************************");
+        System.out.println("1. Quiz Menu");
+        System.out.println("2. View Students");
+        System.out.println("3. View Courses");
+        System.out.println("4. View My Details");
+        System.out.println("5. Delete my Account");
+        System.out.println("6. Change Password");
+        System.out.println("7. Change Course Details");
+        System.out.println("8. Logout");
+        System.out.println("Please select an option: ");
+        System.out.println("***************************************");
     }
 
     private void quizMenu() {
