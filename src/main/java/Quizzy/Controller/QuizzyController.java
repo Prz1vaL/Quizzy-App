@@ -1,6 +1,7 @@
 package main.java.Quizzy.Controller;
 
 import main.java.Quizzy.Model.AccountType;
+import main.java.Quizzy.Model.QuizBoard;
 import main.java.Quizzy.Model.User;
 import main.java.Quizzy.Service.QuizBoardService;
 import main.java.Quizzy.Service.UserService;
@@ -74,5 +75,9 @@ public class QuizzyController {
 
     public int createQuizBoard(String quizBoardName, String courseName, Date dateCreated, String createdBy) {
         return quizBoardService.createQuizBoard(quizBoardName, courseName, dateCreated, createdBy);
+    }
+
+    public Map<Integer, QuizBoard> viewQuizBoardsByCourse(String courseName, String createdBy) {
+        return quizBoardService.viewQuizBoardsByCourse(courseName, createdBy);
     }
 }

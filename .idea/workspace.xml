@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff18775a-ac22-43fb-9b14-cf18bf872cd5" name="Changes" comment="Created a Quiz Model to hold data for Quizzes (not final version , may subject to change).">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Service/QuizBoardService.java" afterDir="false" />
+    <list default="true" id="ff18775a-ac22-43fb-9b14-cf18bf872cd5" name="Changes" comment="Rewriting a method due to data model being rewritten over and over again. (TODO placed in the method).">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/Controller/QuizzyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Controller/QuizzyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/MainApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/Model/Quiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Model/QuizBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/Service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/Model/QuizBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Model/QuizBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/Service/QuizBoardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Service/QuizBoardService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,23 +39,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "TODO_SCOPE": "All Places",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="java.main" />
@@ -107,6 +105,8 @@
       <workItem from="1681417455805" duration="2149000" />
       <workItem from="1681463990524" duration="2619000" />
       <workItem from="1681475381552" duration="5537000" />
+      <workItem from="1681506741838" duration="137000" />
+      <workItem from="1681571611622" duration="2157000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit 2">
       <created>1681047051802</created>
@@ -241,7 +241,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681465581669</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Rewriting a method due to data model being rewritten over and over again. (TODO placed in the method).">
+      <created>1681506866770</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1681506866770</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -266,7 +273,8 @@
     <MESSAGE value="rewrote the menu to compress and optimise the input when going down the chain." />
     <MESSAGE value="Quiz-Menu for the teachers is up and running , basic functions (going back options are up and running but core implementations such as create/delete/view (Quiz) is TODO." />
     <MESSAGE value="Created a Quiz Model to hold data for Quizzes (not final version , may subject to change)." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created a Quiz Model to hold data for Quizzes (not final version , may subject to change)." />
+    <MESSAGE value="Rewriting a method due to data model being rewritten over and over again. (TODO placed in the method)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Rewriting a method due to data model being rewritten over and over again. (TODO placed in the method)." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -281,32 +289,31 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>307</line>
-          <option name="timeStamp" value="9" />
+          <line>373</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>308</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>310</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>309</line>
-          <option name="timeStamp" value="12" />
+          <line>337</line>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>291</line>
-          <properties class="main.java.Quizzy.View.CommandLineInterface" method="createQuizBoard">
+          <line>359</line>
+          <properties class="main.java.Quizzy.View.CommandLineInterface">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
+          <line>195</line>
+          <properties class="main.java.Quizzy.View.CommandLineInterface" method="quizMenu">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
