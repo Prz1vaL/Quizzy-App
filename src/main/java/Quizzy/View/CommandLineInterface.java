@@ -256,7 +256,7 @@ public class CommandLineInterface implements Serializable {
                     createQuizBoard();
                 }
                 case '2' -> {
-                    //TODO: deleteQuizBoard();
+                   deleteQuizBoard();
                 }
                 case '3' -> {
                     viewQuizBoards();
@@ -283,6 +283,28 @@ public class CommandLineInterface implements Serializable {
             quizMenu();
         }
 
+    }
+
+    private void deleteQuizBoard() {
+        System.out.println("***************************************");
+        System.out.println("QuizBoard - Delete QuizBoard");
+        System.out.println("***************************************");
+        System.out.println("Please enter the QuizBoard ID :");
+        String quizBoardID = scanner.nextLine().trim();
+        if (quizBoardID.length() == 0) {
+            System.out.println("QuizBoard ID cannot be empty!");
+            deleteQuizBoard();
+        }
+        try {
+            quizzyController.deleteQuizBoard(quizBoardID);
+            System.out.println("QuizBoard deleted successfully!");
+            saveData();
+            createAQuiz();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println("Returning to QuizBoard Menu...");
+        quizMenu();
     }
 
     private void viewQuizBoards() {

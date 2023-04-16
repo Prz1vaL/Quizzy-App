@@ -78,4 +78,21 @@ public class QuizBoardService implements Serializable {
         }
         return quizBoardMapByTeacher;
     }
+
+    public void deleteQuizBoard(String quizBoardID) {
+        if (quizBoardMap.isEmpty() && quizIDS.isEmpty()) {
+            throw new IllegalArgumentException("No Quiz Boards exist");
+        }
+        if (quizBoardMap.containsKey(Integer.parseInt(quizBoardID))) {
+            quizBoardMap.remove(Integer.parseInt(quizBoardID));
+            for (Integer number : quizIDS) {
+                if (number == Integer.parseInt(quizBoardID)) {
+                    quizIDS.remove(number);
+                    break;
+                }
+            }
+        } else {
+            throw new IllegalArgumentException("Quiz Board does not exist");
+        }
+    }
 }

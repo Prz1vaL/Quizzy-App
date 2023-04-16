@@ -86,4 +86,9 @@ public class QuizzyController {
     public Map<Integer, QuizBoard> viewAllQuizBoards(String createdBy) {
         return quizBoardService.viewAllQuizBoards(createdBy);
     }
+
+    public void deleteQuizBoard(String quizBoardID) {
+        quizBoardService.deleteQuizBoard(quizBoardID);
+
+    }
 }
