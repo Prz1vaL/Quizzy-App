@@ -305,7 +305,7 @@ public class CommandLineInterface implements Serializable {
                     //TODO: viewQuizBoardsByQuizBoardID();
                 }
                 case '3' -> {
-                    //TODO: viewAllQuizBoards();
+                    viewAllQuizBoards();
                 }
                 case '4' -> {
                     System.out.println("Returning to QuizBoard Menu...");
@@ -321,6 +321,32 @@ public class CommandLineInterface implements Serializable {
             System.out.println("Please enter a valid option !");
             quizMenu();
         }
+    }
+
+    private void viewAllQuizBoards() {
+        System.out.println("***************************************");
+        System.out.println("QuizBoard - View All QuizBoards");
+        System.out.println("***************************************");
+        String createdBy = "";
+        for (Map.Entry<String, User> Entry : teacherInfo.entrySet()) {
+            createdBy = Entry.getKey();
+        }
+        Map<Integer, QuizBoard> quizBoards = quizzyController.viewAllQuizBoards(createdBy);
+        if (quizBoards.isEmpty()) {
+            System.out.println("No QuizBoards Created by " + createdBy);
+            System.out.println("***************************************");
+            createAQuiz();
+        }
+        System.out.println("All QuizBoards for Teacher: " + createdBy);
+        System.out.println("***************************************");
+        for (Map.Entry<Integer, QuizBoard> Entry : quizBoards.entrySet()) {
+            System.out.println("QuizBoard ID: " + Entry.getKey());
+            System.out.println("QuizBoard Name: " + Entry.getValue().getQuizBoardName());
+            System.out.println("QuizBoard Course: " + Entry.getValue().getCourseName());
+            System.out.println("QuizBoard Created On: " + Entry.getValue().getDateCreated());
+            System.out.println("***************************************");
+        }
+        createAQuiz();
     }
 
     private void viewQuizBoardsByCourse() {

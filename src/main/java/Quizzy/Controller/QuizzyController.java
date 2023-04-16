@@ -35,10 +35,12 @@ public class QuizzyController {
 
     public void saveData() throws IOException {
         userService.saveData();
+        quizBoardService.saveData();
     }
 
     public void loadData() throws IOException, ClassNotFoundException {
         userService.loadData();
+        quizBoardService.loadData();
     }
 
     public Map<String, User> validateLogin(String userName, String password) {
@@ -79,5 +81,9 @@ public class QuizzyController {
 
     public Map<Integer, QuizBoard> viewQuizBoardsByCourse(String courseName, String createdBy) {
         return quizBoardService.viewQuizBoardsByCourse(courseName, createdBy);
+    }
+
+    public Map<Integer, QuizBoard> viewAllQuizBoards(String createdBy) {
+        return quizBoardService.viewAllQuizBoards(createdBy);
     }
 }
