@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff18775a-ac22-43fb-9b14-cf18bf872cd5" name="Changes" comment="Rewriting a method due to data model being rewritten over and over again. (TODO placed in the method).">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="ff18775a-ac22-43fb-9b14-cf18bf872cd5" name="Changes" comment="Fixed a concurrent bug and now teacher can delete a quizboard.">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/Controller/QuizzyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Controller/QuizzyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/Service/QuizBoardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Service/QuizBoardService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/QuizBoardData.ser" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/QuizBoardData.ser" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681506866770</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Fixed a concurrent bug and now teacher can delete a quizboard.">
+      <created>1681655727333</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1681655727333</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -276,7 +281,8 @@
     <MESSAGE value="Quiz-Menu for the teachers is up and running , basic functions (going back options are up and running but core implementations such as create/delete/view (Quiz) is TODO." />
     <MESSAGE value="Created a Quiz Model to hold data for Quizzes (not final version , may subject to change)." />
     <MESSAGE value="Rewriting a method due to data model being rewritten over and over again. (TODO placed in the method)." />
-    <option name="LAST_COMMIT_MESSAGE" value="Rewriting a method due to data model being rewritten over and over again. (TODO placed in the method)." />
+    <MESSAGE value="Fixed a concurrent bug and now teacher can delete a quizboard." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed a concurrent bug and now teacher can delete a quizboard." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -309,13 +315,13 @@
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>195</line>
-          <properties class="main.java.Quizzy.View.CommandLineInterface" method="quizMenu">
+          <url>file://$PROJECT_DIR$/src/main/java/Quizzy/Service/QuizBoardService.java</url>
+          <line>81</line>
+          <properties class="main.java.Quizzy.Service.QuizBoardService" method="deleteQuizBoard">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
-          <option name="timeStamp" value="16" />
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
