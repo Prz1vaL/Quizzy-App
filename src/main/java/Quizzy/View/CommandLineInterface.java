@@ -75,6 +75,7 @@ public class CommandLineInterface implements Serializable {
         System.out.println("2. Register");
         System.out.println("3. Save Data");
         System.out.println("4. Exit");
+        System.out.println("5. Change Log of the Project");
         System.out.println("Please select an option: ");
         System.out.println("***************************************");
     }
@@ -102,6 +103,9 @@ public class CommandLineInterface implements Serializable {
                             System.out.println("Thank you for using Quizzy!");
                             System.exit(0);
                         }
+                        case '5' -> {
+                            changelog();
+                        }
                         default -> System.out.println("Please select a valid option: ");
                     }
                 } else {
@@ -116,6 +120,16 @@ public class CommandLineInterface implements Serializable {
             start();
         }
 
+    }
+
+    private void changelog() {
+        System.out.println("***************************************");
+        System.out.println("Change Log of the Project");
+        System.out.println("***************************************");
+        System.out.println("V 1.0 - Initial Release");
+        System.out.println("Upcoming Features: - Multiple Choice Questions");
+        System.out.println("***************************************");
+        start();
     }
 
     private void login() {

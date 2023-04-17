@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff18775a-ac22-43fb-9b14-cf18bf872cd5" name="Changes" comment="Cache Reference">
+    <list default="true" id="ff18775a-ac22-43fb-9b14-cf18bf872cd5" name="Changes" comment="creating a todo for add and remove questions to a quizboard.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Model/Quiz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -106,7 +108,7 @@
       <workItem from="1681506741838" duration="137000" />
       <workItem from="1681571611622" duration="2157000" />
       <workItem from="1681676818772" duration="163000" />
-      <workItem from="1681723425314" duration="822000" />
+      <workItem from="1681723425314" duration="1158000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit 2">
       <created>1681047051802</created>
@@ -276,7 +278,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681724123458</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="creating a todo for add and remove questions to a quizboard.">
+      <created>1681724282773</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1681724282773</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -305,7 +314,8 @@
     <MESSAGE value="Fixed a concurrent bug and now teacher can delete a quizboard." />
     <MESSAGE value="Teacher can now view Quiz-boards via Course,ID and all (but only the ones they have created)." />
     <MESSAGE value="Cache Reference" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cache Reference" />
+    <MESSAGE value="creating a todo for add and remove questions to a quizboard." />
+    <option name="LAST_COMMIT_MESSAGE" value="creating a todo for add and remove questions to a quizboard." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -320,22 +330,22 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>454</line>
+          <line>468</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>411</line>
+          <line>425</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>372</line>
+          <line>386</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>440</line>
+          <line>454</line>
           <properties class="main.java.Quizzy.View.CommandLineInterface">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -353,7 +363,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>357</line>
+          <line>371</line>
           <properties class="main.java.Quizzy.View.CommandLineInterface" method="viewQuizBoardsByQuizBoardID">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
