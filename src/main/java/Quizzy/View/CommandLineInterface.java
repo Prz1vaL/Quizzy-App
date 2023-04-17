@@ -16,9 +16,15 @@ public class CommandLineInterface implements Serializable {
 
     private boolean loginStatus = false;
 
+
+    // Caching the user Data
+
     private Map<String, User> teacherInfo = new HashMap<>();
 
     private Map<String, User> studentInfo = new HashMap<>();
+
+
+    // End of Caching the user Data
 
     private static void teacherMenuMessage() {
         System.out.println("***************************************");
