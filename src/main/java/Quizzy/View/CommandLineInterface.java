@@ -248,11 +248,12 @@ public class CommandLineInterface implements Serializable {
         System.out.println("QuizBoard");
         System.out.println("***************************************");
         System.out.println("1. Create a QuizBoard Board");
-        System.out.println("2. Delete a QuizBoard Board");
-        System.out.println("3. View QuizBoard Boards");
-        System.out.println("4. Back to Main Menu");
-        System.out.println("5. Log out");
-        System.out.println("6. Exit the Application");
+        System.out.println("2. Edit a QuizBoard Board");
+        System.out.println("3. Delete a QuizBoard Board");
+        System.out.println("4. View QuizBoard Boards");
+        System.out.println("5. Back to Main Menu");
+        System.out.println("6. Log out");
+        System.out.println("7. Exit the Application");
         System.out.println("***************************************");
         System.out.println("Please enter your choice :");
         String line = scanner.nextLine().trim();
@@ -262,22 +263,25 @@ public class CommandLineInterface implements Serializable {
                     createQuizBoard();
                 }
                 case '2' -> {
-                   deleteQuizBoard();
+                    //TODO :editQuizBoard();
                 }
                 case '3' -> {
-                    viewQuizBoards();
+                    deleteQuizBoard();
                 }
                 case '4' -> {
+                    viewQuizBoards();
+                }
+                case '5' -> {
                     System.out.println("Returning to Main Menu...");
                     System.out.println("***************************************");
                     teacherMenu();
                 }
-                case '5' -> {
+                case '6' -> {
                     System.out.println("Logging out of the Account...");
                     loginStatus = false;
                     saveData();
                 }
-                case '6' -> {
+                case '7' -> {
                     System.out.println("Exiting the application...");
                     saveData();
                     loginStatus = false;
