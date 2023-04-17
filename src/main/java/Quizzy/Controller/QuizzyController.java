@@ -91,4 +91,8 @@ public class QuizzyController {
         quizBoardService.deleteQuizBoard(quizBoardID);
 
     }
+
+    public Map<Integer, QuizBoard> viewQuizBoardByQuizBoardID(String teacherUserName, String quizBoardID) {
+        return quizBoardService.viewQuizBoardByQuizBoardID(teacherUserName, quizBoardID);
+    }
 }

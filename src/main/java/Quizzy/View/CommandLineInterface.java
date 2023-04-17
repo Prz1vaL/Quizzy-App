@@ -324,7 +324,7 @@ public class CommandLineInterface implements Serializable {
                     viewQuizBoardsByCourse();
                 }
                 case '2' -> {
-                    //TODO: viewQuizBoardsByQuizBoardID();
+                    viewQuizBoardsByQuizBoardID();
                 }
                 case '3' -> {
                     viewAllQuizBoards();
@@ -345,6 +345,47 @@ public class CommandLineInterface implements Serializable {
         }
     }
 
+    private void viewQuizBoardsByQuizBoardID() {
+        System.out.println("***************************************");
+        System.out.println("QuizBoard - View QuizBoards by QuizBoard ID");
+        System.out.println("***************************************");
+        System.out.println("Please enter the QuizBoard ID :");
+        String quizBoardID = scanner.nextLine().trim();
+        if (quizBoardID.length() == 0) {
+            System.out.println("QuizBoard ID cannot be empty!");
+            viewQuizBoardsByQuizBoardID();
+        }
+        String teacherUserName = "";
+        for (Map.Entry<String, User> Entry : teacherInfo.entrySet()) {
+            teacherUserName = Entry.getValue().getUsername();
+        }
+        try {
+            Map<Integer, QuizBoard> quizboard = quizzyController.viewQuizBoardByQuizBoardID(teacherUserName, quizBoardID);
+            if (quizboard.isEmpty()) {
+                System.out.println("No QuizBoards found for QuizBoard ID: " + quizBoardID);
+                System.out.println("***************************************");
+                viewQuizBoards();
+            }
+            System.out.println("QuizBoard for QuizBoard ID: " + quizBoardID);
+            System.out.println("***************************************");
+            for (Map.Entry<Integer, QuizBoard> Entry : quizboard.entrySet()) {
+                System.out.println("QuizBoard ID: " + Entry.getKey());
+                System.out.println("QuizBoard Name: " + Entry.getValue().getQuizBoardName());
+                System.out.println("QuizBoard Created By: " + Entry.getValue().getCreatedByTeacher());
+                System.out.println("QuizBoard Created On: " + Entry.getValue().getDateCreated());
+                System.out.println("QuizBoard Allocated to Course: " + Entry.getValue().getCourseName());
+                System.out.println("No of Quizzes in QuizBoard: " + Entry.getValue().getNumberOfQuestions());
+                System.out.println("No of Students Attempted QuizBoard: " + Entry.getValue().getStudentScores().size());
+                System.out.println("***************************************");
+            }
+            System.out.println("Returning to QuizBoard Menu...");
+            createAQuiz();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            quizMenu();
+        }
+    }
+
     private void viewAllQuizBoards() {
         System.out.println("***************************************");
         System.out.println("QuizBoard - View All QuizBoards");
@@ -353,22 +394,30 @@ public class CommandLineInterface implements Serializable {
         for (Map.Entry<String, User> Entry : teacherInfo.entrySet()) {
             createdBy = Entry.getKey();
         }
-        Map<Integer, QuizBoard> quizBoards = quizzyController.viewAllQuizBoards(createdBy);
-        if (quizBoards.isEmpty()) {
-            System.out.println("No QuizBoards Created by " + createdBy);
+        try {
+            Map<Integer, QuizBoard> quizBoards = quizzyController.viewAllQuizBoards(createdBy);
+            if (quizBoards.isEmpty()) {
+                System.out.println("No QuizBoards Created by " + createdBy);
+                System.out.println("***************************************");
+                createAQuiz();
+            }
+            System.out.println("All QuizBoards for Teacher: " + createdBy);
             System.out.println("***************************************");
+            for (Map.Entry<Integer, QuizBoard> Entry : quizBoards.entrySet()) {
+                System.out.println("QuizBoard ID: " + Entry.getKey());
+                System.out.println("QuizBoard Name: " + Entry.getValue().getQuizBoardName());
+                System.out.println("QuizBoard Created By: " + Entry.getValue().getCreatedByTeacher());
+                System.out.println("QuizBoard Created On: " + Entry.getValue().getDateCreated());
+                System.out.println("QuizBoard Allocated to Course: " + Entry.getValue().getCourseName());
+                System.out.println("No of Quizzes in QuizBoard: " + Entry.getValue().getNumberOfQuestions());
+                System.out.println("No of Students Attempted QuizBoard: " + Entry.getValue().getStudentScores().size());
+                System.out.println("***************************************");
+            }
             createAQuiz();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            quizMenu();
         }
-        System.out.println("All QuizBoards for Teacher: " + createdBy);
-        System.out.println("***************************************");
-        for (Map.Entry<Integer, QuizBoard> Entry : quizBoards.entrySet()) {
-            System.out.println("QuizBoard ID: " + Entry.getKey());
-            System.out.println("QuizBoard Name: " + Entry.getValue().getQuizBoardName());
-            System.out.println("QuizBoard Course: " + Entry.getValue().getCourseName());
-            System.out.println("QuizBoard Created On: " + Entry.getValue().getDateCreated());
-            System.out.println("***************************************");
-        }
-        createAQuiz();
     }
 
     private void viewQuizBoardsByCourse() {
@@ -394,7 +443,6 @@ public class CommandLineInterface implements Serializable {
                 System.out.println("QuizBoard Allocated to Course: " + Entry.getValue().getCourseName());
                 System.out.println("No of Quizzes in QuizBoard: " + Entry.getValue().getNumberOfQuestions());
                 System.out.println("No of Students Attempted QuizBoard: " + Entry.getValue().getStudentScores().size());
-                //TODO : VIEW TOP 3 STUDENTS
                 System.out.println("***************************************");
                 quizMenu();
             }

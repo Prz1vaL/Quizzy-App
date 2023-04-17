@@ -42,7 +42,8 @@ public class QuizBoardService implements Serializable {
             quizID = random.nextInt(1000000);
         }
         quizIDS.add(quizID);
-        // For the initial creation of the quiz board , the values of some parameters that are passed in the constructor are zero or null.
+        // For the initial creation of the quiz board,the values of some parameters
+        // that are passed in the constructor are zero or null.
         Map<String, Integer> studentScores = new HashMap<>(); // The student scores are initially zero.
         float totalScore = 0; // The total score of the quiz board is zero initially.
         int numberOfQuestions = 0; // The number of questions in the quiz board is zero initially.
@@ -94,5 +95,19 @@ public class QuizBoardService implements Serializable {
         } else {
             throw new IllegalArgumentException("Quiz Board does not exist");
         }
+    }
+
+    public Map<Integer, QuizBoard> viewQuizBoardByQuizBoardID(String teacherUserName, String quizBoardID) {
+        Map<Integer, QuizBoard> quizBoardMapByQuizBoardID = new HashMap<>();
+        if (quizBoardMap.containsKey(Integer.parseInt(quizBoardID))) {
+            if (quizBoardMap.get(Integer.parseInt(quizBoardID)).getCreatedByTeacher().equals(teacherUserName.toLowerCase())) {
+                quizBoardMapByQuizBoardID.put(Integer.parseInt(quizBoardID), quizBoardMap.get(Integer.parseInt(quizBoardID)));
+            } else {
+                throw new IllegalArgumentException("Quiz Board does not exist");
+            }
+        } else {
+            throw new IllegalArgumentException("Quiz Board does not exist");
+        }
+        return quizBoardMapByQuizBoardID;
     }
 }
