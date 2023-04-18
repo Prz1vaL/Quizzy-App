@@ -25,13 +25,19 @@ public class QuizService implements Serializable {
     }
 
 
-    public void deleteQuestion(int quizID) {
+    public void deleteQuestion(int quizBoardID, int quizID) {
         if (quizID == 0) {
             throw new IllegalArgumentException("Quiz ID cannot be 0");
         } else if (!quizIDS.contains(quizID)) {
             throw new IllegalArgumentException("Quiz ID does not exist");
         }
+        if (quizMap.get(quizID).getQuizBoardID() != quizBoardID) {
+            throw new IllegalArgumentException("Quiz ID does not exist");
+        }
         quizMap.remove(quizID);
+        // Remove the question number from the list of question numbers in the array list
+        quizIDS.remove(quizIDS.indexOf(quizID));
+
     }
 
 
@@ -41,8 +47,6 @@ public class QuizService implements Serializable {
         for (Map.Entry<Integer, Quiz> entry : quizMap.entrySet()) {
             if (entry.getValue().getQuizBoardID() == quizBoardID) {
                 localData.put(entry.getKey(), entry.getValue());
-            } else {
-                throw new IllegalArgumentException("No questions found");
             }
         }
 

@@ -362,7 +362,7 @@ public class CommandLineInterface implements Serializable {
                     addQuestion(quizBoard);
                 }
                 case '2' -> {
-                    //TODO: deleteQuestion(quizBoard);
+                  deleteQuestion(quizBoard);
                 }
                 case '3' -> {
                     viewQuestions(quizBoard);
@@ -378,6 +378,34 @@ public class CommandLineInterface implements Serializable {
         }
     }
 
+    private void deleteQuestion(Map<Integer, QuizBoard> quizBoard) {
+        int quizBoardID = 0;
+        String quizBoardName = "";
+        for (Map.Entry<Integer, QuizBoard> entry : quizBoard.entrySet()) {
+            quizBoardID = entry.getValue().getQuizID();
+            quizBoardName = entry.getValue().getQuizBoardName();
+        }
+        System.out.println("***************************************");
+        System.out.println("QuizBoard -" + quizBoardName.toUpperCase() + " Delete Question");
+        System.out.println("***************************************");
+        System.out.println("Please enter the Question No :");
+        int questionNo = Integer.parseInt(scanner.nextLine().trim());
+        if (questionNo == 0) {
+            System.out.println("Question No cannot be empty!");
+            deleteQuestion(quizBoard);
+        }
+        try {
+            quizzyController.deleteQuestion(quizBoardID, questionNo);
+            quizzyController.deleteQuizBoardQuestion(quizBoardID);
+            System.out.println("Question deleted successfully!");
+            saveData();
+            editingQuiz(quizBoard);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            quizMenu();
+        }
+    }
+
     private void viewQuestions(Map<Integer, QuizBoard> quizBoard) {
         int quizBoardID = 0;
         String quizBoardName = "";
@@ -390,6 +418,9 @@ public class CommandLineInterface implements Serializable {
         System.out.println("***************************************");
         try {
             Map<Integer, Quiz> localData = quizzyController.viewAllQuestions(quizBoardID);
+            if (localData.isEmpty()) {
+                throw new IllegalArgumentException("No Questions found!");
+            }
             for (Map.Entry<Integer, Quiz> entry : localData.entrySet()) {
                 System.out.println("Question No : " + entry.getKey());
                 System.out.println("Question : " + entry.getValue().getQuizQuestion());
@@ -397,6 +428,7 @@ public class CommandLineInterface implements Serializable {
                 System.out.println("Marks Allocated : " + entry.getValue().getQuizPoints());
                 System.out.println("***************************************");
             }
+            editingQuiz(quizBoard);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             quizMenu();
@@ -458,9 +490,10 @@ public class CommandLineInterface implements Serializable {
             createAQuiz();
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            System.out.println("Returning to QuizBoard Menu...");
+            createAQuiz();
         }
-        System.out.println("Returning to QuizBoard Menu...");
-        quizMenu();
+
     }
 
     private void viewQuizBoards() {

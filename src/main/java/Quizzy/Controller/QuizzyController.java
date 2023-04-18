@@ -118,4 +118,12 @@ public class QuizzyController {
     public void updateQuizBoardQuestion(int quizBoardID) {
         quizBoardService.updateQuizBoardQuestion(quizBoardID);
     }
+
+    public void deleteQuestion(int quizBoardID, int questionNo) {
+        quizService.deleteQuestion(quizBoardID, questionNo);
+    }
+
+    public void deleteQuizBoardQuestion(int quizBoardID) {
+        quizBoardService.deleteQuizBoardQuestion(quizBoardID);
+    }
 }
