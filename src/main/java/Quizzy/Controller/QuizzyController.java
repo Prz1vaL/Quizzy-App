@@ -4,6 +4,7 @@ import main.java.Quizzy.Model.AccountType;
 import main.java.Quizzy.Model.QuizBoard;
 import main.java.Quizzy.Model.User;
 import main.java.Quizzy.Service.QuizBoardService;
+import main.java.Quizzy.Service.QuizService;
 import main.java.Quizzy.Service.UserService;
 
 import java.io.IOException;
@@ -16,6 +17,8 @@ public class QuizzyController {
     UserService userService = new UserService();
 
     QuizBoardService quizBoardService = new QuizBoardService();
+
+    QuizService quizService = new QuizService();
 
     public String hashPassword(String password) {
         return userService.hashPassword(password);
@@ -36,11 +39,13 @@ public class QuizzyController {
     public void saveData() throws IOException {
         userService.saveData();
         quizBoardService.saveData();
+        quizService.saveData();
     }
 
     public void loadData() throws IOException, ClassNotFoundException {
         userService.loadData();
         quizBoardService.loadData();
+        quizService.loadData();
     }
 
     public Map<String, User> validateLogin(String userName, String password) {
@@ -94,5 +99,14 @@ public class QuizzyController {
 
     public Map<Integer, QuizBoard> viewQuizBoardByQuizBoardID(String teacherUserName, String quizBoardID) {
         return quizBoardService.viewQuizBoardByQuizBoardID(teacherUserName, quizBoardID);
+    }
+
+
+    public Map<Integer, QuizBoard> editQuizBoard(String userName, String quizBoardID) {
+        return quizBoardService.editQuizBoard(userName, quizBoardID);
+    }
+
+    public void addQuestion(int quizBoardID, String question, String correctAnswer, float marks) {
+        quizService.addQuestion(quizBoardID, question, correctAnswer, marks);
     }
 }

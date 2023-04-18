@@ -128,6 +128,7 @@ public class CommandLineInterface implements Serializable {
         System.out.println("***************************************");
         System.out.println("V 1.0 - Initial Release");
         System.out.println("Upcoming Features: - Multiple Choice Questions");
+        System.out.println("                   - GUI Interface");
         System.out.println("***************************************");
         start();
     }
@@ -277,7 +278,7 @@ public class CommandLineInterface implements Serializable {
                     createQuizBoard();
                 }
                 case '2' -> {
-                    //TODO :editQuizBoard();
+                    editQuizBoard();
                 }
                 case '3' -> {
                     deleteQuizBoard();
@@ -307,6 +308,110 @@ public class CommandLineInterface implements Serializable {
             quizMenu();
         }
 
+    }
+
+    private void editQuizBoard() {
+        System.out.println("***************************************");
+        System.out.println("QuizBoard - Edit QuizBoard");
+        System.out.println("***************************************");
+        System.out.println("Please enter the QuizBoard ID :");
+        String quizBoardID = scanner.nextLine().trim();
+        if (quizBoardID.length() == 0) {
+            System.out.println("QuizBoard ID cannot be empty!");
+            editQuizBoard();
+        }
+        String userName = "";
+        for (Map.Entry<String, User> entry : teacherInfo.entrySet()) {
+            userName = entry.getKey();
+        }
+        try {
+            Map<Integer, QuizBoard> quizBoard = quizzyController.editQuizBoard(userName, quizBoardID);
+            if (!quizBoard.isEmpty()) {
+                editingQuiz(quizBoard);
+            } else {
+                System.out.println("QuizBoard not found!");
+                System.out.println("Returning to QuizBoard Menu...");
+                quizMenu();
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            quizMenu();
+        }
+    }
+
+    private void editingQuiz(Map<Integer, QuizBoard> quizBoard) {
+        String quizBoardName = "";
+        for (Map.Entry<Integer, QuizBoard> entry : quizBoard.entrySet()) {
+            quizBoardName = entry.getValue().getQuizBoardName();
+        }
+        System.out.println("***************************************");
+        System.out.println("QuizBoard - " + quizBoardName.toUpperCase());
+        System.out.println("***************************************");
+        System.out.println("1. Add a Question");
+        System.out.println("2. Delete a Question");
+        System.out.println("3. View all Questions");
+        System.out.println("4. Back to QuizBoard Menu");
+        System.out.println("***************************************");
+        System.out.println("Please enter your choice :");
+        String line = scanner.nextLine().trim();
+        if (line.length() == 1) {
+            switch (line.charAt(0)) {
+                case '1' -> {
+                    addQuestion(quizBoard);
+                }
+                case '2' -> {
+                    //TODO: deleteQuestion(quizBoard);
+                }
+                case '3' -> {
+                    //TODO: viewQuestions(quizBoard);
+                }
+                case '4' -> {
+                    System.out.println("Returning to QuizBoard Menu...");
+                    quizMenu();
+                }
+            }
+        } else {
+            System.out.println("Please enter a valid option !");
+            createAQuiz();
+        }
+    }
+
+    private void addQuestion(Map<Integer, QuizBoard> quizBoard) {
+        String quizBoardName = "";
+        for (Map.Entry<Integer, QuizBoard> entry : quizBoard.entrySet()) {
+            quizBoardName = entry.getValue().getQuizBoardName();
+        }
+        int quizBoardID = 0;
+        for (Map.Entry<Integer, QuizBoard> entry : quizBoard.entrySet()) {
+            quizBoardID = entry.getValue().getQuizID();
+        }
+        System.out.println("***************************************");
+        System.out.println("QuizBoard -" + quizBoardName.toUpperCase() + " \n Add Question");
+        System.out.println("***************************************");
+        System.out.println("Please enter the Question :");
+        String question = scanner.nextLine().trim();
+        if (question.length() == 0) {
+            System.out.println("Question cannot be empty!");
+        }
+        System.out.println("Please enter the Correct Answer :");
+        String correctAnswer = scanner.nextLine().trim();
+        if (correctAnswer.length() == 0) {
+            System.out.println("Correct Answer cannot be empty!");
+        }
+        System.out.println("Enter the marks for the question :");
+        float marks = Float.parseFloat(scanner.nextLine().trim());
+        if (marks == 0) {
+            System.out.println("Marks cannot be empty!");
+        }
+        try {
+            quizzyController.addQuestion(quizBoardID, question, correctAnswer, marks);
+            System.out.println("Question added successfully!");
+            saveData();
+            editingQuiz(quizBoard);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private void deleteQuizBoard() {
@@ -384,15 +489,15 @@ public class CommandLineInterface implements Serializable {
             teacherUserName = Entry.getValue().getUsername();
         }
         try {
-            Map<Integer, QuizBoard> quizboard = quizzyController.viewQuizBoardByQuizBoardID(teacherUserName, quizBoardID);
-            if (quizboard.isEmpty()) {
+            Map<Integer, QuizBoard> quizBoard = quizzyController.viewQuizBoardByQuizBoardID(teacherUserName, quizBoardID);
+            if (quizBoard.isEmpty()) {
                 System.out.println("No QuizBoards found for QuizBoard ID: " + quizBoardID);
                 System.out.println("***************************************");
                 viewQuizBoards();
             }
             System.out.println("QuizBoard for QuizBoard ID: " + quizBoardID);
             System.out.println("***************************************");
-            for (Map.Entry<Integer, QuizBoard> Entry : quizboard.entrySet()) {
+            for (Map.Entry<Integer, QuizBoard> Entry : quizBoard.entrySet()) {
                 System.out.println("QuizBoard ID: " + Entry.getKey());
                 System.out.println("QuizBoard Name: " + Entry.getValue().getQuizBoardName());
                 System.out.println("QuizBoard Created By: " + Entry.getValue().getCreatedByTeacher());

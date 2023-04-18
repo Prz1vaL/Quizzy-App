@@ -19,7 +19,6 @@ public class UserService implements Serializable {
 
     /**
      * Converts a password to a hashed password
-     *
      * @param password - password to be hashed
      * @return hashed password
      */

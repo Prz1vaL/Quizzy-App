@@ -110,4 +110,20 @@ public class QuizBoardService implements Serializable {
         }
         return quizBoardMapByQuizBoardID;
     }
+
+    public Map<Integer, QuizBoard> editQuizBoard(String userName, String quizBoardID) {
+        Map<Integer, QuizBoard> quizBoardMapByQuizBoardID = new HashMap<>();
+        if (quizBoardMap.containsKey(Integer.parseInt(quizBoardID))) {
+            if (quizBoardMap.get(Integer.parseInt(quizBoardID)).getCreatedByTeacher().equals(userName.toLowerCase())) {
+                quizBoardMapByQuizBoardID.put(Integer.parseInt(quizBoardID), quizBoardMap.get(Integer.parseInt(quizBoardID)));
+            } else {
+                throw new IllegalArgumentException("Quiz Board does not exist");
+            }
+        } else {
+            throw new IllegalArgumentException("Quiz Board does not exist");
+        }
+        return quizBoardMapByQuizBoardID;
+    }
+
+
 }
