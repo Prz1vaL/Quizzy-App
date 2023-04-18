@@ -35,9 +35,16 @@ public class QuizService implements Serializable {
     }
 
 
-    public Map<Integer, Quiz> viewAllQuestions() {
+    public Map<Integer, Quiz> viewAllQuestions(int quizBoardID) {
         Map<Integer, Quiz> localData = new HashMap<>();
-
+        // Check for questions with the same quizBoardID
+        for (Map.Entry<Integer, Quiz> entry : quizMap.entrySet()) {
+            if (entry.getValue().getQuizBoardID() == quizBoardID) {
+                localData.put(entry.getKey(), entry.getValue());
+            } else {
+                throw new IllegalArgumentException("No questions found");
+            }
+        }
 
         return localData;
     }

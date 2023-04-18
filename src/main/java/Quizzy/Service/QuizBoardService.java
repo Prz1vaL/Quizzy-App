@@ -126,4 +126,11 @@ public class QuizBoardService implements Serializable {
     }
 
 
+    public void updateQuizBoardQuestion(int quizBoardID) {
+        if (quizBoardMap.containsKey(quizBoardID)) {
+            quizBoardMap.get(quizBoardID).setNumberOfQuestions(quizBoardMap.get(quizBoardID).getNumberOfQuestions() + 1);
+        } else {
+            throw new IllegalArgumentException("Quiz Board does not exist");
+        }
+    }
 }

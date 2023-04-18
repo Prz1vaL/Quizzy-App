@@ -1,6 +1,7 @@
 package main.java.Quizzy.Controller;
 
 import main.java.Quizzy.Model.AccountType;
+import main.java.Quizzy.Model.Quiz;
 import main.java.Quizzy.Model.QuizBoard;
 import main.java.Quizzy.Model.User;
 import main.java.Quizzy.Service.QuizBoardService;
@@ -108,5 +109,13 @@ public class QuizzyController {
 
     public void addQuestion(int quizBoardID, String question, String correctAnswer, float marks) {
         quizService.addQuestion(quizBoardID, question, correctAnswer, marks);
+    }
+
+    public Map<Integer, Quiz> viewAllQuestions(int quizBoardID) {
+        return quizService.viewAllQuestions(quizBoardID);
+    }
+
+    public void updateQuizBoardQuestion(int quizBoardID) {
+        quizBoardService.updateQuizBoardQuestion(quizBoardID);
     }
 }

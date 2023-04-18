@@ -2,6 +2,7 @@ package main.java.Quizzy.View;
 
 import main.java.Quizzy.Controller.QuizzyController;
 import main.java.Quizzy.Model.AccountType;
+import main.java.Quizzy.Model.Quiz;
 import main.java.Quizzy.Model.QuizBoard;
 import main.java.Quizzy.Model.User;
 
@@ -364,7 +365,7 @@ public class CommandLineInterface implements Serializable {
                     //TODO: deleteQuestion(quizBoard);
                 }
                 case '3' -> {
-                    //TODO: viewQuestions(quizBoard);
+                    viewQuestions(quizBoard);
                 }
                 case '4' -> {
                     System.out.println("Returning to QuizBoard Menu...");
@@ -374,6 +375,31 @@ public class CommandLineInterface implements Serializable {
         } else {
             System.out.println("Please enter a valid option !");
             createAQuiz();
+        }
+    }
+
+    private void viewQuestions(Map<Integer, QuizBoard> quizBoard) {
+        int quizBoardID = 0;
+        String quizBoardName = "";
+        for (Map.Entry<Integer, QuizBoard> entry : quizBoard.entrySet()) {
+            quizBoardID = entry.getValue().getQuizID();
+            quizBoardName = entry.getValue().getQuizBoardName();
+        }
+        System.out.println("***************************************");
+        System.out.println("QuizBoard -" + quizBoardName.toUpperCase() + " View Questions");
+        System.out.println("***************************************");
+        try {
+            Map<Integer, Quiz> localData = quizzyController.viewAllQuestions(quizBoardID);
+            for (Map.Entry<Integer, Quiz> entry : localData.entrySet()) {
+                System.out.println("Question No : " + entry.getKey());
+                System.out.println("Question : " + entry.getValue().getQuizQuestion());
+                System.out.println("Answer : " + entry.getValue().getCorrectAnswer());
+                System.out.println("Marks Allocated : " + entry.getValue().getQuizPoints());
+                System.out.println("***************************************");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            quizMenu();
         }
     }
 
@@ -406,6 +432,7 @@ public class CommandLineInterface implements Serializable {
         }
         try {
             quizzyController.addQuestion(quizBoardID, question, correctAnswer, marks);
+            quizzyController.updateQuizBoardQuestion(quizBoardID);
             System.out.println("Question added successfully!");
             saveData();
             editingQuiz(quizBoard);
