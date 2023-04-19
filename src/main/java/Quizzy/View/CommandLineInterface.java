@@ -362,7 +362,7 @@ public class CommandLineInterface implements Serializable {
                     addQuestion(quizBoard);
                 }
                 case '2' -> {
-                  deleteQuestion(quizBoard);
+                    deleteQuestion(quizBoard);
                 }
                 case '3' -> {
                     viewQuestions(quizBoard);

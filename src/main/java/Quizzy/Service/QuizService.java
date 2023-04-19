@@ -36,7 +36,7 @@ public class QuizService implements Serializable {
         }
         quizMap.remove(quizID);
         // Remove the question number from the list of question numbers in the array list
-        quizIDS.remove(quizIDS.indexOf(quizID));
+        quizIDS.remove((Integer) quizID);
 
     }
 
