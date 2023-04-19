@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff18775a-ac22-43fb-9b14-cf18bf872cd5" name="Changes" comment="Teachers now are able to access the entire functionalities, fixed minor bugs such as proper order of calling methods, index exceptions, map update in appropriate places.&#10;&#10;I think it's safe to say that we can now create the student access center for the quizzy app.">
+    <list default="true" id="ff18775a-ac22-43fb-9b14-cf18bf872cd5" name="Changes" comment="daily updates..">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/Service/QuizService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Service/QuizService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/Service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/Controller/QuizzyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Controller/QuizzyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Model/Teacher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/Service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Service/TeacherService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -114,7 +115,7 @@
       <workItem from="1681571611622" duration="2157000" />
       <workItem from="1681676818772" duration="163000" />
       <workItem from="1681723425314" duration="1276000" />
-      <workItem from="1681725734231" duration="9088000" />
+      <workItem from="1681725734231" duration="9237000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit 2">
       <created>1681047051802</created>
@@ -319,7 +320,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681818582625</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="daily updates..">
+      <created>1681923239663</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1681923239663</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -365,7 +373,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Quizzy Logo." />
     <MESSAGE value="Now able to login with credentials ." />
     <MESSAGE value="refactored some lines of code." />
     <MESSAGE value="TeacherMenu created..." />
@@ -390,7 +397,8 @@
     <MESSAGE value="Teachers can now add questions and the marks allocated with the question." />
     <MESSAGE value="Now teachers are able to view the questions they have added to the system." />
     <MESSAGE value="Teachers now are able to access the entire functionalities, fixed minor bugs such as proper order of calling methods, index exceptions, map update in appropriate places.&#10;&#10;I think it's safe to say that we can now create the student access center for the quizzy app." />
-    <option name="LAST_COMMIT_MESSAGE" value="Teachers now are able to access the entire functionalities, fixed minor bugs such as proper order of calling methods, index exceptions, map update in appropriate places.&#10;&#10;I think it's safe to say that we can now create the student access center for the quizzy app." />
+    <MESSAGE value="daily updates.." />
+    <option name="LAST_COMMIT_MESSAGE" value="daily updates.." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -399,7 +407,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Quizzy/Service/UserService.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/Quizzy/Service/TeacherService.java</url>
           <line>144</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>

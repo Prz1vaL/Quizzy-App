@@ -4,7 +4,7 @@ import main.java.Quizzy.Controller.QuizzyController;
 import main.java.Quizzy.Model.AccountType;
 import main.java.Quizzy.Model.Quiz;
 import main.java.Quizzy.Model.QuizBoard;
-import main.java.Quizzy.Model.User;
+import main.java.Quizzy.Model.Teacher;
 
 import java.io.Serializable;
 import java.util.*;
@@ -20,9 +20,9 @@ public class CommandLineInterface implements Serializable {
 
     // Caching the user Data
 
-    private Map<String, User> teacherInfo = new HashMap<>();
+    private Map<String, Teacher> teacherInfo = new HashMap<>();
 
-    private Map<String, User> studentInfo = new HashMap<>();
+    private Map<String, Teacher> studentInfo = new HashMap<>();
 
 
     // End of Caching the user Data
@@ -144,7 +144,7 @@ public class CommandLineInterface implements Serializable {
         String password = scanner.nextLine().trim();
         try {
             String hashedPassword = quizzyController.hashPassword(password);
-            Map<String, User> localData = quizzyController.validateLogin(userName, hashedPassword);
+            Map<String, Teacher> localData = quizzyController.validateLogin(userName, hashedPassword);
             if (localData.isEmpty()) {
                 throw new IllegalArgumentException("Invalid Username or Password!");
             }
@@ -322,7 +322,7 @@ public class CommandLineInterface implements Serializable {
             editQuizBoard();
         }
         String userName = "";
-        for (Map.Entry<String, User> entry : teacherInfo.entrySet()) {
+        for (Map.Entry<String, Teacher> entry : teacherInfo.entrySet()) {
             userName = entry.getKey();
         }
         try {
@@ -545,7 +545,7 @@ public class CommandLineInterface implements Serializable {
             viewQuizBoardsByQuizBoardID();
         }
         String teacherUserName = "";
-        for (Map.Entry<String, User> Entry : teacherInfo.entrySet()) {
+        for (Map.Entry<String, Teacher> Entry : teacherInfo.entrySet()) {
             teacherUserName = Entry.getValue().getUsername();
         }
         try {
@@ -580,7 +580,7 @@ public class CommandLineInterface implements Serializable {
         System.out.println("QuizBoard - View All QuizBoards");
         System.out.println("***************************************");
         String createdBy = "";
-        for (Map.Entry<String, User> Entry : teacherInfo.entrySet()) {
+        for (Map.Entry<String, Teacher> Entry : teacherInfo.entrySet()) {
             createdBy = Entry.getKey();
         }
         try {
@@ -616,7 +616,7 @@ public class CommandLineInterface implements Serializable {
         System.out.println("Please enter the Course Name :");
         String courseName = scanner.nextLine().trim();
         String createdBy = "";
-        for (Map.Entry<String, User> Entry : teacherInfo.entrySet()) {
+        for (Map.Entry<String, Teacher> Entry : teacherInfo.entrySet()) {
             createdBy = Entry.getKey();
         }
         try {
@@ -650,7 +650,7 @@ public class CommandLineInterface implements Serializable {
         System.out.println("Please enter the Course which the QuizBoard is allocated to:");
         String courseName = scanner.nextLine().trim();
         String createdBy = "";
-        for (Map.Entry<String, User> Entry : teacherInfo.entrySet()) {
+        for (Map.Entry<String, Teacher> Entry : teacherInfo.entrySet()) {
             createdBy = Entry.getKey();
         }
         Date dateCreated = new Date();
@@ -703,7 +703,7 @@ public class CommandLineInterface implements Serializable {
         System.out.println("Please enter the course name: ");
         String courseName = scanner.nextLine().trim().toLowerCase();
         String userName = "";
-        for (Map.Entry<String, User> entry : teacherInfo.entrySet()) {
+        for (Map.Entry<String, Teacher> entry : teacherInfo.entrySet()) {
             userName = entry.getKey();
         }
         try {
@@ -725,7 +725,7 @@ public class CommandLineInterface implements Serializable {
         System.out.println("Please enter the course name: ");
         String courseName = scanner.nextLine().trim().toLowerCase();
         String userName = "";
-        for (Map.Entry<String, User> entry : teacherInfo.entrySet()) {
+        for (Map.Entry<String, Teacher> entry : teacherInfo.entrySet()) {
             userName = entry.getKey();
         }
         try {
@@ -748,7 +748,7 @@ public class CommandLineInterface implements Serializable {
         System.out.println("Please enter the course name: ");
         String courseName = scanner.nextLine().trim();
         String userName = "";
-        for (Map.Entry<String, User> entry : teacherInfo.entrySet()) {
+        for (Map.Entry<String, Teacher> entry : teacherInfo.entrySet()) {
             userName = entry.getKey();
         }
         try {
@@ -777,7 +777,7 @@ public class CommandLineInterface implements Serializable {
         System.out.println("*** Your Courses ***");
         System.out.println("***************************************");
         ArrayList<String> yourCourses = new ArrayList<>();
-        for (Map.Entry<String, User> entry : teacherInfo.entrySet()) {
+        for (Map.Entry<String, Teacher> entry : teacherInfo.entrySet()) {
             yourCourses = entry.getValue().getCoursesEnrolled();
         }
         int i = 0;
@@ -797,7 +797,7 @@ public class CommandLineInterface implements Serializable {
         System.out.println("Please enter your current password: ");
         String currentPassword = scanner.nextLine().trim();
         String userName = "";
-        for (Map.Entry<String, User> entry : teacherInfo.entrySet()) {
+        for (Map.Entry<String, Teacher> entry : teacherInfo.entrySet()) {
             userName = entry.getKey();
         }
         try {
@@ -823,7 +823,7 @@ public class CommandLineInterface implements Serializable {
         String email = "";
         Date dateCreated = null;
         String accountType = "";
-        for (Map.Entry<String, User> entry : teacherInfo.entrySet()) {
+        for (Map.Entry<String, Teacher> entry : teacherInfo.entrySet()) {
             userName = entry.getKey();
             fullName = entry.getValue().getFullName();
             email = entry.getValue().getEmail();
@@ -841,7 +841,7 @@ public class CommandLineInterface implements Serializable {
 
     private void deleteTeacherAccount() {
         String userName = "";
-        for (Map.Entry<String, User> entry : teacherInfo.entrySet()) {
+        for (Map.Entry<String, Teacher> entry : teacherInfo.entrySet()) {
             userName = entry.getKey();
         }
         System.out.println("Deleting Account...");

@@ -3,10 +3,10 @@ package main.java.Quizzy.Controller;
 import main.java.Quizzy.Model.AccountType;
 import main.java.Quizzy.Model.Quiz;
 import main.java.Quizzy.Model.QuizBoard;
-import main.java.Quizzy.Model.User;
+import main.java.Quizzy.Model.Teacher;
 import main.java.Quizzy.Service.QuizBoardService;
 import main.java.Quizzy.Service.QuizService;
-import main.java.Quizzy.Service.UserService;
+import main.java.Quizzy.Service.TeacherService;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,70 +15,70 @@ import java.util.Map;
 
 public class QuizzyController {
 
-    UserService userService = new UserService();
+    TeacherService teacherService = new TeacherService();
 
     QuizBoardService quizBoardService = new QuizBoardService();
 
     QuizService quizService = new QuizService();
 
     public String hashPassword(String password) {
-        return userService.hashPassword(password);
+        return teacherService.hashPassword(password);
     }
 
     public void validateEmail(String email) {
-        userService.validateEmail(email);
+        teacherService.validateEmail(email);
     }
 
     public void validateUsername(String username) {
-        userService.validateUsername(username);
+        teacherService.validateUsername(username);
     }
 
     public void register(String fullName, String email, String username, String sha256, AccountType accountType, ArrayList<String> coursesEnrolled, Date dateCreated) {
-        userService.register(fullName, email, username, sha256, accountType, coursesEnrolled, dateCreated);
+        teacherService.register(fullName, email, username, sha256, accountType, coursesEnrolled, dateCreated);
     }
 
     public void saveData() throws IOException {
-        userService.saveData();
+        teacherService.saveData();
         quizBoardService.saveData();
         quizService.saveData();
     }
 
     public void loadData() throws IOException, ClassNotFoundException {
-        userService.loadData();
+        teacherService.loadData();
         quizBoardService.loadData();
         quizService.loadData();
     }
 
-    public Map<String, User> validateLogin(String userName, String password) {
-        return userService.validateLogin(userName, password);
+    public Map<String, Teacher> validateLogin(String userName, String password) {
+        return teacherService.validateLogin(userName, password);
     }
 
     public void deleteAccount(String userName) {
-        userService.deleteAccount(userName);
+        teacherService.deleteAccount(userName);
     }
 
     public void validatePassword(String userName, String currentPassword) {
-        userService.validatePassword(userName, currentPassword);
+        teacherService.validatePassword(userName, currentPassword);
     }
 
     public void changePassword(String userName, String newPassword) {
-        userService.changePassword(userName, newPassword);
+        teacherService.changePassword(userName, newPassword);
     }
 
     public ArrayList<String> getStudentsByCourse(String courseName) {
-        return userService.getStudentsByCourse(courseName);
+        return teacherService.getStudentsByCourse(courseName);
     }
 
     public void validateIfTeacherCourse(String courseName, String userName) {
-        userService.validateIfTeacherCourse(courseName, userName);
+        teacherService.validateIfTeacherCourse(courseName, userName);
     }
 
     public void addCourse(String courseName, String userName) {
-        userService.addCourse(courseName, userName);
+        teacherService.addCourse(courseName, userName);
     }
 
     public void removeCourse(String courseName, String userName) {
-        userService.removeCourse(courseName, userName);
+        teacherService.removeCourse(courseName, userName);
     }
 
     public int createQuizBoard(String quizBoardName, String courseName, Date dateCreated, String createdBy) {

@@ -1,7 +1,7 @@
 package main.java.Quizzy.Service;
 
 import main.java.Quizzy.Model.AccountType;
-import main.java.Quizzy.Model.User;
+import main.java.Quizzy.Model.Teacher;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -12,9 +12,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UserService implements Serializable {
+public class TeacherService implements Serializable {
 
-    private Map<String, User> users = new HashMap<>();
+    private Map<String, Teacher> users = new HashMap<>();
 
 
     /**
@@ -77,9 +77,9 @@ public class UserService implements Serializable {
         if (fullName.isEmpty()) {
             throw new IllegalArgumentException("Full name cannot be empty");
         }
-        // Create a new user
-        User user = new User(fullName.toLowerCase(), email.toLowerCase(), username.toLowerCase(), sha256, accountType, coursesEnrolled, dateCreated);
-        users.put(username.toLowerCase(), user);
+        // Create a new teacher
+        Teacher teacher = new Teacher(fullName.toLowerCase(), email.toLowerCase(), username.toLowerCase(), sha256, accountType, coursesEnrolled, dateCreated);
+        users.put(username.toLowerCase(), teacher);
     }
 
     /**
@@ -98,16 +98,16 @@ public class UserService implements Serializable {
     public void loadData() throws IOException, ClassNotFoundException {
         FileInputStream fi = new FileInputStream("src/resources/userData.ser");
         ObjectInputStream oi = new ObjectInputStream(fi);
-        users = (Map<String, User>) oi.readObject();
+        users = (Map<String, Teacher>) oi.readObject();
         oi.close();
         fi.close();
     }
 
-    public Map<String, User> validateLogin(String userName, String password) {
+    public Map<String, Teacher> validateLogin(String userName, String password) {
         if (users.isEmpty()) {
             throw new IllegalArgumentException("No users found");
         }
-        Map<String, User> userInfo = new HashMap<>();
+        Map<String, Teacher> userInfo = new HashMap<>();
         // CHECK IF the USER-NAME OR PASSWORD IS EMPTY
         if (userName.isEmpty() || password.isEmpty()) {
             throw new IllegalArgumentException("Username or password cannot be empty");
@@ -156,7 +156,7 @@ public class UserService implements Serializable {
 
     public ArrayList<String> getStudentsByCourse(String courseName) {
         ArrayList<String> students = new ArrayList<>();
-        for (Map.Entry<String, User> user : users.entrySet()) {
+        for (Map.Entry<String, Teacher> user : users.entrySet()) {
             if (user.getValue().getAccountType().equals(AccountType.STUDENT)) {
                 if (user.getValue().getCoursesEnrolled().contains(courseName)) {
                     students.add(user.getValue().getFullName());

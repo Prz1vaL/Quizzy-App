@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * User class - Stores the user's information
+ * Teacher class - Stores the user's information
  */
-public class User implements Serializable {
+public class Teacher implements Serializable {
     private String fullName;
 
     private String email;
@@ -22,7 +22,7 @@ public class User implements Serializable {
 
     private Date dateCreated;
 
-    public User(String fullName, String email, String username, String password, AccountType accountType, ArrayList<String> coursesEnrolled, Date dateCreated) {
+    public Teacher(String fullName, String email, String username, String password, AccountType accountType, ArrayList<String> coursesEnrolled, Date dateCreated) {
         this.fullName = fullName;
         this.email = email;
         this.password = password;
