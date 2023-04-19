@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff18775a-ac22-43fb-9b14-cf18bf872cd5" name="Changes" comment="daily updates..">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/Controller/QuizzyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Controller/QuizzyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Model/Teacher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/Service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Service/TeacherService.java" afterDir="false" />
+    <list default="true" id="ff18775a-ac22-43fb-9b14-cf18bf872cd5" name="Changes" comment="Seperated the data model and service for teacher and student, as it is more independent in terms of scalability.">
+      <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/Service/TeacherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Service/TeacherService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/QuestionData.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/QuizBoardData.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/userData.ser" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,6 +116,7 @@
       <workItem from="1681676818772" duration="163000" />
       <workItem from="1681723425314" duration="1276000" />
       <workItem from="1681725734231" duration="9237000" />
+      <workItem from="1681923384124" duration="408000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit 2">
       <created>1681047051802</created>
@@ -327,7 +328,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681923239663</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Seperated the data model and service for teacher and student, as it is more independent in terms of scalability.">
+      <created>1681923566529</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1681923566529</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -373,7 +381,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Now able to login with credentials ." />
     <MESSAGE value="refactored some lines of code." />
     <MESSAGE value="TeacherMenu created..." />
     <MESSAGE value="Add some more validation checks for register Process." />
@@ -398,7 +405,8 @@
     <MESSAGE value="Now teachers are able to view the questions they have added to the system." />
     <MESSAGE value="Teachers now are able to access the entire functionalities, fixed minor bugs such as proper order of calling methods, index exceptions, map update in appropriate places.&#10;&#10;I think it's safe to say that we can now create the student access center for the quizzy app." />
     <MESSAGE value="daily updates.." />
-    <option name="LAST_COMMIT_MESSAGE" value="daily updates.." />
+    <MESSAGE value="Seperated the data model and service for teacher and student, as it is more independent in terms of scalability." />
+    <option name="LAST_COMMIT_MESSAGE" value="Seperated the data model and service for teacher and student, as it is more independent in terms of scalability." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -413,22 +421,22 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>633</line>
+          <line>636</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>590</line>
+          <line>593</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>488</line>
+          <line>491</line>
           <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>619</line>
+          <line>622</line>
           <properties class="main.java.Quizzy.View.CommandLineInterface">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -446,7 +454,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>475</line>
+          <line>478</line>
           <properties class="main.java.Quizzy.View.CommandLineInterface" method="deleteQuizBoard">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -455,7 +463,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>408</line>
+          <line>411</line>
           <properties class="main.java.Quizzy.View.CommandLineInterface" method="viewQuestions">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -464,7 +472,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>380</line>
+          <line>383</line>
           <properties class="main.java.Quizzy.View.CommandLineInterface" method="deleteQuestion">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -473,7 +481,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>437</line>
+          <line>440</line>
           <properties class="main.java.Quizzy.View.CommandLineInterface" method="addQuestion">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />

@@ -88,7 +88,7 @@ public class TeacherService implements Serializable {
      * @throws IOException - if the file is not found
      */
     public void saveData() throws IOException {
-        FileOutputStream f = new FileOutputStream("src/resources/userData.ser");
+        FileOutputStream f = new FileOutputStream("src/resources/teacherData.ser");
         ObjectOutputStream o = new ObjectOutputStream(f);
         o.writeObject(users);
         o.close();
@@ -96,7 +96,7 @@ public class TeacherService implements Serializable {
     }
 
     public void loadData() throws IOException, ClassNotFoundException {
-        FileInputStream fi = new FileInputStream("src/resources/userData.ser");
+        FileInputStream fi = new FileInputStream("src/resources/teacherData.ser");
         ObjectInputStream oi = new ObjectInputStream(fi);
         users = (Map<String, Teacher>) oi.readObject();
         oi.close();

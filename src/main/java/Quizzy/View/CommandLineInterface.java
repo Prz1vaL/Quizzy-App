@@ -102,6 +102,8 @@ public class CommandLineInterface implements Serializable {
                         }
                         case '4' -> {
                             System.out.println("Thank you for using Quizzy!");
+                            loginStatus = true;
+                            saveData();
                             System.exit(0);
                         }
                         case '5' -> {
@@ -201,6 +203,7 @@ public class CommandLineInterface implements Serializable {
                 case '8' -> {
                     System.out.println("Logging out...");
                     loginStatus = false;
+                    saveData();
                     start();
                 }
                 default -> {
