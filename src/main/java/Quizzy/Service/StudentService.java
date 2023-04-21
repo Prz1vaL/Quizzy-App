@@ -32,6 +32,7 @@ public class StudentService implements Serializable {
     public Map<String, Student> validateLogin(String userName, String password) {
         if (students.isEmpty()) {
             throw new IllegalArgumentException("No users found");
+
         }
         Map<String, Student> studentInfo = new HashMap<>();
         // CHECK IF the USER-NAME OR PASSWORD IS EMPTY
