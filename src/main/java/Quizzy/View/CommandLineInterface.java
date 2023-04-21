@@ -237,7 +237,7 @@ public class CommandLineInterface implements Serializable {
     private void takeQuiz() {
         int quizBoardID = 0;
         System.out.println("***************************************");
-        System.out.println("Please enter the QUIZBOARD - ID: ");
+        System.out.println("Please enter the QUIZ-BOARD - ID: ");
         try {
             quizBoardID = Integer.parseInt(scanner.nextLine().trim());
         } catch (NumberFormatException e) {
@@ -859,7 +859,7 @@ public class CommandLineInterface implements Serializable {
                 System.out.println("QuizBoard Created On: " + Entry.getValue().getDateCreated());
                 System.out.println("QuizBoard Allocated to Course: " + Entry.getValue().getCourseName());
                 System.out.println("No of Quizzes in QuizBoard: " + Entry.getValue().getNumberOfQuestions());
-                //TODO : Add the number of students attempted the quizboard here and in the service layer.
+                //TODO : Add the number of students attempted the quiz-board here and in the service layer.
                 System.out.println("No of Students Attempted QuizBoard: " + Entry.getValue().getStudentScores().size());
                 System.out.println("***************************************");
             }
@@ -1176,7 +1176,10 @@ public class CommandLineInterface implements Serializable {
                     case '2' -> {
                         accountType = AccountType.TEACHER;
                     }
-                    default -> System.out.println("Please select a valid option: ");
+                    default -> {
+                        System.out.println("Please select a valid option: ");
+                        register();
+                    }
                 }
             } else {
                 System.out.println("Please select a valid option: ");
