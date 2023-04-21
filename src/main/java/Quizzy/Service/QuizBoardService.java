@@ -167,4 +167,22 @@ public class QuizBoardService implements Serializable {
         }
 
     }
+
+    public void checkIfQuizTaken(String userName, int quizBoardID) {
+        if (quizBoardMap.containsKey(quizBoardID)) {
+            if (quizBoardMap.get(quizBoardID).getStudentScores().containsKey(userName.toLowerCase())) {
+                throw new IllegalArgumentException("Quiz already taken");
+            }
+        } else {
+            throw new IllegalArgumentException("Quiz Board does not exist");
+        }
+    }
+
+    public Map<String, Float> viewTeacherQuizResults(int quizBoardID) {
+        if (quizBoardMap.containsKey(quizBoardID)) {
+            return quizBoardMap.get(quizBoardID).getStudentScores();
+        } else {
+            throw new IllegalArgumentException("Quiz Board does not exist");
+        }
+    }
 }

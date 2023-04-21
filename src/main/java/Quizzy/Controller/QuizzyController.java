@@ -175,4 +175,12 @@ public class QuizzyController {
     public void updateStudentScoreBoard(String studentName, int quizBoard, float studentScore) {
         quizBoardService.updateStudentScoreBoard(studentName, quizBoard, studentScore);
     }
+
+    public void checkIfQuizTaken(String userName, int quizBoardID) {
+        quizBoardService.checkIfQuizTaken(userName, quizBoardID);
+    }
+
+    public Map<String, Float> viewTeacherQuizResults(int quizBoardID) {
+        return quizBoardService.viewTeacherQuizResults(quizBoardID);
+    }
 }

@@ -296,6 +296,10 @@ public class CommandLineInterface implements Serializable {
 
     private void takeQuiz() {
         boolean courseEnrolled = false;
+        String userName = "";
+        for (Map.Entry<String, Student> entry : studentInfo.entrySet()) {
+            userName = entry.getValue().getUsername();
+        }
         int quizBoardID = 0;
         System.out.println("***************************************");
         System.out.println("Please enter the QUIZ-BOARD - ID: ");
@@ -317,6 +321,7 @@ public class CommandLineInterface implements Serializable {
             switch (line.charAt(0)) {
                 case 'y' -> {
                     try {
+                        quizzyController.checkIfQuizTaken(userName, quizBoardID);
                         quizData = quizzyController.takeQuiz(quizBoardID);
                         // Student course and quiz validation
                         ArrayList<String> courseName = new ArrayList<>();
@@ -396,10 +401,12 @@ public class CommandLineInterface implements Serializable {
         System.out.println("Your Percentage: " + (studentScore / totalMarks) * 100 + "%");
         System.out.println("***************************************");
 
+        // Updating Services after quiz completion.
         quizzyController.updateStudentScore(studentName, quizBoardID, studentScore);
         quizzyController.updateStudentScoreBoard(studentName, quizBoardID, studentScore);
 
         // Final Call
+        saveData();
         studentMenu();
     }
 
@@ -602,7 +609,7 @@ public class CommandLineInterface implements Serializable {
                     createAQuiz();
                 }
                 case '2' -> {
-                    //TODO: viewTeacherQuizResults();
+                    viewTeacherQuizResults();
                 }
                 case '3' -> {
                     System.out.println("Returning to Main Menu...");
@@ -625,6 +632,41 @@ public class CommandLineInterface implements Serializable {
             System.out.println("Please enter a valid option !");
             quizMenu();
         }
+    }
+
+    private void viewTeacherQuizResults() {
+        int quizBoardID = 0;
+        String quizBoardName = "";
+        System.out.println("***************************************");
+        System.out.println("Quiz Results");
+        System.out.println("***************************************");
+        System.out.println("Enter the QuizBoard ID:");
+        try {
+            quizBoardID = Integer.parseInt(scanner.nextLine().trim());
+        } catch (NumberFormatException e) {
+            System.out.println("Please enter a valid QuizBoard ID!");
+            viewTeacherQuizResults();
+        }
+        try {
+            Map<String, Float> quizResults = quizzyController.viewTeacherQuizResults(quizBoardID);
+            quizBoardName = quizzyController.getQuizBoardName(quizBoardID);
+            if (quizResults.isEmpty()) {
+                throw new IllegalArgumentException("No Quiz Results Found!");
+            }
+            System.out.println("QuizBoard Name: " + quizBoardName);
+            System.out.println("***************************************");
+            for (Map.Entry<String, Float> entry : quizResults.entrySet()) {
+                System.out.println("Student Name: " + entry.getKey() + " \nScore: " + entry.getValue());
+            }
+            System.out.println("***************************************");
+            quizMenu();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Please try again!");
+            quizMenu();
+        }
+
+
     }
 
 

@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff18775a-ac22-43fb-9b14-cf18bf872cd5" name="Changes" comment="placed methods for defaults after a minor bug was found in the registration process.">
+    <list default="true" id="ff18775a-ac22-43fb-9b14-cf18bf872cd5" name="Changes" comment="Placed methods that update the respective data after quiz was attended by the student with proper credentials.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/Controller/QuizzyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Controller/QuizzyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/Model/QuizBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Model/QuizBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/Service/QuizBoardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Service/QuizBoardService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/Service/QuizService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Service/QuizService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/Service/StudentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Service/StudentService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/QuizBoardData.ser" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/QuizBoardData.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/studentData.ser" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/studentData.ser" afterDir="false" />
@@ -124,7 +121,7 @@
       <workItem from="1681723425314" duration="1276000" />
       <workItem from="1681725734231" duration="9237000" />
       <workItem from="1681923384124" duration="2359000" />
-      <workItem from="1682101130970" duration="2533000" />
+      <workItem from="1682101130970" duration="3608000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit 2">
       <created>1681047051802</created>
@@ -448,7 +445,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682096686007</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Placed methods that update the respective data after quiz was attended by the student with proper credentials.">
+      <created>1682103716850</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1682103716850</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -495,7 +499,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Rewriting a method due to data model being rewritten over and over again. (TODO placed in the method)." />
     <MESSAGE value="Fixed a concurrent bug and now teacher can delete a quizboard." />
     <MESSAGE value="Teacher can now view Quiz-boards via Course,ID and all (but only the ones they have created)." />
     <MESSAGE value="Cache Reference" />
@@ -520,7 +523,8 @@
     <MESSAGE value="TODO Implement a function." />
     <MESSAGE value="Fixed a minor bug in the registration process , where the account type is not set when other than default values are passed." />
     <MESSAGE value="placed methods for defaults after a minor bug was found in the registration process." />
-    <option name="LAST_COMMIT_MESSAGE" value="placed methods for defaults after a minor bug was found in the registration process." />
+    <MESSAGE value="Placed methods that update the respective data after quiz was attended by the student with proper credentials." />
+    <option name="LAST_COMMIT_MESSAGE" value="Placed methods that update the respective data after quiz was attended by the student with proper credentials." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -535,17 +539,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>1007</line>
+          <line>1050</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>964</line>
+          <line>1007</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>862</line>
+          <line>905</line>
           <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -570,12 +574,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>398</line>
+          <line>405</line>
           <option name="timeStamp" value="57" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>993</line>
+          <line>1036</line>
           <properties class="main.java.Quizzy.View.CommandLineInterface">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -608,6 +612,24 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="56" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/Quizzy/Service/QuizBoardService.java</url>
+          <line>170</line>
+          <properties class="main.java.Quizzy.Service.QuizBoardService" method="checkIfQuizTaken">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="58" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/Quizzy/Service/QuizBoardService.java</url>
+          <line>180</line>
+          <properties class="main.java.Quizzy.Service.QuizBoardService" method="viewTeacherQuizResults">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="59" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
