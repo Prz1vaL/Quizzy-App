@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff18775a-ac22-43fb-9b14-cf18bf872cd5" name="Changes" comment="Seperated the data model and service for teacher and student, as it is more independent in terms of scalability.">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/Service/TeacherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Service/TeacherService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/QuestionData.ser" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/QuizBoardData.ser" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/userData.ser" beforeDir="false" />
+    <list default="true" id="ff18775a-ac22-43fb-9b14-cf18bf872cd5" name="Changes" comment="More flexibility over the application.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Model/Student.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Service/StudentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,23 +43,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "TODO_SCOPE": "All Places",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="java.main" />
@@ -116,7 +115,7 @@
       <workItem from="1681676818772" duration="163000" />
       <workItem from="1681723425314" duration="1276000" />
       <workItem from="1681725734231" duration="9237000" />
-      <workItem from="1681923384124" duration="408000" />
+      <workItem from="1681923384124" duration="2359000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit 2">
       <created>1681047051802</created>
@@ -335,7 +334,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681923566529</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="More flexibility over the application.">
+      <created>1681923837398</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1681923837398</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -381,7 +387,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactored some lines of code." />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="TeacherMenu created..." />
     <MESSAGE value="Add some more validation checks for register Process." />
     <MESSAGE value="Teachers can now be able to delete their account." />
@@ -406,7 +412,8 @@
     <MESSAGE value="Teachers now are able to access the entire functionalities, fixed minor bugs such as proper order of calling methods, index exceptions, map update in appropriate places.&#10;&#10;I think it's safe to say that we can now create the student access center for the quizzy app." />
     <MESSAGE value="daily updates.." />
     <MESSAGE value="Seperated the data model and service for teacher and student, as it is more independent in terms of scalability." />
-    <option name="LAST_COMMIT_MESSAGE" value="Seperated the data model and service for teacher and student, as it is more independent in terms of scalability." />
+    <MESSAGE value="More flexibility over the application." />
+    <option name="LAST_COMMIT_MESSAGE" value="More flexibility over the application." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
