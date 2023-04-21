@@ -209,7 +209,7 @@ public class CommandLineInterface implements Serializable {
                     viewMyProfile();
                 }
                 case '5' -> {
-                    //TODO : changePassword();
+                    changeStudentPassword();
                 }
                 case '6' -> {
                     //TODO : deleteAccount();
@@ -230,6 +230,30 @@ public class CommandLineInterface implements Serializable {
             }
         } else {
             System.out.println("Please select a valid option: ");
+            studentMenu();
+        }
+    }
+
+    private void changeStudentPassword() {
+        System.out.println("***************************************");
+        System.out.println("*** Changing Password ***");
+        System.out.println("***************************************");
+        System.out.println("Please enter your current password: ");
+        String currentPassword = scanner.nextLine().trim();
+        String userName = "";
+        for (Map.Entry<String, Student> entry : studentInfo.entrySet()) {
+            userName = entry.getKey();
+        }
+        try {
+            quizzyController.validateStudentPassword(userName, currentPassword);
+            System.out.println("Please enter your new password: ");
+            String newPassword = scanner.nextLine().trim();
+            quizzyController.changeStudentPassword(userName, newPassword);
+            System.out.println("Password changed successfully!");
+            saveData();
+            studentMenu();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
             studentMenu();
         }
     }

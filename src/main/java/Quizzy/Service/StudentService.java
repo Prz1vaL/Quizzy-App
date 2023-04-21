@@ -4,6 +4,9 @@ import main.java.Quizzy.Model.AccountType;
 import main.java.Quizzy.Model.Student;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -66,5 +69,48 @@ public class StudentService implements Serializable {
         fi.close();
     }
 
+    public String hashPassword(String password) {
+        //Check for empty string
+        if (password.isEmpty()) {
+            throw new IllegalArgumentException("Password cannot be empty");
+        }
+        String hashedPassword = "";
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) hexString.append('0');
+                hexString.append(hex);
+            }
+            hashedPassword = hexString.toString();
+        } catch (NoSuchAlgorithmException e) {
+            System.out.println("No such algorithm");
+        }
+        return hashedPassword;
+    }
 
+    public void validatePassword(String userName, String currentPassword) {
+        if (currentPassword.isEmpty()) {
+            throw new IllegalArgumentException("Password cannot be empty");
+        }
+        String hashedPassword = hashPassword(currentPassword);
+        if (!students.get(userName.toLowerCase()).getPassword().equals(hashedPassword)) {
+            throw new IllegalArgumentException("Password is incorrect");
+        }
+    }
+
+    public void changePassword(String userName, String newPassword) {
+        String hashedPassword = hashPassword(newPassword);
+        if (newPassword.isEmpty()) {
+            throw new IllegalArgumentException("Password cannot be empty");
+        }
+        // Check if old password and new password are the same
+        if (students.get(userName.toLowerCase()).getPassword().equals(hashedPassword)) {
+            throw new IllegalArgumentException("New password cannot be the same as the old password");
+        } else {
+            students.get(userName.toLowerCase()).setPassword(hashedPassword);
+        }
+    }
 }

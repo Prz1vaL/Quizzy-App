@@ -135,4 +135,12 @@ public class QuizzyController {
     public Map<String, Student> validateStudentLogin(String userName, String hashedPassword) {
         return studentService.validateLogin(userName, hashedPassword);
     }
+
+    public void validateStudentPassword(String userName, String currentPassword) {
+        studentService.validatePassword(userName, currentPassword);
+    }
+
+    public void changeStudentPassword(String userName, String newPassword) {
+        studentService.changePassword(userName, newPassword);
+    }
 }
