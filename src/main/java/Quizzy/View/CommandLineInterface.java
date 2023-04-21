@@ -384,6 +384,7 @@ public class CommandLineInterface implements Serializable {
     private void deleteQuestion(Map<Integer, QuizBoard> quizBoard) {
         int quizBoardID = 0;
         String quizBoardName = "";
+        int questionNo = 0;
         for (Map.Entry<Integer, QuizBoard> entry : quizBoard.entrySet()) {
             quizBoardID = entry.getValue().getQuizID();
             quizBoardName = entry.getValue().getQuizBoardName();
@@ -392,10 +393,15 @@ public class CommandLineInterface implements Serializable {
         System.out.println("QuizBoard -" + quizBoardName.toUpperCase() + " Delete Question");
         System.out.println("***************************************");
         System.out.println("Please enter the Question No :");
-        int questionNo = Integer.parseInt(scanner.nextLine().trim());
-        if (questionNo == 0) {
+        try {
+            questionNo = Integer.parseInt(scanner.nextLine().trim());
+        } catch (NumberFormatException e) {
             System.out.println("Question No cannot be empty!");
-            deleteQuestion(quizBoard);
+            editingQuiz(quizBoard);
+        }
+        String questionNoToString = String.valueOf(questionNo);
+        if (questionNo == 0 | questionNoToString.isEmpty()) {
+            throw new IllegalArgumentException("Question No cannot be empty!");
         }
         try {
             quizzyController.deleteQuestion(quizBoardID, questionNo);
@@ -403,9 +409,9 @@ public class CommandLineInterface implements Serializable {
             System.out.println("Question deleted successfully!");
             saveData();
             editingQuiz(quizBoard);
-        } catch (Exception e) {
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            quizMenu();
+            editingQuiz(quizBoard);
         }
     }
 
@@ -809,8 +815,8 @@ public class CommandLineInterface implements Serializable {
             String newPassword = scanner.nextLine().trim();
             quizzyController.changePassword(userName, newPassword);
             System.out.println("Password changed successfully!");
-            teacherMenu();
             saveData();
+            teacherMenu();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             teacherMenu();

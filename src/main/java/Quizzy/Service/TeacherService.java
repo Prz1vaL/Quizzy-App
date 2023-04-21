@@ -155,6 +155,7 @@ public class TeacherService implements Serializable {
     }
 
     public ArrayList<String> getStudentsByCourse(String courseName) {
+        //TODO : SHIFT THIS METHOD TO STUDENT SERVICE.
         ArrayList<String> students = new ArrayList<>();
         for (Map.Entry<String, Teacher> user : users.entrySet()) {
             if (user.getValue().getAccountType().equals(AccountType.STUDENT)) {
