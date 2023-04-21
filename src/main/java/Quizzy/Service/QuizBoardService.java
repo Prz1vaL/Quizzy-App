@@ -149,4 +149,12 @@ public class QuizBoardService implements Serializable {
             throw new IllegalArgumentException("Quiz Board does not exist");
         }
     }
+
+    public String getQuizBoardName(int quizBoardID) {
+        if (quizBoardMap.containsKey(quizBoardID)) {
+            return quizBoardMap.get(quizBoardID).getQuizBoardName();
+        } else {
+            throw new IllegalArgumentException("Quiz Board does not exist");
+        }
+    }
 }

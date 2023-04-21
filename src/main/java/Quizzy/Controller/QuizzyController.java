@@ -155,4 +155,8 @@ public class QuizzyController {
     public String getQuizBoardCourse(int quizBoardID) {
         return quizBoardService.getQuizBoardCourse(quizBoardID);
     }
+
+    public String getQuizBoardName(int quizBoardID) {
+        return quizBoardService.getQuizBoardName(quizBoardID);
+    }
 }

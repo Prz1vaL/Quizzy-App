@@ -244,6 +244,7 @@ public class CommandLineInterface implements Serializable {
     }
 
     private void takeQuiz() {
+        boolean courseEnrolled = false;
         int quizBoardID = 0;
         System.out.println("***************************************");
         System.out.println("Please enter the QUIZ-BOARD - ID: ");
@@ -264,7 +265,6 @@ public class CommandLineInterface implements Serializable {
         if (line.length() == 1) {
             switch (line.charAt(0)) {
                 case 'y' -> {
-                    //TODO: FURTHER TESTING AND QUIZ.
                     try {
                         quizData = quizzyController.takeQuiz(quizBoardID);
                         // Student course and quiz validation
@@ -274,10 +274,16 @@ public class CommandLineInterface implements Serializable {
                         }
                         String quizAllocatedCourse = "";
                         quizAllocatedCourse = quizzyController.getQuizBoardCourse(quizBoardID);
+                        String quizBoardName = quizzyController.getQuizBoardName(quizBoardID);
                         for (String course : courseName) {
-                            if (!course.toLowerCase().equals(quizAllocatedCourse.toLowerCase())) {
-                                throw new IllegalArgumentException("You are not enrolled in this course and cannot take this quiz!");
+                            if (course.toLowerCase().equals(quizAllocatedCourse.toLowerCase())) {
+                                System.out.println("Quiz Started!");
+                                quizStart(quizAllocatedCourse, quizBoardID, quizBoardName);
+                                courseEnrolled = true;
                             }
+                        }
+                        if (courseEnrolled == false) {
+                            throw new IllegalArgumentException("You are not enrolled in this course!");
                         }
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
@@ -297,6 +303,47 @@ public class CommandLineInterface implements Serializable {
             System.out.println("Please select a valid option: ");
             takeQuiz();
         }
+
+    }
+
+    private void quizStart(String quizAllocatedCourse, int quizBoardID, String quizBoardName) {
+
+        int totalQuestions = 0;
+        int totalMarks = 0;
+        float studentScore = 0;
+        String studentName = "";
+        String studentAnswer = "";
+        String correctAnswer = "";
+        for (Map.Entry<String, Student> entry : studentInfo.entrySet()) {
+            studentName = entry.getKey();
+        }
+        totalQuestions = quizData.size();
+        for (Map.Entry<Integer, Quiz> entry : quizData.entrySet()) {
+            totalMarks += entry.getValue().getQuizPoints();
+        }
+        System.out.println("***************************************");
+        System.out.println("Quiz Board: " + quizBoardName.toUpperCase());
+        System.out.println("Quiz-Board ID: " + quizBoardID);
+        System.out.println("Course: " + quizAllocatedCourse.toUpperCase());
+        System.out.println("Total Questions: " + totalQuestions);
+        System.out.println("Total Marks: " + totalMarks);
+        System.out.println("***************************************");
+        int questionNumber = 1;
+        for (Map.Entry<Integer, Quiz> entry : quizData.entrySet()) {
+            System.out.println("Question " + questionNumber + ": " + entry.getValue().getQuizQuestion());
+            correctAnswer = entry.getValue().getCorrectAnswer();
+            studentAnswer = scanner.nextLine().trim().toLowerCase();
+            if (studentAnswer.equals(correctAnswer.toLowerCase())) {
+                studentScore += entry.getValue().getQuizPoints();
+            }
+            questionNumber++;
+        }
+        System.out.println("***************************************");
+        System.out.println("Quiz Completed!");
+        System.out.println("Your Score: " + studentScore + " / " + totalMarks);
+        System.out.println("Your Percentage: " + (studentScore / totalMarks) * 100 + "%");
+        System.out.println("***************************************");
+        //TODO : UPDATE THE RESPECTIVE SERVICES AND SAVE THE DATA BEFORE EXITING THE METHOD.
 
     }
 
