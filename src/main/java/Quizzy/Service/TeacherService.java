@@ -155,18 +155,6 @@ public class TeacherService implements Serializable {
         }
     }
 
-    public ArrayList<String> getStudentsByCourse(String courseName) {
-        //TODO : SHIFT THIS METHOD TO STUDENT SERVICE.
-        ArrayList<String> students = new ArrayList<>();
-        for (Map.Entry<String, Teacher> user : teachers.entrySet()) {
-            if (user.getValue().getAccountType().equals(AccountType.STUDENT)) {
-                if (user.getValue().getCoursesEnrolled().contains(courseName)) {
-                    students.add(user.getValue().getFullName());
-                }
-            }
-        }
-        return students;
-    }
 
     public void validateIfTeacherCourse(String courseName, String userName) {
         if (courseName.isEmpty() || userName.isEmpty()) {

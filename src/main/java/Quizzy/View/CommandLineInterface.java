@@ -379,7 +379,7 @@ public class CommandLineInterface implements Serializable {
                     quizMenu();
                 }
                 case '2' -> {
-                    //TODO: viewStudents();
+                    viewStudents();
                 }
                 case '3' -> {
                     viewTeacherCourses();
@@ -955,6 +955,7 @@ public class CommandLineInterface implements Serializable {
         }
         try {
             quizzyController.validateIfTeacherCourse(courseName, userName);
+
             ArrayList<String> students = quizzyController.getStudentsByCourse(courseName);
             System.out.println("The students enrolled in " + courseName + " are: ");
             int i = 0;

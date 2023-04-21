@@ -122,4 +122,14 @@ public class StudentService implements Serializable {
         }
 
     }
+
+    public ArrayList<String> getStudentsByCourse(String courseName) {
+        ArrayList<String> students = new ArrayList<>();
+        for (Map.Entry<String, Student> entry : this.students.entrySet()) {
+            if (entry.getValue().getCoursesEnrolled().contains(courseName.toLowerCase())) {
+                students.add(entry.getKey());
+            }
+        }
+        return students;
+    }
 }

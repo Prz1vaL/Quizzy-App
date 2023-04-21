@@ -68,7 +68,7 @@ public class QuizzyController {
     }
 
     public ArrayList<String> getStudentsByCourse(String courseName) {
-        return teacherService.getStudentsByCourse(courseName);
+        return studentService.getStudentsByCourse(courseName);
     }
 
     public void validateIfTeacherCourse(String courseName, String userName) {
