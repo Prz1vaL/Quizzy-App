@@ -109,7 +109,10 @@ public class CommandLineInterface implements Serializable {
                         case '5' -> {
                             changelog();
                         }
-                        default -> System.out.println("Please select a valid option: ");
+                        default -> {
+                            System.out.println("Please select a valid option: ");
+                            start();
+                        }
                     }
                 } else {
                     System.out.println("Please select a valid option: ");
@@ -157,7 +160,10 @@ public class CommandLineInterface implements Serializable {
                 case '3' -> {
                     start();
                 }
-                default -> System.out.println("Please select a valid option: ");
+                default -> {
+                    System.out.println("Please select a valid option: ");
+                    login();
+                }
 
             }
         } else {
@@ -226,7 +232,10 @@ public class CommandLineInterface implements Serializable {
                     saveData();
                     System.exit(0);
                 }
-                default -> System.out.println("Please select a valid option: ");
+                default -> {
+                    System.out.println("Please select a valid option: ");
+                    studentMenu();
+                }
             }
         } else {
             System.out.println("Please select a valid option: ");
@@ -460,7 +469,10 @@ public class CommandLineInterface implements Serializable {
                     saveData();
                     start();
                 }
-                default -> System.out.println("Please select a valid option: ");
+                default -> {
+                    System.out.println("Please select a valid option: ");
+                    teacherMenu();
+                }
             }
         } else {
             System.out.println("Please select a valid option: ");
