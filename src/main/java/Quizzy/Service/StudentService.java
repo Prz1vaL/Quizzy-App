@@ -113,4 +113,13 @@ public class StudentService implements Serializable {
             students.get(userName.toLowerCase()).setPassword(hashedPassword);
         }
     }
+
+    public void deleteAccount(String userName) {
+        if (students.containsKey(userName.toLowerCase())) {
+            students.remove(userName.toLowerCase());
+        } else {
+            throw new IllegalArgumentException("Username does not exist");
+        }
+
+    }
 }

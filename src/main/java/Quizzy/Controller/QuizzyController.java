@@ -143,4 +143,8 @@ public class QuizzyController {
     public void changeStudentPassword(String userName, String newPassword) {
         studentService.changePassword(userName, newPassword);
     }
+
+    public void deleteStudentAccount(String userName) {
+        studentService.deleteAccount(userName);
+    }
 }

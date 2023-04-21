@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff18775a-ac22-43fb-9b14-cf18bf872cd5" name="Changes" comment="Minor bug fix : Cache data was saved incorrectly causing map to be null.&#10;Fixed the issue in the service layer where the return data was always empty.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="ff18775a-ac22-43fb-9b14-cf18bf872cd5" name="Changes" comment="Feature : Students can now change their password, if new password is old password, system throws an error.">
       <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/Controller/QuizzyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Controller/QuizzyController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/Service/StudentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Service/StudentService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java" afterDir="false" />
@@ -26,6 +25,7 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
+        <option value="apm30 &lt;m.ajaypradeep@icloud.com&gt;" />
         <option value="Ajay Pradeep Mahadeven &lt;m.ajaypradeep@icloud.com&gt;" />
       </list>
     </option>
@@ -378,7 +378,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682088692904</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Feature : Students can now change their password, if new password is old password, system throws an error.">
+      <created>1682089542334</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1682089542334</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -425,7 +432,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Rewrote the view code to hold two types (student,teacher) of user data (cache) and methods were changed accordingly. While it may be easier to just hold onto one data for both parties, problems may occur during concurrent or simultaneous log-in." />
     <MESSAGE value="Teacher are now able to change their password (validation checks are placed to ensure tight password policies)." />
     <MESSAGE value="Teachers can view the courses that they are teaching." />
     <MESSAGE value="optimised and reformatted code." />
@@ -450,7 +456,8 @@
     <MESSAGE value="Students can now register and log-in to the application." />
     <MESSAGE value="For some reason, an entire method teacherMenu code went missing , rewrote and tested." />
     <MESSAGE value="Minor bug fix : Cache data was saved incorrectly causing map to be null.&#10;Fixed the issue in the service layer where the return data was always empty." />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor bug fix : Cache data was saved incorrectly causing map to be null.&#10;Fixed the issue in the service layer where the return data was always empty." />
+    <MESSAGE value="Feature : Students can now change their password, if new password is old password, system throws an error." />
+    <option name="LAST_COMMIT_MESSAGE" value="Feature : Students can now change their password, if new password is old password, system throws an error." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -465,17 +472,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>805</line>
+          <line>836</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>762</line>
+          <line>793</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>660</line>
+          <line>691</line>
           <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -490,7 +497,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>791</line>
+          <line>822</line>
           <properties class="main.java.Quizzy.View.CommandLineInterface">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />

@@ -7,7 +7,6 @@ import java.io.Serializable;
 import java.util.*;
 
 
-
 public class CommandLineInterface implements Serializable {
 
     QuizzyController quizzyController = new QuizzyController();
@@ -212,7 +211,7 @@ public class CommandLineInterface implements Serializable {
                     changeStudentPassword();
                 }
                 case '6' -> {
-                    //TODO : deleteAccount();
+                    deleteStudentAccount();
                 }
                 case '7' -> {
                     System.out.println("Logging out...");
@@ -227,6 +226,37 @@ public class CommandLineInterface implements Serializable {
                     System.exit(0);
                 }
                 default -> System.out.println("Please select a valid option: ");
+            }
+        } else {
+            System.out.println("Please select a valid option: ");
+            studentMenu();
+        }
+    }
+
+    private void deleteStudentAccount() {
+        System.out.println("Are you sure you want to delete your account? (Y/N)");
+        String line = scanner.nextLine().trim().toLowerCase();
+        String userName = "";
+        for (Map.Entry<String, Student> entry : studentInfo.entrySet()) {
+            userName = entry.getKey();
+        }
+        if (line.length() == 1) {
+            switch (line.charAt(0)) {
+                case 'y' -> {
+                    quizzyController.deleteStudentAccount(userName);
+                    System.out.println("Account Deleted!");
+                    loginStatus = false;
+                    saveData();
+                    start();
+                }
+                case 'n' -> {
+                    studentMenu();
+                }
+
+                default -> {
+                    System.out.println("Please select a valid option: ");
+                    deleteStudentAccount();
+                }
             }
         } else {
             System.out.println("Please select a valid option: ");
