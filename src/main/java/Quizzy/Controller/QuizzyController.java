@@ -1,11 +1,9 @@
 package main.java.Quizzy.Controller;
 
-import main.java.Quizzy.Model.AccountType;
-import main.java.Quizzy.Model.Quiz;
-import main.java.Quizzy.Model.QuizBoard;
-import main.java.Quizzy.Model.Teacher;
+import main.java.Quizzy.Model.*;
 import main.java.Quizzy.Service.QuizBoardService;
 import main.java.Quizzy.Service.QuizService;
+import main.java.Quizzy.Service.StudentService;
 import main.java.Quizzy.Service.TeacherService;
 
 import java.io.IOException;
@@ -21,6 +19,8 @@ public class QuizzyController {
 
     QuizService quizService = new QuizService();
 
+    StudentService studentService = new StudentService();
+
     public String hashPassword(String password) {
         return teacherService.hashPassword(password);
     }
@@ -33,7 +33,7 @@ public class QuizzyController {
         teacherService.validateUsername(username);
     }
 
-    public void register(String fullName, String email, String username, String sha256, AccountType accountType, ArrayList<String> coursesEnrolled, Date dateCreated) {
+    public void teacherRegister(String fullName, String email, String username, String sha256, AccountType accountType, ArrayList<String> coursesEnrolled, Date dateCreated) {
         teacherService.register(fullName, email, username, sha256, accountType, coursesEnrolled, dateCreated);
     }
 
@@ -41,15 +41,17 @@ public class QuizzyController {
         teacherService.saveData();
         quizBoardService.saveData();
         quizService.saveData();
+        studentService.saveData();
     }
 
     public void loadData() throws IOException, ClassNotFoundException {
         teacherService.loadData();
         quizBoardService.loadData();
         quizService.loadData();
+        studentService.loadData();
     }
 
-    public Map<String, Teacher> validateLogin(String userName, String password) {
+    public Map<String, Teacher> validateTeacherLogin(String userName, String password) {
         return teacherService.validateLogin(userName, password);
     }
 
@@ -95,7 +97,6 @@ public class QuizzyController {
 
     public void deleteQuizBoard(String quizBoardID) {
         quizBoardService.deleteQuizBoard(quizBoardID);
-
     }
 
     public Map<Integer, QuizBoard> viewQuizBoardByQuizBoardID(String teacherUserName, String quizBoardID) {
@@ -125,5 +126,13 @@ public class QuizzyController {
 
     public void deleteQuizBoardQuestion(int quizBoardID) {
         quizBoardService.deleteQuizBoardQuestion(quizBoardID);
+    }
+
+    public void studentRegister(String fullName, String email, String username, String sha256, AccountType accountType, ArrayList<String> coursesEnrolled, Date dateCreated) {
+        studentService.register(fullName, email, username, sha256, accountType, coursesEnrolled, dateCreated);
+    }
+
+    public Map<String, Student> validateStudentLogin(String userName, String hashedPassword) {
+        return studentService.validateLogin(userName, hashedPassword);
     }
 }

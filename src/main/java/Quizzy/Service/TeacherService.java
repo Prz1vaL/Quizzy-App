@@ -14,14 +14,15 @@ import java.util.Map;
 
 public class TeacherService implements Serializable {
 
-    private Map<String, Teacher> users = new HashMap<>();
+    private Map<String, Teacher> teachers = new HashMap<>();
 
 
     /**
-     * Converts a password to a hashed password
+     * Converts a password to a hashed password.
+     * Common method for both Teacher and Student.
      *
-     * @param password - password to be hashed
-     * @return hashed password
+     * @param password - password to be hashed.
+     * @return hashed password.
      */
     public String hashPassword(String password) {
         //Check for empty string
@@ -67,7 +68,7 @@ public class TeacherService implements Serializable {
             throw new IllegalArgumentException("Username is not in the correct format");
         }
         // Check if the userName already exists
-        if (users.containsKey(username)) {
+        if (teachers.containsKey(username)) {
             throw new IllegalArgumentException("Username already exists");
         }
     }
@@ -79,7 +80,7 @@ public class TeacherService implements Serializable {
         }
         // Create a new teacher
         Teacher teacher = new Teacher(fullName.toLowerCase(), email.toLowerCase(), username.toLowerCase(), sha256, accountType, coursesEnrolled, dateCreated);
-        users.put(username.toLowerCase(), teacher);
+        teachers.put(username.toLowerCase(), teacher);
     }
 
     /**
@@ -90,7 +91,7 @@ public class TeacherService implements Serializable {
     public void saveData() throws IOException {
         FileOutputStream f = new FileOutputStream("src/resources/teacherData.ser");
         ObjectOutputStream o = new ObjectOutputStream(f);
-        o.writeObject(users);
+        o.writeObject(teachers);
         o.close();
         f.close();
     }
@@ -98,13 +99,13 @@ public class TeacherService implements Serializable {
     public void loadData() throws IOException, ClassNotFoundException {
         FileInputStream fi = new FileInputStream("src/resources/teacherData.ser");
         ObjectInputStream oi = new ObjectInputStream(fi);
-        users = (Map<String, Teacher>) oi.readObject();
+        teachers = (Map<String, Teacher>) oi.readObject();
         oi.close();
         fi.close();
     }
 
     public Map<String, Teacher> validateLogin(String userName, String password) {
-        if (users.isEmpty()) {
+        if (teachers.isEmpty()) {
             throw new IllegalArgumentException("No users found");
         }
         Map<String, Teacher> userInfo = new HashMap<>();
@@ -113,9 +114,9 @@ public class TeacherService implements Serializable {
             throw new IllegalArgumentException("Username or password cannot be empty");
         }
         //Check if userName and password match
-        if (users.containsKey(userName.toLowerCase())) {
-            if (users.get(userName.toLowerCase()).getPassword().equals(password)) {
-                userInfo.put(userName.toLowerCase(), users.get(userName.toLowerCase()));
+        if (teachers.containsKey(userName.toLowerCase())) {
+            if (teachers.get(userName.toLowerCase()).getPassword().equals(password)) {
+                userInfo.put(userName.toLowerCase(), teachers.get(userName.toLowerCase()));
             }
         } else {
             throw new IllegalArgumentException("Username or password is incorrect");
@@ -124,8 +125,8 @@ public class TeacherService implements Serializable {
     }
 
     public void deleteAccount(String userName) {
-        if (users.containsKey(userName.toLowerCase())) {
-            users.remove(userName.toLowerCase());
+        if (teachers.containsKey(userName.toLowerCase())) {
+            teachers.remove(userName.toLowerCase());
         } else {
             throw new IllegalArgumentException("Username does not exist");
         }
@@ -136,7 +137,7 @@ public class TeacherService implements Serializable {
             throw new IllegalArgumentException("Password cannot be empty");
         }
         String hashedPassword = hashPassword(currentPassword);
-        if (!users.get(userName.toLowerCase()).getPassword().equals(hashedPassword)) {
+        if (!teachers.get(userName.toLowerCase()).getPassword().equals(hashedPassword)) {
             throw new IllegalArgumentException("Password is incorrect");
         }
     }
@@ -147,17 +148,17 @@ public class TeacherService implements Serializable {
             throw new IllegalArgumentException("Password cannot be empty");
         }
         // Check if old password and new password are the same
-        if (users.get(userName.toLowerCase()).getPassword().equals(hashedPassword)) {
+        if (teachers.get(userName.toLowerCase()).getPassword().equals(hashedPassword)) {
             throw new IllegalArgumentException("New password cannot be the same as the old password");
         } else {
-            users.get(userName.toLowerCase()).setPassword(hashedPassword);
+            teachers.get(userName.toLowerCase()).setPassword(hashedPassword);
         }
     }
 
     public ArrayList<String> getStudentsByCourse(String courseName) {
         //TODO : SHIFT THIS METHOD TO STUDENT SERVICE.
         ArrayList<String> students = new ArrayList<>();
-        for (Map.Entry<String, Teacher> user : users.entrySet()) {
+        for (Map.Entry<String, Teacher> user : teachers.entrySet()) {
             if (user.getValue().getAccountType().equals(AccountType.STUDENT)) {
                 if (user.getValue().getCoursesEnrolled().contains(courseName)) {
                     students.add(user.getValue().getFullName());
@@ -171,7 +172,7 @@ public class TeacherService implements Serializable {
         if (courseName.isEmpty() || userName.isEmpty()) {
             throw new IllegalArgumentException("Empty fields are not allowed");
         }
-        if (!users.get(userName.toLowerCase()).getCoursesEnrolled().contains(courseName.toLowerCase())) {
+        if (!teachers.get(userName.toLowerCase()).getCoursesEnrolled().contains(courseName.toLowerCase())) {
             throw new IllegalArgumentException("You are not enrolled in this course or this course does not exist.");
         }
     }
@@ -180,20 +181,20 @@ public class TeacherService implements Serializable {
         if (courseName.isEmpty()) {
             throw new IllegalArgumentException("Course name cannot be empty");
         }
-        if (users.get(userName.toLowerCase()).getCoursesEnrolled().contains(courseName.toLowerCase())) {
+        if (teachers.get(userName.toLowerCase()).getCoursesEnrolled().contains(courseName.toLowerCase())) {
             throw new IllegalArgumentException("You are already enrolled in this course");
         }
-        users.get(userName.toLowerCase()).getCoursesEnrolled().add(courseName.toLowerCase());
+        teachers.get(userName.toLowerCase()).getCoursesEnrolled().add(courseName.toLowerCase());
     }
 
     public void removeCourse(String courseName, String userName) {
         if (courseName.isEmpty()) {
             throw new IllegalArgumentException("Course name cannot be empty");
         }
-        if (!users.get(userName.toLowerCase()).getCoursesEnrolled().contains(courseName.toLowerCase())) {
+        if (!teachers.get(userName.toLowerCase()).getCoursesEnrolled().contains(courseName.toLowerCase())) {
             throw new IllegalArgumentException("You are not enrolled in this course");
         }
-        users.get(userName.toLowerCase()).getCoursesEnrolled().remove(courseName.toLowerCase());
+        teachers.get(userName.toLowerCase()).getCoursesEnrolled().remove(courseName.toLowerCase());
     }
 
 

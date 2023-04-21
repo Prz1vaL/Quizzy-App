@@ -1,10 +1,7 @@
 package main.java.Quizzy.View;
 
 import main.java.Quizzy.Controller.QuizzyController;
-import main.java.Quizzy.Model.AccountType;
-import main.java.Quizzy.Model.Quiz;
-import main.java.Quizzy.Model.QuizBoard;
-import main.java.Quizzy.Model.Teacher;
+import main.java.Quizzy.Model.*;
 
 import java.io.Serializable;
 import java.util.*;
@@ -24,7 +21,7 @@ public class CommandLineInterface implements Serializable {
 
     private Map<String, Teacher> teacherInfo = new HashMap<>();
 
-    private Map<String, Teacher> studentInfo = new HashMap<>();
+    private Map<String, Student> studentInfo = new HashMap<>();
 
 
     // End of Caching the user Data
@@ -142,33 +139,50 @@ public class CommandLineInterface implements Serializable {
         System.out.println("***************************************");
         System.out.println("*** Login Page ***");
         System.out.println("***************************************");
+        System.out.println("1. Teacher Login");
+        System.out.println("2. Student Login");
+        System.out.println("3. Back");
+        System.out.println("Please select an option: ");
+        System.out.println("***************************************");
+        String line = scanner.nextLine();
+        if (line.length() == 1) {
+            switch (line.charAt(0)) {
+                case '1' -> {
+                    teacherLogin();
+                }
+                case '2' -> {
+                    studentLogin();
+                }
+                case '3' -> {
+                    start();
+                }
+                default -> System.out.println("Please select a valid option: ");
+
+            }
+        } else {
+            System.out.println("Please select a valid option: ");
+            start();
+        }
+    }
+
+    private void studentLogin() {
+        System.out.println("***************************************");
         System.out.println("Please enter your Username: ");
         String userName = scanner.nextLine().trim();
         System.out.println("Please enter your Password: ");
         String password = scanner.nextLine().trim();
         try {
             String hashedPassword = quizzyController.hashPassword(password);
-            Map<String, Teacher> localData = quizzyController.validateLogin(userName, hashedPassword);
-            if (localData.isEmpty()) {
+            Map<String, Student> studentData = quizzyController.validateStudentLogin(userName, hashedPassword);
+            if (studentData.isEmpty()) {
                 throw new IllegalArgumentException("Invalid Username or Password!");
             }
-            AccountType accountType = localData.get(userName).getAccountType();
-            if (accountType == AccountType.TEACHER) {
-                teacherInfo = localData;
-            } else {
-                studentInfo = localData;
-            }
+            studentInfo = studentData;
             System.out.println("Login Successful!");
             loginStatus = true;
             System.out.println("***************************************");
             System.out.println("Welcome " + userName + "!");
-            if (accountType == AccountType.TEACHER) {
-                System.out.println("You are a Teacher!");
-                teacherMenu();
-            } else {
-                System.out.println("You are a Student!");
-                // TODO : studentMenu();
-            }
+            studentMenu();
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Please try again!");
@@ -176,47 +190,57 @@ public class CommandLineInterface implements Serializable {
         }
     }
 
-    private void teacherMenu() {
-        teacherMenuMessage();
-        String line = scanner.nextLine().trim();
-        if (line.length() == 1) {
-            switch (line.charAt(0)) {
-                case '1' -> {
-                    quizMenu();
-                }
-                case '2' -> {
-                    viewStudents();
-                }
-                case '3' -> {
-                    viewTeacherCourses();
-                }
-                case '4' -> {
-                    viewTeacherDetails();
-                }
-                case '5' -> {
-                    deleteTeacherAccount();
-                }
-                case '6' -> {
-                    changeTeacherPassword();
-                }
-                case '7' -> {
-                    changeCourseDetails();
-                }
-                case '8' -> {
-                    System.out.println("Logging out...");
-                    loginStatus = false;
-                    saveData();
-                    start();
-                }
-                default -> {
-                    System.out.println("Please select a valid option: ");
-                    teacherMenu();
-                }
+    private void studentMenu() {
+        studentMenuMessage();
+        //TODO : STUDENT MENU
+        start();
+    }
+
+    private void studentMenuMessage() {
+        String Message = """
+                ***************************************
+                *** Student Menu ***
+                ***************************************
+                1. Take a Quiz
+                2. View Quiz Results
+                3. View My Profile
+                4. Change Password
+                5. Delete Account
+                6. Logout
+                7. Exit the Application
+                Please select an option: 
+                ***************************************""";
+        System.out.println(Message);
+    }
+
+
+    private void teacherLogin() {
+        System.out.println("***************************************");
+        System.out.println("Please enter your Username: ");
+        String userName = scanner.nextLine().trim();
+        System.out.println("Please enter your Password: ");
+        String password = scanner.nextLine().trim();
+        try {
+            String hashedPassword = quizzyController.hashPassword(password);
+            Map<String, Teacher> teacherData = quizzyController.validateTeacherLogin(userName, hashedPassword);
+            if (teacherData.isEmpty()) {
+                throw new IllegalArgumentException("Invalid Username or Password!");
             }
-        } else {
-            System.out.println("Please select a valid option: ");
+            teacherInfo = teacherData;
+            System.out.println("Login Successful!");
+            loginStatus = true;
+            System.out.println("***************************************");
+            System.out.println("Welcome " + userName + "!");
             teacherMenu();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Please try again!");
+            start();
         }
+
+    }
+
+    private void teacherMenu() {
 
     }
 
@@ -948,7 +972,11 @@ public class CommandLineInterface implements Serializable {
                 }
             }
             Date dateCreated = new Date();
-            quizzyController.register(fullName, email, username, sha256, accountType, coursesEnrolled, dateCreated);
+            if (accountType == AccountType.STUDENT) {
+                quizzyController.studentRegister(fullName, email, username, sha256, accountType, coursesEnrolled, dateCreated);
+            } else if (accountType == AccountType.TEACHER) {
+                quizzyController.teacherRegister(fullName, email, username, sha256, accountType, coursesEnrolled, dateCreated);
+            }
             System.out.println("Registration Successful!");
             System.out.println("Please Login to continue...");
             saveData();
