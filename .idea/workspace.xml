@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff18775a-ac22-43fb-9b14-cf18bf872cd5" name="Changes" comment="More flexibility over the application.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Model/Student.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Service/StudentService.java" afterDir="false" />
+    <list default="true" id="ff18775a-ac22-43fb-9b14-cf18bf872cd5" name="Changes" comment="Completion of the program. Haven't test coverage yet.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,11 +22,13 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Ajay Pradeep Mahadeven &lt;m.ajaypradeep@icloud.com&gt;" />
+        <option value="apm30 &lt;m.ajaypradeep@icloud.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="jar:///Library/Java/JavaVirtualMachines/amazon-corretto-17.jdk/Contents/Home/lib/src.zip!/java.base/java/lang/String.java" root0="SKIP_INSPECTION" />
-    <setting file="jar:///Library/Java/JavaVirtualMachines/amazon-corretto-17.jdk/Contents/Home/lib/src.zip!/java.base/java/util/HashMap.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -43,24 +44,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "TODO_SCOPE": "All Places",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="java.main" />
@@ -116,6 +117,7 @@
       <workItem from="1681723425314" duration="1276000" />
       <workItem from="1681725734231" duration="9237000" />
       <workItem from="1681923384124" duration="2359000" />
+      <workItem from="1682101130970" duration="3608000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit 2">
       <created>1681047051802</created>
@@ -341,28 +343,118 @@
       <option name="project" value="LOCAL" />
       <updated>1681923837398</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Reverting some changes back.">
+      <created>1682083739019</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1682083739019</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Students can now register and log-in to the application.">
+      <created>1682086106956</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1682086106956</updated>
+    </task>
+    <task id="LOCAL-00035" summary="For some reason, an entire method teacherMenu code went missing , rewrote and tested.">
+      <created>1682087540983</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1682087540983</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Minor bug fix : Cache data was saved incorrectly causing map to be null.&#10;Fixed the issue in the service layer where the return data was always empty.">
+      <created>1682088474923</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1682088474923</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Minor bug fix : Cache data was saved incorrectly causing map to be null.&#10;Fixed the issue in the service layer where the return data was always empty.">
+      <created>1682088692904</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1682088692904</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Feature : Students can now change their password, if new password is old password, system throws an error.">
+      <created>1682089542334</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1682089542334</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Feature : Students can now delete their account.">
+      <created>1682090030194</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1682090030194</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Feature : Teachers can now view the students enrolled in the courses they teach or enrolled themselves.">
+      <created>1682090298423</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1682090298423</updated>
+    </task>
+    <task id="LOCAL-00041" summary="made a minor change in student model for quiz scores to store int as a float.">
+      <created>1682091266317</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1682091266317</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Take Quiz Implemented.">
+      <created>1682091964463</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1682091964463</updated>
+    </task>
+    <task id="LOCAL-00043" summary="TODO Implement a function.">
+      <created>1682092035174</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1682092035174</updated>
+    </task>
+    <task id="LOCAL-00044" summary="TODO Implement a function.">
+      <created>1682092067514</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1682092067514</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Fixed a minor bug in the registration process , where the account type is not set when other than default values are passed.">
+      <created>1682096561344</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1682096561344</updated>
+    </task>
+    <task id="LOCAL-00046" summary="placed methods for defaults after a minor bug was found in the registration process.">
+      <created>1682096686007</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1682096686007</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Placed methods that update the respective data after quiz was attended by the student with proper credentials.">
+      <created>1682103716850</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1682103716850</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="User">
-          <value>
-            <list>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="*" />
-                </option>
-              </RecentGroup>
-            </list>
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
@@ -385,22 +477,24 @@
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="User">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="*" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="TeacherMenu created..." />
-    <MESSAGE value="Add some more validation checks for register Process." />
-    <MESSAGE value="Teachers can now be able to delete their account." />
-    <MESSAGE value="Teachers can now view their Account Details." />
-    <MESSAGE value="Rewrote the view code to hold two types (student,teacher) of user data (cache) and methods were changed accordingly. While it may be easier to just hold onto one data for both parties, problems may occur during concurrent or simultaneous log-in." />
-    <MESSAGE value="Teacher are now able to change their password (validation checks are placed to ensure tight password policies)." />
-    <MESSAGE value="Teachers can view the courses that they are teaching." />
-    <MESSAGE value="optimised and reformatted code." />
-    <MESSAGE value="change in LICENSE." />
-    <MESSAGE value="rewrote the menu to compress and optimise the input when going down the chain." />
-    <MESSAGE value="Quiz-Menu for the teachers is up and running , basic functions (going back options are up and running but core implementations such as create/delete/view (Quiz) is TODO." />
-    <MESSAGE value="Created a Quiz Model to hold data for Quizzes (not final version , may subject to change)." />
-    <MESSAGE value="Rewriting a method due to data model being rewritten over and over again. (TODO placed in the method)." />
     <MESSAGE value="Fixed a concurrent bug and now teacher can delete a quizboard." />
     <MESSAGE value="Teacher can now view Quiz-boards via Course,ID and all (but only the ones they have created)." />
     <MESSAGE value="Cache Reference" />
@@ -413,7 +507,20 @@
     <MESSAGE value="daily updates.." />
     <MESSAGE value="Seperated the data model and service for teacher and student, as it is more independent in terms of scalability." />
     <MESSAGE value="More flexibility over the application." />
-    <option name="LAST_COMMIT_MESSAGE" value="More flexibility over the application." />
+    <MESSAGE value="Reverting some changes back." />
+    <MESSAGE value="Students can now register and log-in to the application." />
+    <MESSAGE value="For some reason, an entire method teacherMenu code went missing , rewrote and tested." />
+    <MESSAGE value="Minor bug fix : Cache data was saved incorrectly causing map to be null.&#10;Fixed the issue in the service layer where the return data was always empty." />
+    <MESSAGE value="Feature : Students can now change their password, if new password is old password, system throws an error." />
+    <MESSAGE value="Feature : Students can now delete their account." />
+    <MESSAGE value="Feature : Teachers can now view the students enrolled in the courses they teach or enrolled themselves." />
+    <MESSAGE value="made a minor change in student model for quiz scores to store int as a float." />
+    <MESSAGE value="Take Quiz Implemented." />
+    <MESSAGE value="TODO Implement a function." />
+    <MESSAGE value="Fixed a minor bug in the registration process , where the account type is not set when other than default values are passed." />
+    <MESSAGE value="placed methods for defaults after a minor bug was found in the registration process." />
+    <MESSAGE value="Placed methods that update the respective data after quiz was attended by the student with proper credentials." />
+    <option name="LAST_COMMIT_MESSAGE" value="Placed methods that update the respective data after quiz was attended by the student with proper credentials." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -423,27 +530,52 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/Service/TeacherService.java</url>
-          <line>144</line>
+          <line>145</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>636</line>
+          <line>1050</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>593</line>
+          <line>1007</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>491</line>
+          <line>905</line>
           <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
+          <line>214</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
+          <line>211</line>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
+          <line>275</line>
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Quizzy/Service/StudentService.java</url>
+          <line>147</line>
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
+          <line>405</line>
+          <option name="timeStamp" value="57" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>622</line>
+          <line>1036</line>
           <properties class="main.java.Quizzy.View.CommandLineInterface">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -461,48 +593,39 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>478</line>
-          <properties class="main.java.Quizzy.View.CommandLineInterface" method="deleteQuizBoard">
+          <line>245</line>
+          <properties class="main.java.Quizzy.View.CommandLineInterface" method="viewQuizResults">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
-          <option name="timeStamp" value="23" />
+          <option name="timeStamp" value="54" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>411</line>
-          <properties class="main.java.Quizzy.View.CommandLineInterface" method="viewQuestions">
+          <url>file://$PROJECT_DIR$/src/main/java/Quizzy/Service/StudentService.java</url>
+          <line>143</line>
+          <properties class="main.java.Quizzy.Service.StudentService" method="getStudentScore">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
-          <option name="timeStamp" value="28" />
+          <option name="timeStamp" value="56" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>383</line>
-          <properties class="main.java.Quizzy.View.CommandLineInterface" method="deleteQuestion">
+          <url>file://$PROJECT_DIR$/src/main/java/Quizzy/Service/QuizBoardService.java</url>
+          <line>170</line>
+          <properties class="main.java.Quizzy.Service.QuizBoardService" method="checkIfQuizTaken">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
-          <option name="timeStamp" value="30" />
+          <option name="timeStamp" value="58" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>440</line>
-          <properties class="main.java.Quizzy.View.CommandLineInterface" method="addQuestion">
+          <url>file://$PROJECT_DIR$/src/main/java/Quizzy/Service/QuizBoardService.java</url>
+          <line>180</line>
+          <properties class="main.java.Quizzy.Service.QuizBoardService" method="viewTeacherQuizResults">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/Quizzy/Service/QuizService.java</url>
-          <line>43</line>
-          <properties class="main.java.Quizzy.Service.QuizService" method="viewAllQuestions">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="32" />
+          <option name="timeStamp" value="59" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
