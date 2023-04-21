@@ -151,4 +151,8 @@ public class QuizzyController {
     public Map<Integer, Quiz> takeQuiz(int quizBoardID) {
         return quizService.takeQuiz(quizBoardID);
     }
+
+    public String getQuizBoardCourse(int quizBoardID) {
+        return quizBoardService.getQuizBoardCourse(quizBoardID);
+    }
 }

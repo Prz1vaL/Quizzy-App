@@ -255,8 +255,21 @@ public class CommandLineInterface implements Serializable {
         if (line.length() == 1) {
             switch (line.charAt(0)) {
                 case 'y' -> {
+                    //TODO: FURTHER TESTING AND QUIZ.
                     try {
                         quizData = quizzyController.takeQuiz(quizBoardID);
+                        // Student course and quiz validation
+                        ArrayList<String> courseName = new ArrayList<>();
+                        for (Map.Entry<String, Student> entry : studentInfo.entrySet()) {
+                            courseName = entry.getValue().getCoursesEnrolled();
+                        }
+                        String quizAllocatedCourse = "";
+                        quizAllocatedCourse = quizzyController.getQuizBoardCourse(quizBoardID);
+                        for (String course : courseName) {
+                            if (!course.toLowerCase().equals(quizAllocatedCourse.toLowerCase())) {
+                                throw new IllegalArgumentException("You are not enrolled in this course and cannot take this quiz!");
+                            }
+                        }
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
                         System.out.println("Please try again!");
