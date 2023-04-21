@@ -18,6 +18,10 @@ public class StudentService implements Serializable {
         if (fullName.isEmpty()) {
             throw new IllegalArgumentException("Full name cannot be empty");
         }
+        // Check for duplicate username
+        if (students.containsKey(username.toLowerCase())) {
+            throw new IllegalArgumentException("Username already exists");
+        }
         // Create a new HashMap for quizScores for each student
         Map<Integer, Integer> quizScores = new HashMap<>();
         Student student = new Student(fullName.toLowerCase(), email.toLowerCase(), sha256, username.toLowerCase(), accountType, coursesEnrolled, dateCreated, quizScores);
@@ -37,7 +41,7 @@ public class StudentService implements Serializable {
         //Check if userName and password match
         if (students.containsKey(userName.toLowerCase())) {
             if (students.get(userName.toLowerCase()).getPassword().equals(password)) {
-                studentInfo.put(userName.toLowerCase(), studentInfo.get(userName.toLowerCase()));
+                studentInfo.put(userName.toLowerCase(), students.get(userName.toLowerCase()));
             }
         } else {
             throw new IllegalArgumentException("Username or password is incorrect");

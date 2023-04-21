@@ -203,21 +203,24 @@ public class CommandLineInterface implements Serializable {
                     //TODO : viewQuizResults();
                 }
                 case '3' -> {
-                    //TODO : viewMyProfile();
+                    viewStudentCourses();
                 }
                 case '4' -> {
-                    //TODO : changePassword();
+                    viewMyProfile();
                 }
                 case '5' -> {
-                    //TODO : deleteAccount();
+                    //TODO : changePassword();
                 }
                 case '6' -> {
+                    //TODO : deleteAccount();
+                }
+                case '7' -> {
                     System.out.println("Logging out...");
                     loginStatus = false;
                     saveData();
                     start();
                 }
-                case '7' -> {
+                case '8' -> {
                     System.out.println("Thank you for using Quizzy!");
                     loginStatus = true;
                     saveData();
@@ -231,6 +234,43 @@ public class CommandLineInterface implements Serializable {
         }
     }
 
+    private void viewStudentCourses() {
+        System.out.println("***************************************");
+        System.out.println("*** Your Courses ***");
+        System.out.println("***************************************");
+        ArrayList<String> yourCourses = new ArrayList<>();
+        for (Map.Entry<String, Student> entry : studentInfo.entrySet()) {
+            yourCourses = entry.getValue().getCoursesEnrolled();
+        }
+        int i = 0;
+        System.out.println("The courses you are teaching are:");
+        for (String course : yourCourses) {
+            System.out.println(i + 1 + ". " + course.toUpperCase());
+            ++i;
+
+        }
+        studentMenu();
+    }
+
+    private void viewMyProfile() {
+        String studentName = "";
+        for (Map.Entry<String, Student> entry : studentInfo.entrySet()) {
+            studentName = entry.getKey();
+        }
+        System.out.println("***************************************");
+        System.out.println("Student Name: " + studentName);
+        System.out.println("***************************************");
+        for (Map.Entry<String, Student> entry : studentInfo.entrySet()) {
+            System.out.println("Username: " + entry.getValue().getUsername());
+            System.out.println("Email: " + entry.getValue().getEmail());
+            System.out.println("Account Type: " + entry.getValue().getAccountType());
+            System.out.println("Date Created: " + entry.getValue().getDateCreated());
+            System.out.println("***************************************");
+
+        }
+
+    }
+
     private void studentMenuMessage() {
         String Message = """
                 ***************************************
@@ -238,11 +278,12 @@ public class CommandLineInterface implements Serializable {
                 ***************************************
                 1. Take a Quiz
                 2. View Quiz Results
-                3. View My Profile
-                4. Change Passwordstart();
-                5. Delete Account
-                6. Logout
-                7. Exit the Application
+                3. View My Courses
+                4. View My Profile
+                5. Change Password
+                6. Delete Account
+                7. Logout
+                8. Exit the Application
                 Please select an option: 
                 ***************************************""";
         System.out.println(Message);
@@ -1055,7 +1096,7 @@ public class CommandLineInterface implements Serializable {
             start();
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            register();
+            start();
         }
     }
 
