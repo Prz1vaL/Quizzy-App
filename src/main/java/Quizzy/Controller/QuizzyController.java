@@ -147,4 +147,8 @@ public class QuizzyController {
     public void deleteStudentAccount(String userName) {
         studentService.deleteAccount(userName);
     }
+
+    public Map<Integer, Quiz> takeQuiz(int quizBoardID) {
+        return quizService.takeQuiz(quizBoardID);
+    }
 }

@@ -21,9 +21,9 @@ public class Student implements Serializable {
 
     private Date dateCreated;
 
-    private Map<Integer, Integer> quizScores = new HashMap<>();
+    private Map<Integer, Float> quizScores = new HashMap<>();
 
-    public Student(String fullName, String email, String password, String username, AccountType accountType, ArrayList<String> coursesEnrolled, Date dateCreated, Map<Integer, Integer> quizScores) {
+    public Student(String fullName, String email, String password, String username, AccountType accountType, ArrayList<String> coursesEnrolled, Date dateCreated, Map<Integer, Float> quizScores) {
         this.fullName = fullName;
         this.email = email;
         this.password = password;
@@ -90,11 +90,11 @@ public class Student implements Serializable {
         this.dateCreated = dateCreated;
     }
 
-    public Map<Integer, Integer> getQuizScores() {
+    public Map<Integer, Float> getQuizScores() {
         return quizScores;
     }
 
-    public void setQuizScores(Map<Integer, Integer> quizScores) {
+    public void setQuizScores(Map<Integer, Float> quizScores) {
         this.quizScores = quizScores;
     }
 }

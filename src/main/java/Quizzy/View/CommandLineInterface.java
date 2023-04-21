@@ -22,6 +22,8 @@ public class CommandLineInterface implements Serializable {
 
     private Map<String, Student> studentInfo = new HashMap<>();
 
+    private Map<Integer, Quiz> quizData = new HashMap<>();
+
 
     // End of Caching the user Data
 
@@ -191,12 +193,11 @@ public class CommandLineInterface implements Serializable {
 
     private void studentMenu() {
         studentMenuMessage();
-        //TODO : STUDENT MENU
         String line = scanner.nextLine();
         if (line.length() == 1) {
             switch (line.charAt(0)) {
                 case '1' -> {
-                    //TODO: takeQuiz();
+                    takeQuiz();
                 }
                 case '2' -> {
                     //TODO : viewQuizResults();
@@ -231,6 +232,50 @@ public class CommandLineInterface implements Serializable {
             System.out.println("Please select a valid option: ");
             studentMenu();
         }
+    }
+
+    private void takeQuiz() {
+        int quizBoardID = 0;
+        System.out.println("***************************************");
+        System.out.println("Please enter the QUIZBOARD - ID: ");
+        try {
+            quizBoardID = Integer.parseInt(scanner.nextLine().trim());
+        } catch (NumberFormatException e) {
+            System.out.println("Please enter a valid Quiz ID!");
+            takeQuiz();
+        }
+
+        System.out.println("***************************************");
+        System.out.println("Instructions: ");
+        System.out.println("1. You cannot leave the quiz once started!");
+        System.out.println("2. You can only take a quiz once!");
+        System.out.println("3. Click enter after typing your answer!");
+        System.out.println("Are you sure you want to take this quiz? (Y/N)");
+        String line = scanner.nextLine().trim().toLowerCase();
+        if (line.length() == 1) {
+            switch (line.charAt(0)) {
+                case 'y' -> {
+                    try {
+                        quizData = quizzyController.takeQuiz(quizBoardID);
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                        System.out.println("Please try again!");
+                        studentMenu();
+                    }
+                }
+                case 'n' -> {
+                    studentMenu();
+                }
+                default -> {
+                    System.out.println("Please select a valid option: ");
+                    takeQuiz();
+                }
+            }
+        } else {
+            System.out.println("Please select a valid option: ");
+            takeQuiz();
+        }
+
     }
 
     private void deleteStudentAccount() {

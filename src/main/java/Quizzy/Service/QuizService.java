@@ -71,4 +71,15 @@ public class QuizService implements Serializable {
     }
 
 
+    public Map<Integer, Quiz> takeQuiz(int quizBoardID) {
+        Map<Integer, Quiz> localData = new HashMap<>();
+        // Check for questions with the same quizBoardID
+        for (Map.Entry<Integer, Quiz> entry : quizMap.entrySet()) {
+            if (entry.getValue().getQuizBoardID() == quizBoardID) {
+                localData.put(entry.getKey(), entry.getValue());
+            }
+        }
+
+        return localData;
+    }
 }

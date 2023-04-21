@@ -26,7 +26,7 @@ public class StudentService implements Serializable {
             throw new IllegalArgumentException("Username already exists");
         }
         // Create a new HashMap for quizScores for each student
-        Map<Integer, Integer> quizScores = new HashMap<>();
+        Map<Integer, Float> quizScores = new HashMap<>();
         Student student = new Student(fullName.toLowerCase(), email.toLowerCase(), sha256, username.toLowerCase(), accountType, coursesEnrolled, dateCreated, quizScores);
         students.put(username.toLowerCase(), student);
 

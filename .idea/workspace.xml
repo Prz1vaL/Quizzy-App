@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff18775a-ac22-43fb-9b14-cf18bf872cd5" name="Changes" comment="Feature : Students can now delete their account.">
+    <list default="true" id="ff18775a-ac22-43fb-9b14-cf18bf872cd5" name="Changes" comment="Feature : Teachers can now view the students enrolled in the courses they teach or enrolled themselves.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/Controller/QuizzyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Controller/QuizzyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/Service/StudentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Service/StudentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/Service/TeacherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Service/TeacherService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/Model/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Model/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/Service/QuizService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/Service/QuizService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,8 +27,8 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
-        <option value="apm30 &lt;m.ajaypradeep@icloud.com&gt;" />
         <option value="Ajay Pradeep Mahadeven &lt;m.ajaypradeep@icloud.com&gt;" />
+        <option value="apm30 &lt;m.ajaypradeep@icloud.com&gt;" />
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -393,7 +394,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682090030194</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Feature : Teachers can now view the students enrolled in the courses they teach or enrolled themselves.">
+      <created>1682090298423</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1682090298423</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -440,7 +448,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Teachers can view the courses that they are teaching." />
     <MESSAGE value="optimised and reformatted code." />
     <MESSAGE value="change in LICENSE." />
     <MESSAGE value="rewrote the menu to compress and optimise the input when going down the chain." />
@@ -465,7 +472,8 @@
     <MESSAGE value="Minor bug fix : Cache data was saved incorrectly causing map to be null.&#10;Fixed the issue in the service layer where the return data was always empty." />
     <MESSAGE value="Feature : Students can now change their password, if new password is old password, system throws an error." />
     <MESSAGE value="Feature : Students can now delete their account." />
-    <option name="LAST_COMMIT_MESSAGE" value="Feature : Students can now delete their account." />
+    <MESSAGE value="Feature : Teachers can now view the students enrolled in the courses they teach or enrolled themselves." />
+    <option name="LAST_COMMIT_MESSAGE" value="Feature : Teachers can now view the students enrolled in the courses they teach or enrolled themselves." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -480,32 +488,32 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>835</line>
+          <line>880</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>792</line>
+          <line>837</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>690</line>
+          <line>735</line>
           <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>207</line>
+          <line>208</line>
           <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>204</line>
+          <line>205</line>
           <option name="timeStamp" value="40" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
-          <line>821</line>
+          <line>866</line>
           <properties class="main.java.Quizzy.View.CommandLineInterface">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -520,6 +528,15 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/Quizzy/View/CommandLineInterface.java</url>
+          <line>236</line>
+          <properties class="main.java.Quizzy.View.CommandLineInterface" method="takeQuiz">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="41" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
