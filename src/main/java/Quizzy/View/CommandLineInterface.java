@@ -193,7 +193,42 @@ public class CommandLineInterface implements Serializable {
     private void studentMenu() {
         studentMenuMessage();
         //TODO : STUDENT MENU
-        start();
+        String line = scanner.nextLine();
+        if (line.length() == 1) {
+            switch (line.charAt(0)) {
+                case '1' -> {
+                    //TODO: takeQuiz();
+                }
+                case '2' -> {
+                    //TODO : viewQuizResults();
+                }
+                case '3' -> {
+                    //TODO : viewMyProfile();
+                }
+                case '4' -> {
+                    //TODO : changePassword();
+                }
+                case '5' -> {
+                    //TODO : deleteAccount();
+                }
+                case '6' -> {
+                    System.out.println("Logging out...");
+                    loginStatus = false;
+                    saveData();
+                    start();
+                }
+                case '7' -> {
+                    System.out.println("Thank you for using Quizzy!");
+                    loginStatus = true;
+                    saveData();
+                    System.exit(0);
+                }
+                default -> System.out.println("Please select a valid option: ");
+            }
+        } else {
+            System.out.println("Please select a valid option: ");
+            studentMenu();
+        }
     }
 
     private void studentMenuMessage() {
@@ -204,7 +239,7 @@ public class CommandLineInterface implements Serializable {
                 1. Take a Quiz
                 2. View Quiz Results
                 3. View My Profile
-                4. Change Password
+                4. Change Passwordstart();
                 5. Delete Account
                 6. Logout
                 7. Exit the Application
@@ -241,6 +276,43 @@ public class CommandLineInterface implements Serializable {
     }
 
     private void teacherMenu() {
+        teacherMenuMessage();
+        String line = scanner.nextLine();
+        if (line.length() == 1) {
+            switch (line.charAt(0)) {
+                case '1' -> {
+                    quizMenu();
+                }
+                case '2' -> {
+                    //TODO: viewStudents();
+                }
+                case '3' -> {
+                    viewTeacherCourses();
+                }
+                case '4' -> {
+                    viewTeacherDetails();
+                }
+                case '5' -> {
+                    deleteTeacherAccount();
+                }
+                case '6' -> {
+                    changeTeacherPassword();
+                }
+                case '7' -> {
+                    changeCourseDetails();
+                }
+                case '8' -> {
+                    System.out.println("Logging out...");
+                    loginStatus = false;
+                    saveData();
+                    start();
+                }
+                default -> System.out.println("Please select a valid option: ");
+            }
+        } else {
+            System.out.println("Please select a valid option: ");
+            teacherMenu();
+        }
 
     }
 
