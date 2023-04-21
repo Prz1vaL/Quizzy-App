@@ -261,16 +261,16 @@ public class CommandLineInterface implements Serializable {
             for (Map.Entry<String, Student> entry : studentInfo.entrySet()) {
                 courseName = entry.getValue().getCoursesEnrolled();
             }
-            String quizAllocatedCourse = "";
+            String quizAllocatedCourse;
             quizAllocatedCourse = quizzyController.getQuizBoardCourse(quizBoardID);
             String quizBoardName = quizzyController.getQuizBoardName(quizBoardID);
             for (String course : courseName) {
-                if (course.toLowerCase().equals(quizAllocatedCourse.toLowerCase())) {
+                if (course.equalsIgnoreCase(quizAllocatedCourse)) {
                     courseEnrolled = true;
                     break;
                 }
             }
-            if (courseEnrolled == false) {
+            if (!courseEnrolled) {
                 throw new IllegalArgumentException("You are not enrolled in this course!");
             }
             Map<Integer, Float> quizResults = quizzyController.getQuizResults(quizBoardID);
@@ -328,18 +328,18 @@ public class CommandLineInterface implements Serializable {
                         for (Map.Entry<String, Student> entry : studentInfo.entrySet()) {
                             courseName = entry.getValue().getCoursesEnrolled();
                         }
-                        String quizAllocatedCourse = "";
+                        String quizAllocatedCourse;
                         quizAllocatedCourse = quizzyController.getQuizBoardCourse(quizBoardID);
                         String quizBoardName = quizzyController.getQuizBoardName(quizBoardID);
                         for (String course : courseName) {
-                            if (course.toLowerCase().equals(quizAllocatedCourse.toLowerCase())) {
+                            if (course.equalsIgnoreCase(quizAllocatedCourse)) {
                                 System.out.println("Quiz Started!");
                                 quizStart(quizAllocatedCourse, quizBoardID, quizBoardName);
                                 courseEnrolled = true;
                                 break;
                             }
                         }
-                        if (courseEnrolled == false) {
+                        if (!courseEnrolled) {
                             throw new IllegalArgumentException("You are not enrolled in this course!");
                         }
                     } catch (Exception e) {
@@ -369,8 +369,8 @@ public class CommandLineInterface implements Serializable {
         int totalMarks = 0;
         float studentScore = 0;
         String studentName = "";
-        String studentAnswer = "";
-        String correctAnswer = "";
+        String studentAnswer;
+        String correctAnswer;
         for (Map.Entry<String, Student> entry : studentInfo.entrySet()) {
             studentName = entry.getKey();
         }
@@ -515,7 +515,7 @@ public class CommandLineInterface implements Serializable {
                 6. Delete Account
                 7. Logout
                 8. Exit the Application
-                Please select an option: 
+                Please select an option:
                 ***************************************""";
         System.out.println(Message);
     }
@@ -636,7 +636,7 @@ public class CommandLineInterface implements Serializable {
 
     private void viewTeacherQuizResults() {
         int quizBoardID = 0;
-        String quizBoardName = "";
+        String quizBoardName;
         System.out.println("***************************************");
         System.out.println("Quiz Results");
         System.out.println("***************************************");
