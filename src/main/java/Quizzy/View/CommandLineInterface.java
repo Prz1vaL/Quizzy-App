@@ -859,7 +859,7 @@ public class CommandLineInterface implements Serializable {
                 System.out.println("QuizBoard Created On: " + Entry.getValue().getDateCreated());
                 System.out.println("QuizBoard Allocated to Course: " + Entry.getValue().getCourseName());
                 System.out.println("No of Quizzes in QuizBoard: " + Entry.getValue().getNumberOfQuestions());
-                //TODO : Add the number of students attempted the quizboard here
+                //TODO : Add the number of students attempted the quizboard here and in the service layer.
                 System.out.println("No of Students Attempted QuizBoard: " + Entry.getValue().getStudentScores().size());
                 System.out.println("***************************************");
             }
