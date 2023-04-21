@@ -132,4 +132,22 @@ public class StudentService implements Serializable {
         }
         return students;
     }
+
+    public void updateStudentScore(String studentName, int quizBoardID, float studentScore) {
+        if (students.containsKey(studentName.toLowerCase())) {
+            students.get(studentName.toLowerCase()).getQuizScores().put(quizBoardID, studentScore);
+        } else {
+            throw new IllegalArgumentException("Student does not exist");
+        }
+    }
+
+    public Map<Integer, Float> getStudentScore(int quizBoardID) {
+        Map<Integer, Float> studentScores = new HashMap<>();
+        for (Map.Entry<String, Student> entry : this.students.entrySet()) {
+            if (entry.getValue().getQuizScores().containsKey(quizBoardID)) {
+                studentScores.put(quizBoardID, entry.getValue().getQuizScores().get(quizBoardID));
+            }
+        }
+        return studentScores;
+    }
 }

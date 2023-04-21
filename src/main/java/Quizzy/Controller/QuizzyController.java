@@ -159,4 +159,20 @@ public class QuizzyController {
     public String getQuizBoardName(int quizBoardID) {
         return quizBoardService.getQuizBoardName(quizBoardID);
     }
+
+    public void updateStudentScore(String studentName, int quizBoardID, float studentScore) {
+        studentService.updateStudentScore(studentName, quizBoardID, studentScore);
+    }
+
+    public Map<Integer, Float> getQuizResults(int quizBoardID) {
+        return studentService.getStudentScore(quizBoardID);
+    }
+
+    public float getQuizTotalScore(int quizBoardID) {
+        return quizService.getQuizTotalScore(quizBoardID);
+    }
+
+    public void updateStudentScoreBoard(String studentName, int quizBoard, float studentScore) {
+        quizBoardService.updateStudentScoreBoard(studentName, quizBoard, studentScore);
+    }
 }

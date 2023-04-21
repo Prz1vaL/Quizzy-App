@@ -23,12 +23,12 @@ public class QuizBoard implements Serializable {
 
     private float totalScore;
 
-    private Map<String, Integer> studentScores;
+    private Map<String, Float> studentScores;
 
     private int numberOfQuestions;
 
 
-    public QuizBoard(int quizID, String quizBoardName, String courseName, Date dateCreated, String createdByTeacher, Date modifiedDate, String modifiedByTeacher, float totalScore, Map<String, Integer> studentScores, int numberOfQuestions) {
+    public QuizBoard(int quizID, String quizBoardName, String courseName, Date dateCreated, String createdByTeacher, Date modifiedDate, String modifiedByTeacher, float totalScore, Map<String, Float> studentScores, int numberOfQuestions) {
         this.quizID = quizID;
         this.quizBoardName = quizBoardName;
         this.courseName = courseName;
@@ -105,11 +105,11 @@ public class QuizBoard implements Serializable {
         this.totalScore = totalScore;
     }
 
-    public Map<String, Integer> getStudentScores() {
+    public Map<String, Float> getStudentScores() {
         return studentScores;
     }
 
-    public void setStudentScores(Map<String, Integer> studentScores) {
+    public void setStudentScores(Map<String, Float> studentScores) {
         this.studentScores = studentScores;
     }
 

@@ -82,4 +82,16 @@ public class QuizService implements Serializable {
 
         return localData;
     }
+
+    public float getQuizTotalScore(int quizBoardID) {
+        float totalScore = 0;
+        // Check for questions with the same quizBoardID
+        for (Map.Entry<Integer, Quiz> entry : quizMap.entrySet()) {
+            if (entry.getValue().getQuizBoardID() == quizBoardID) {
+                totalScore += entry.getValue().getQuizPoints();
+            }
+        }
+
+        return totalScore;
+    }
 }

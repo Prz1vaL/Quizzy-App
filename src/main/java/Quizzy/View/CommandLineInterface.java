@@ -206,7 +206,7 @@ public class CommandLineInterface implements Serializable {
                     takeQuiz();
                 }
                 case '2' -> {
-                    //TODO : viewQuizResults();
+                    viewQuizResults();
                 }
                 case '3' -> {
                     viewStudentCourses();
@@ -241,6 +241,57 @@ public class CommandLineInterface implements Serializable {
             System.out.println("Please select a valid option: ");
             studentMenu();
         }
+    }
+
+    private void viewQuizResults() {
+        boolean courseEnrolled = false;
+        System.out.println("***************************************");
+        System.out.println("Quiz Results: ");
+        System.out.println("***************************************");
+        System.out.println("Enter the Quiz ID to view the results: ");
+        int quizBoardID = 0;
+        try {
+            quizBoardID = Integer.parseInt(scanner.nextLine().trim());
+        } catch (NumberFormatException e) {
+            System.out.println("Please enter a valid Quiz ID!");
+            viewQuizResults();
+        }
+        try {
+            ArrayList<String> courseName = new ArrayList<>();
+            for (Map.Entry<String, Student> entry : studentInfo.entrySet()) {
+                courseName = entry.getValue().getCoursesEnrolled();
+            }
+            String quizAllocatedCourse = "";
+            quizAllocatedCourse = quizzyController.getQuizBoardCourse(quizBoardID);
+            String quizBoardName = quizzyController.getQuizBoardName(quizBoardID);
+            for (String course : courseName) {
+                if (course.toLowerCase().equals(quizAllocatedCourse.toLowerCase())) {
+                    courseEnrolled = true;
+                    break;
+                }
+            }
+            if (courseEnrolled == false) {
+                throw new IllegalArgumentException("You are not enrolled in this course!");
+            }
+            Map<Integer, Float> quizResults = quizzyController.getQuizResults(quizBoardID);
+            if (quizResults.isEmpty()) {
+                throw new IllegalArgumentException("No results found!");
+            }
+            System.out.println("***************************************");
+            System.out.println("Quiz Results for " + quizBoardName.toUpperCase() + ": ");
+            System.out.println("***************************************");
+            for (Map.Entry<Integer, Float> entry : quizResults.entrySet()) {
+                System.out.println("Your Score: " + entry.getValue());
+            }
+            System.out.println("Total Score: " + quizzyController.getQuizTotalScore(quizBoardID));
+            System.out.println("***************************************");
+            studentMenu();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Please try again!");
+            studentMenu();
+        }
+
     }
 
     private void takeQuiz() {
@@ -280,6 +331,7 @@ public class CommandLineInterface implements Serializable {
                                 System.out.println("Quiz Started!");
                                 quizStart(quizAllocatedCourse, quizBoardID, quizBoardName);
                                 courseEnrolled = true;
+                                break;
                             }
                         }
                         if (courseEnrolled == false) {
@@ -343,8 +395,12 @@ public class CommandLineInterface implements Serializable {
         System.out.println("Your Score: " + studentScore + " / " + totalMarks);
         System.out.println("Your Percentage: " + (studentScore / totalMarks) * 100 + "%");
         System.out.println("***************************************");
-        //TODO : UPDATE THE RESPECTIVE SERVICES AND SAVE THE DATA BEFORE EXITING THE METHOD.
 
+        quizzyController.updateStudentScore(studentName, quizBoardID, studentScore);
+        quizzyController.updateStudentScoreBoard(studentName, quizBoardID, studentScore);
+
+        // Final Call
+        studentMenu();
     }
 
     private void deleteStudentAccount() {
@@ -546,7 +602,7 @@ public class CommandLineInterface implements Serializable {
                     createAQuiz();
                 }
                 case '2' -> {
-                    //TODO : viewQuizResults();
+                    //TODO: viewTeacherQuizResults();
                 }
                 case '3' -> {
                     System.out.println("Returning to Main Menu...");
@@ -918,7 +974,6 @@ public class CommandLineInterface implements Serializable {
                 System.out.println("QuizBoard Created On: " + Entry.getValue().getDateCreated());
                 System.out.println("QuizBoard Allocated to Course: " + Entry.getValue().getCourseName());
                 System.out.println("No of Quizzes in QuizBoard: " + Entry.getValue().getNumberOfQuestions());
-                //TODO : Add the number of students attempted the quiz-board here and in the service layer.
                 System.out.println("No of Students Attempted QuizBoard: " + Entry.getValue().getStudentScores().size());
                 System.out.println("***************************************");
             }
