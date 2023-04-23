@@ -1,6 +1,9 @@
 # Quizzy-App - A Quiz app for Students and Teachers.
 
 ## Description
+Quizzy is a simple course and quiz management system implemented in Java, designed for both students and teachers. 
+The system allows users to create and manage accounts, enroll in courses, and take quizzes. 
+Additionally, the system supports secure account access using hashed passwords.
 
 ## Functionalities :
 
@@ -13,7 +16,13 @@
 <li> JUnit - 5</li>
 </ol>
 
-## TESTS WRITTEN : 0
+## Testing :
+The project includes JUnit 5 test cases to ensure the proper functionality of the classes. 
+These test cases cover a wide range of scenarios, including edge cases and various input combinations.
+
+
+
+### TESTS WRITTEN : 99
 
 ## Contributions :
 
@@ -36,5 +45,7 @@
 ## License:
 
 This project was a practice for large scale project development and use of MVC (modified - Service Layer) Architecture.
+It is a great starting point for anyone looking to build a course and quiz management system or learn about Java,
+object-oriented programming, and unit testing.
 
 This project is licensed under the MIT License - see the <code> LICENSE.md </code> file for details
