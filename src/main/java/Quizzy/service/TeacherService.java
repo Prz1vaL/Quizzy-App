@@ -69,7 +69,7 @@ public class TeacherService implements Serializable {
 
     /**
      * Validates the username of a teacher and also student.
-     * (common method as first the initial design was that both the teacher and student shared the same model).
+     * (Common method as first the initial design was that both the teacher and student shared the same model).
      * @param username - username to be validated.
      */
     public void validateUsername(String username) {
