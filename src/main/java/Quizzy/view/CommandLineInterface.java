@@ -1,7 +1,7 @@
-package main.java.Quizzy.View;
+package main.java.Quizzy.view;
 
-import main.java.Quizzy.Controller.QuizzyController;
-import main.java.Quizzy.Model.*;
+import main.java.Quizzy.controller.QuizzyController;
+import main.java.Quizzy.model.*;
 
 import java.io.Serializable;
 import java.util.*;
@@ -30,9 +30,9 @@ public class CommandLineInterface implements Serializable {
     private static void teacherMenuMessage() {
         System.out.println("***************************************");
         System.out.println("1. QuizBoard Menu");
-        System.out.println("2. View Students");
-        System.out.println("3. View Courses");
-        System.out.println("4. View My Details");
+        System.out.println("2. view Students");
+        System.out.println("3. view Courses");
+        System.out.println("4. view My Details");
         System.out.println("5. Delete my Account");
         System.out.println("6. Change Password");
         System.out.println("7. Change Course Details");
@@ -508,9 +508,9 @@ public class CommandLineInterface implements Serializable {
                 *** Student Menu ***
                 ***************************************
                 1. Take a Quiz
-                2. View Quiz Results
-                3. View My Courses
-                4. View My Profile
+                2. view Quiz Results
+                3. view My Courses
+                4. view My Profile
                 5. Change Password
                 6. Delete Account
                 7. Logout
@@ -596,7 +596,7 @@ public class CommandLineInterface implements Serializable {
         System.out.println("Quiz Menu");
         System.out.println("***************************************");
         System.out.println("1. QuizBoard");
-        System.out.println("2. View Quiz Results");
+        System.out.println("2. view Quiz Results");
         System.out.println("3. Return to Teacher Menu");
         System.out.println("4. Logout");
         System.out.println("5. Exit the Application");
@@ -677,7 +677,7 @@ public class CommandLineInterface implements Serializable {
         System.out.println("1. Create a QuizBoard Board");
         System.out.println("2. Edit a QuizBoard Board");
         System.out.println("3. Delete a QuizBoard Board");
-        System.out.println("4. View QuizBoard Boards");
+        System.out.println("4. view QuizBoard Boards");
         System.out.println("5. Back to Main Menu");
         System.out.println("6. Log out");
         System.out.println("7. Exit the Application");
@@ -762,7 +762,7 @@ public class CommandLineInterface implements Serializable {
         System.out.println("***************************************");
         System.out.println("1. Add a Question");
         System.out.println("2. Delete a Question");
-        System.out.println("3. View all Questions");
+        System.out.println("3. view all Questions");
         System.out.println("4. Back to QuizBoard Menu");
         System.out.println("***************************************");
         System.out.println("Please enter your choice :");
@@ -831,7 +831,7 @@ public class CommandLineInterface implements Serializable {
             quizBoardName = entry.getValue().getQuizBoardName();
         }
         System.out.println("***************************************");
-        System.out.println("QuizBoard -" + quizBoardName.toUpperCase() + " View Questions");
+        System.out.println("QuizBoard -" + quizBoardName.toUpperCase() + " view Questions");
         System.out.println("***************************************");
         try {
             Map<Integer, Quiz> localData = quizzyController.viewAllQuestions(quizBoardID);
@@ -915,11 +915,11 @@ public class CommandLineInterface implements Serializable {
 
     private void viewQuizBoards() {
         System.out.println("***************************************");
-        System.out.println("QuizBoard - View QuizBoards");
+        System.out.println("QuizBoard - view QuizBoards");
         System.out.println("***************************************");
-        System.out.println("1. View QuizBoards by Course");
-        System.out.println("2. View QuizBoards by QuizBoard ID");
-        System.out.println("3. View All QuizBoards");
+        System.out.println("1. view QuizBoards by Course");
+        System.out.println("2. view QuizBoards by QuizBoard ID");
+        System.out.println("3. view All QuizBoards");
         System.out.println("4. Back to QuizBoard Menu");
         System.out.println("***************************************");
         System.out.println("Please enter your choice :");
@@ -953,7 +953,7 @@ public class CommandLineInterface implements Serializable {
 
     private void viewQuizBoardsByQuizBoardID() {
         System.out.println("***************************************");
-        System.out.println("QuizBoard - View QuizBoards by QuizBoard ID");
+        System.out.println("QuizBoard - view QuizBoards by QuizBoard ID");
         System.out.println("***************************************");
         System.out.println("Please enter the QuizBoard ID :");
         String quizBoardID = scanner.nextLine().trim();
@@ -994,7 +994,7 @@ public class CommandLineInterface implements Serializable {
 
     private void viewAllQuizBoards() {
         System.out.println("***************************************");
-        System.out.println("QuizBoard - View All QuizBoards");
+        System.out.println("QuizBoard - view All QuizBoards");
         System.out.println("***************************************");
         String createdBy = "";
         for (Map.Entry<String, Teacher> Entry : teacherInfo.entrySet()) {
@@ -1028,7 +1028,7 @@ public class CommandLineInterface implements Serializable {
 
     private void viewQuizBoardsByCourse() {
         System.out.println("***************************************");
-        System.out.println("QuizBoard - View QuizBoards by Course");
+        System.out.println("QuizBoard - view QuizBoards by Course");
         System.out.println("***************************************");
         System.out.println("Please enter the Course Name :");
         String courseName = scanner.nextLine().trim();
@@ -1160,7 +1160,7 @@ public class CommandLineInterface implements Serializable {
 
     private void viewStudents() {
         System.out.println("***************************************");
-        System.out.println("*** View Students By Course ***");
+        System.out.println("*** view Students By Course ***");
         System.out.println("***************************************");
         System.out.println("Please enter the course name: ");
         String courseName = scanner.nextLine().trim();

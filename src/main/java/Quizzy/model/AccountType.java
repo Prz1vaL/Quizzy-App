@@ -1,4 +1,4 @@
-package main.java.Quizzy.Model;
+package main.java.Quizzy.model;
 
 public enum AccountType {
     STUDENT,

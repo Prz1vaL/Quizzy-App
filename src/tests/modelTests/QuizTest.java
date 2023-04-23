@@ -1,6 +1,6 @@
-package tests;
+package tests.modelTests;
 
-import main.java.Quizzy.Model.Quiz;
+import main.java.Quizzy.model.Quiz;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

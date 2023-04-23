@@ -1,7 +1,7 @@
-package main.java.Quizzy.Service;
+package main.java.Quizzy.service;
 
-import main.java.Quizzy.Model.AccountType;
-import main.java.Quizzy.Model.Student;
+import main.java.Quizzy.model.AccountType;
+import main.java.Quizzy.model.Student;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;

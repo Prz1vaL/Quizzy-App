@@ -1,6 +1,6 @@
-package main.java.Quizzy.Service;
+package main.java.Quizzy.service;
 
-import main.java.Quizzy.Model.QuizBoard;
+import main.java.Quizzy.model.QuizBoard;
 
 import java.io.*;
 import java.util.*;

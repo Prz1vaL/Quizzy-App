@@ -1,10 +1,10 @@
-package main.java.Quizzy.Controller;
+package main.java.Quizzy.controller;
 
-import main.java.Quizzy.Model.*;
-import main.java.Quizzy.Service.QuizBoardService;
-import main.java.Quizzy.Service.QuizService;
-import main.java.Quizzy.Service.StudentService;
-import main.java.Quizzy.Service.TeacherService;
+import main.java.Quizzy.model.*;
+import main.java.Quizzy.service.QuizBoardService;
+import main.java.Quizzy.service.QuizService;
+import main.java.Quizzy.service.StudentService;
+import main.java.Quizzy.service.TeacherService;
 
 import java.io.IOException;
 import java.util.ArrayList;

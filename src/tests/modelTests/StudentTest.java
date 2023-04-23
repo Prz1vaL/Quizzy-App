@@ -1,7 +1,7 @@
-package tests;
+package tests.modelTests;
 
-import main.java.Quizzy.Model.AccountType;
-import main.java.Quizzy.Model.Student;
+import main.java.Quizzy.model.AccountType;
+import main.java.Quizzy.model.Student;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
