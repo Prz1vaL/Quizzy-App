@@ -2,6 +2,15 @@ package main.java.Quizzy.model;
 
 import java.io.Serializable;
 
+/**
+ * This class represents a Quiz object.
+ * A Quiz object contains the following information:
+ * - quizBoardID: The ID of the quiz board that the quiz belongs to
+ * - quizID: The ID of the quiz
+ * - quizQuestion: The question of the quiz
+ * - correctAnswer: The correct answer of the quiz
+ * - quizPoints: The number of points the quiz is worth
+ */
 public class Quiz implements Serializable {
     private int quizBoardID;
 

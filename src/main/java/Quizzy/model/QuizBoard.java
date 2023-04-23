@@ -4,6 +4,21 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Map;
 
+/**
+ * This class represents a Quiz board.
+ * A quiz board is a collection of quizzes.
+ * A quiz board contains the following information:
+ * - quizID: The ID of the quiz board
+ * - quizBoardName: The name of the quiz board
+ * - courseName: The name of the course that the quiz board belongs to
+ * - dateCreated: The date the quiz board was created
+ * - createdByTeacher: The teacher who created the quiz board
+ * - modifiedDate: The date the quiz board was last modified
+ * - modifiedByTeacher: The teacher who last modified the quiz board
+ * - totalScore: The total score of the quiz board
+ * - studentScores: The scores of the students who have taken the quiz board
+ * - numberOfQuestions: The number of questions in the quiz board
+ */
 public class QuizBoard implements Serializable {
 
     private int quizID;
