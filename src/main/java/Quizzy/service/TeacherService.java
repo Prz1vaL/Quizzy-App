@@ -12,6 +12,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * TeacherService class is responsible for all the business logic related to the Teacher class.
+ *  It contains the data structure that stores all the teachers.
+ */
 public class TeacherService implements Serializable {
 
     private Map<String, Teacher> teachers = new HashMap<>();
@@ -47,6 +51,11 @@ public class TeacherService implements Serializable {
     }
 
 
+    /**
+     * Validates the email of a teacher and also student
+     * (common method as first the initial design was that both the teacher and student shared the same model).
+     * @param email - email to be validated.
+     */
     public void validateEmail(String email) {
         // First check for empty string
         if (email.isEmpty()) {
@@ -58,6 +67,11 @@ public class TeacherService implements Serializable {
         }
     }
 
+    /**
+     * Validates the username of a teacher and also student.
+     * (common method as first the initial design was that both the teacher and student shared the same model).
+     * @param username - username to be validated.
+     */
     public void validateUsername(String username) {
         // First check for empty string
         if (username.isEmpty()) {
@@ -73,6 +87,16 @@ public class TeacherService implements Serializable {
         }
     }
 
+    /**
+     * This method is used to register a teacher.
+     * @param fullName - full name of the teacher.
+     * @param email - email of the teacher.
+     * @param username - username of the teacher.
+     * @param sha256 - hashed password of the teacher.
+     * @param accountType - account type of the teacher.
+     * @param coursesEnrolled - courses enrolled by the teacher.
+     * @param dateCreated - date created by the teacher.
+     */
     public void register(String fullName, String email, String username, String sha256, AccountType accountType, ArrayList<String> coursesEnrolled, Date dateCreated) {
         // Check for empty string in fullName
         if (fullName.isEmpty()) {
@@ -85,7 +109,6 @@ public class TeacherService implements Serializable {
 
     /**
      * Saves the user - data to a file
-     *
      * @throws IOException - if the file is not found
      */
     public void saveData() throws IOException {
@@ -96,6 +119,11 @@ public class TeacherService implements Serializable {
         f.close();
     }
 
+    /**
+     * Loads the user - data from a file
+     * @throws IOException - if the file is not found
+     * @throws ClassNotFoundException - if the class is not found
+     */
     public void loadData() throws IOException, ClassNotFoundException {
         FileInputStream fi = new FileInputStream("src/resources/teacherData.ser");
         ObjectInputStream oi = new ObjectInputStream(fi);
@@ -104,6 +132,12 @@ public class TeacherService implements Serializable {
         fi.close();
     }
 
+    /**
+     * This method is used to validate the login of a teacher.
+     * @param userName - username of the teacher
+     * @param password - password of the teacher
+     * @return - returns a map of the teacher
+     */
     public Map<String, Teacher> validateLogin(String userName, String password) {
         if (teachers.isEmpty()) {
             throw new IllegalArgumentException("No users found");
@@ -124,6 +158,10 @@ public class TeacherService implements Serializable {
         return userInfo;
     }
 
+    /**
+     * This method is used to delete a teacher account.
+     * @param userName - username of the teacher
+     */
     public void deleteAccount(String userName) {
         if (teachers.containsKey(userName.toLowerCase())) {
             teachers.remove(userName.toLowerCase());
@@ -132,6 +170,11 @@ public class TeacherService implements Serializable {
         }
     }
 
+    /**
+     * This method is used to validate the password of a teacher before changing it.
+     * @param userName - username of the teacher
+     * @param currentPassword - current password of the teacher
+     */
     public void validatePassword(String userName, String currentPassword) {
         if (currentPassword.isEmpty()) {
             throw new IllegalArgumentException("Password cannot be empty");
@@ -142,6 +185,11 @@ public class TeacherService implements Serializable {
         }
     }
 
+    /**
+     * This method is used to change the password of a teacher.
+     * @param userName - username of the teacher
+     * @param newPassword - new password of the teacher
+     */
     public void changePassword(String userName, String newPassword) {
         String hashedPassword = hashPassword(newPassword);
         if (newPassword.isEmpty()) {
@@ -156,6 +204,11 @@ public class TeacherService implements Serializable {
     }
 
 
+    /**
+     * This method is used for validating the courses that a teacher is enrolled in.
+     * @param courseName - course name to be validated
+     * @param userName - username of the teacher
+     */
     public void validateIfTeacherCourse(String courseName, String userName) {
         if (courseName.isEmpty() || userName.isEmpty()) {
             throw new IllegalArgumentException("Empty fields are not allowed");
@@ -165,6 +218,11 @@ public class TeacherService implements Serializable {
         }
     }
 
+    /**
+     * This method is used to add a course to a teacher.
+     * @param courseName - course name to be added
+     * @param userName - username of the teacher
+     */
     public void addCourse(String courseName, String userName) {
         if (courseName.isEmpty()) {
             throw new IllegalArgumentException("Course name cannot be empty");
@@ -175,6 +233,11 @@ public class TeacherService implements Serializable {
         teachers.get(userName.toLowerCase()).getCoursesEnrolled().add(courseName.toLowerCase());
     }
 
+    /**
+     * This method is used to remove a course from a teacher.
+     * @param courseName - course name to be removed
+     * @param userName - username of the teacher
+     */
     public void removeCourse(String courseName, String userName) {
         if (courseName.isEmpty()) {
             throw new IllegalArgumentException("Course name cannot be empty");
@@ -184,6 +247,4 @@ public class TeacherService implements Serializable {
         }
         teachers.get(userName.toLowerCase()).getCoursesEnrolled().remove(courseName.toLowerCase());
     }
-
-
 }
