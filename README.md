@@ -40,12 +40,12 @@ These test cases cover a wide range of scenarios, including edge cases and vario
 Feel free to explore, contribute, and provide feedback on the project. Your contributions are most welcome!
 
 <ul>
-<li> Clone the repository from the school Gitlab server.
+<li> Clone the repository from GitHub.
 <li> Create a new branch for your feature or bug fix.
 <li> Write unit tests for your code.
 <li> Implement your feature or bug fix.
 <li> Ensure all tests pass.
-<li> Commit your changes and push to your branch on the Gitlab server.
+<li> Commit your changes and push to your branch on to GitHub.
 <li> Submit a merge request to merge your changes into the main branch.
 </ul>
 
