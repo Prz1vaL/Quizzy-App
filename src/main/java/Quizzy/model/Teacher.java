@@ -5,7 +5,15 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * Teacher class - Stores the user's information
+ * This class is used to store teachers' information
+ * It contains the following fields:
+ * - fullName: The full name of the teacher
+ * - email: The email of the teacher
+ * - password: The password of the teacher
+ * - username: The username of the teacher
+ * - accountType: The account type of the teacher
+ * - coursesEnrolled: The courses the teacher is enrolled in
+ * - dateCreated: The date the teacher account was created
  */
 public class Teacher implements Serializable {
     private String fullName;

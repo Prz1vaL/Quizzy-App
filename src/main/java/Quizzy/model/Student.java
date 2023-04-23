@@ -6,6 +6,18 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This class represents a student account.
+ * A student account contains the following information:
+ * - fullName: The full name of the student
+ * - email: The email of the student
+ * - password: The password of the student
+ * - username: The username of the student
+ * - accountType: The account type of the student
+ * - coursesEnrolled: The courses the student is enrolled in
+ * - dateCreated: The date the student account was created
+ * - quizScores: The quiz scores of the student
+ */
 public class Student implements Serializable {
     private String fullName;
 
