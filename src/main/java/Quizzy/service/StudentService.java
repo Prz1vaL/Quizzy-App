@@ -12,10 +12,25 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This class represents a student service.
+ * A student service contains the following information:
+ * students: A map of students
+ */
 public class StudentService implements Serializable {
 
     private Map<String, Student> students = new HashMap<>();
 
+    /**
+     * This method registers a student.
+     * @param fullName The full name of the student
+     * @param email The email of the student
+     * @param username The username of the student
+     * @param sha256 The password of the student
+     * @param accountType The account type of the student
+     * @param coursesEnrolled The courses the student is enrolled in
+     * @param dateCreated The date the student account was created
+     */
     public void register(String fullName, String email, String username, String sha256, AccountType accountType, ArrayList<String> coursesEnrolled, Date dateCreated) {
         // Check for empty string in fullName
         if (fullName.isEmpty()) {
@@ -32,6 +47,12 @@ public class StudentService implements Serializable {
 
     }
 
+    /**
+     * This method validates the login of a student.
+     * @param userName The username of the student
+     * @param password The password of the student
+     * @return A map of the student's username and student object
+     */
     public Map<String, Student> validateLogin(String userName, String password) {
         if (students.isEmpty()) {
             throw new IllegalArgumentException("No users found");
@@ -53,6 +74,10 @@ public class StudentService implements Serializable {
         return studentInfo;
     }
 
+    /**
+     * This method is used for saving student data.
+     * @throws IOException This method saves the student data.
+     */
     public void saveData() throws IOException {
         FileOutputStream f = new FileOutputStream("src/resources/studentData.ser");
         ObjectOutputStream o = new ObjectOutputStream(f);
@@ -61,6 +86,11 @@ public class StudentService implements Serializable {
         f.close();
     }
 
+    /**
+     * This method is used for loading student data.
+     * @throws IOException throws an exception if the file is not found
+     * @throws ClassNotFoundException throws an exception if the class is not found
+     */
     public void loadData() throws IOException, ClassNotFoundException {
         FileInputStream fi = new FileInputStream("src/resources/studentData.ser");
         ObjectInputStream oi = new ObjectInputStream(fi);
@@ -69,6 +99,11 @@ public class StudentService implements Serializable {
         fi.close();
     }
 
+    /**
+     * This method is used for hashing the password.
+     * @param password The password of the student
+     * @return The hashed password
+     */
     public String hashPassword(String password) {
         //Check for empty string
         if (password.isEmpty()) {
@@ -91,6 +126,11 @@ public class StudentService implements Serializable {
         return hashedPassword;
     }
 
+    /**
+     * This method validates the password of a student when changing the password.
+     * @param userName The username of the student
+     * @param currentPassword The current password of the student
+     */
     public void validatePassword(String userName, String currentPassword) {
         if(students.isEmpty()){
             throw new IllegalArgumentException("No users found");
@@ -104,6 +144,11 @@ public class StudentService implements Serializable {
         }
     }
 
+    /**
+     * This method changes the password of a student.
+     * @param userName The username of the student
+     * @param newPassword The new password of the student
+     */
     public void changePassword(String userName, String newPassword) {
         String hashedPassword = hashPassword(newPassword);
         if (newPassword.isEmpty()) {
@@ -117,6 +162,10 @@ public class StudentService implements Serializable {
         }
     }
 
+    /**
+     * This method deletes a student account.
+     * @param userName The username of the student
+     */
     public void deleteAccount(String userName) {
         if(students.isEmpty()){
             throw new IllegalArgumentException("No users found");
@@ -129,6 +178,11 @@ public class StudentService implements Serializable {
 
     }
 
+    /**
+     * This method gets the student object of a student.
+     * @param courseName The name of the course
+     * @return A list of students enrolled in the course
+     */
     public ArrayList<String> getStudentsByCourse(String courseName) {
         ArrayList<String> students = new ArrayList<>();
         for (Map.Entry<String, Student> entry : this.students.entrySet()) {
@@ -139,6 +193,12 @@ public class StudentService implements Serializable {
         return students;
     }
 
+    /**
+     * This method is used for updating the score of a student after a quiz.
+     * @param studentName The name of the student
+     * @param quizBoardID The ID of the quiz board
+     * @param studentScore The score of the student
+     */
     public void updateStudentScore(String studentName, int quizBoardID, float studentScore) {
         if (students.containsKey(studentName.toLowerCase())) {
             students.get(studentName.toLowerCase()).getQuizScores().put(quizBoardID, studentScore);
@@ -147,6 +207,11 @@ public class StudentService implements Serializable {
         }
     }
 
+    /**
+     * This method is used for getting the score of a student by quiz board ID.
+     * @param quizBoardID The ID of the quiz board
+     * @return A map of the student's username and score
+     */
     public Map<Integer, Float> getStudentScore(int quizBoardID) {
         Map<Integer, Float> studentScores = new HashMap<>();
         for (Map.Entry<String, Student> entry : this.students.entrySet()) {
