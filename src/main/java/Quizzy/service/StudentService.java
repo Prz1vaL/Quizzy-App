@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class StudentService implements Serializable {
 
-    Map<String, Student> students = new HashMap<>();
+    private Map<String, Student> students = new HashMap<>();
 
     public void register(String fullName, String email, String username, String sha256, AccountType accountType, ArrayList<String> coursesEnrolled, Date dateCreated) {
         // Check for empty string in fullName
@@ -92,6 +92,9 @@ public class StudentService implements Serializable {
     }
 
     public void validatePassword(String userName, String currentPassword) {
+        if(students.isEmpty()){
+            throw new IllegalArgumentException("No users found");
+        }
         if (currentPassword.isEmpty()) {
             throw new IllegalArgumentException("Password cannot be empty");
         }
@@ -115,6 +118,9 @@ public class StudentService implements Serializable {
     }
 
     public void deleteAccount(String userName) {
+        if(students.isEmpty()){
+            throw new IllegalArgumentException("No users found");
+        }
         if (students.containsKey(userName.toLowerCase())) {
             students.remove(userName.toLowerCase());
         } else {
