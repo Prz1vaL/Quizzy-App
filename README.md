@@ -1,16 +1,26 @@
-# Quizzy-App - A Quiz app for Students and Teachers.
+# Quizzy-App - A Java-based Quiz Management System
 
 ## Description
-Quizzy is a simple course and quiz management system implemented in Java, designed for both students and teachers. 
-The system allows users to create and manage accounts, enroll in courses, and take quizzes. 
-Additionally, the system supports secure account access using hashed passwords.
+<p>
+Quizzy is a Java-based Quiz Management System designed to facilitate the creation, management,
+and grading of quizzes in an educational setting. 
+ With support for multiple user roles such as students and teachers,
+it offers a comprehensive data model to efficiently store and manage quiz and user-related information.
+</p>
 
-## Functionalities :
+<strong> Key features: </strong>
+<ol>
+<li> Supports multiple user roles (students and teachers). </li>
+<li> Allows quiz creation and management by teachers. </li>
+<li> Efficient storage and retrieval of quiz and quiz board data </li>
+<li> Keeps track of student scores and quiz completion status. </li>
+</ol>
+
 
 ## Technologies Used:
 
 <ol>
-<li>Intelli - J</li>
+<li>Intelli J</li>
 <li>Java</li>
 <li>Git</li>
 <li> JUnit - 5</li>
@@ -27,6 +37,7 @@ These test cases cover a wide range of scenarios, including edge cases and vario
 ### TESTS WRITTEN : 99
 
 ## Contributions :
+Feel free to explore, contribute, and provide feedback on the project. Your contributions are most welcome!
 
 <ul>
 <li> Clone the repository from the school Gitlab server.
