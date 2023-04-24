@@ -74,9 +74,8 @@ public class CommandLineInterface implements Serializable {
         System.out.println("***************************************");
         System.out.println("1. Login");
         System.out.println("2. Register");
-        System.out.println("3. Save Data");
-        System.out.println("4. Exit");
-        System.out.println("5. Change Log of the Project");
+        System.out.println("3. Exit");
+        System.out.println("4. Change Log of the Project");
         System.out.println("Please select an option: ");
         System.out.println("***************************************");
     }
@@ -98,16 +97,14 @@ public class CommandLineInterface implements Serializable {
                             register();
                         }
                         case '3' -> {
-                            saveData();
-                        }
-                        case '4' -> {
                             System.out.println("Thank you for using Quizzy!");
                             loginStatus = true;
                             saveData();
                             System.exit(0);
                         }
-                        case '5' -> {
+                        case '4' -> {
                             changelog();
+                            start();
                         }
                         default -> {
                             System.out.println("Please select a valid option: ");
