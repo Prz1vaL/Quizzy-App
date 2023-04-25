@@ -100,6 +100,11 @@ public class CommandLineInterface implements Serializable {
                             System.out.println("Thank you for using Quizzy!");
                             loginStatus = true;
                             saveData();
+                            // Clearing the cache
+                            teacherInfo.clear();
+                            studentInfo.clear();
+                            quizData.clear();
+                            // End of Clearing the cache
                             System.exit(0);
                         }
                         case '4' -> {
@@ -227,6 +232,11 @@ public class CommandLineInterface implements Serializable {
                     System.out.println("Thank you for using Quizzy!");
                     loginStatus = true;
                     saveData();
+                    // Clearing the cache
+                    teacherInfo.clear();
+                    studentInfo.clear();
+                    quizData.clear();
+                    // End of Clearing the cache
                     System.exit(0);
                 }
                 default -> {
@@ -620,8 +630,12 @@ public class CommandLineInterface implements Serializable {
                 }
                 case '5' -> {
                     System.out.println("Exiting the application...");
+                    loginStatus = true;
                     saveData();
-                    loginStatus = false;
+                    //Clear the cache
+                    teacherInfo.clear();
+                    studentInfo.clear();
+                    quizData.clear();
                     System.exit(0);
                 }
             }
@@ -707,8 +721,13 @@ public class CommandLineInterface implements Serializable {
                 }
                 case '7' -> {
                     System.out.println("Exiting the application...");
+                    loginStatus = true;
                     saveData();
-                    loginStatus = false;
+                    // Clear the cache
+                    teacherInfo.clear();
+                    studentInfo.clear();
+                    quizData.clear();
+                    // End of cache
                     System.exit(0);
                 }
             }
