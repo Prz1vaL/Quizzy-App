@@ -30,8 +30,8 @@ it offers a comprehensive data model to efficiently store and manage quiz and us
 The project includes JUnit 5 test cases to ensure the proper functionality of the classes. 
 These test cases cover a wide range of scenarios, including edge cases and various input combinations.
 
-<img width="525" alt="Screenshot 2023-04-23 at 1 42 54 PM" src="https://user-images.githubusercontent.com/113372062/233840814-7cce2655-8ad1-4101-a779-9fd3d436520a.png">
 
+<img width="525" alt="Screenshot 2023-04-23 at 1 15 27 PM" src="https://user-images.githubusercontent.com/113372062/234214616-73fbb443-a20e-4b94-b431-53b79056d8f2.png">
 
 
 ### TESTS WRITTEN : 99
